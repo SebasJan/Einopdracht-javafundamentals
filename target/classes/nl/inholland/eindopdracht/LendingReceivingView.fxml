@@ -23,8 +23,10 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="303.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="303.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <TextField fx:id="itemCodeLendField" onKeyPressed="#newTextIsEntered" prefHeight="25.0" prefWidth="488.0" promptText="Item code">
@@ -32,16 +34,26 @@
                   <Insets left="30.0" right="100.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="memberIdLendField" onKeyPressed="#newTextIsEntered" prefHeight="25.0" prefWidth="485.0" promptText="Member ID" GridPane.rowIndex="1">
+            <TextField fx:id="memberIdLendField" onKeyPressed="#newTextIsEntered" prefHeight="25.0" prefWidth="485.0" promptText="Member ID" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="30.0" right="100.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#lendItemButtonClick" prefHeight="25.0" prefWidth="86.0" text="Lend item" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#lendItemButtonClick" prefHeight="25.0" prefWidth="86.0" text="Lend item" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="errorItemCodeLendLabel" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorMemberIDLabel" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" GridPane.rowIndex="3">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
       <GridPane layoutX="687.0" layoutY="105.0" prefHeight="118.0" prefWidth="555.0" style="-fx-background-color: #2596be;">
@@ -50,7 +62,8 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="66.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <TextField fx:id="itemCodeReceiveField" onKeyPressed="#newTextIsEntered" prefHeight="25.0" prefWidth="488.0" promptText="Item code">
@@ -58,21 +71,26 @@
                   <Insets left="30.0" right="100.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#receiveItemButtonClick" text="Receive item" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#receiveItemButtonClick" text="Receive item" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="errorItemCodeReceive" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
-      <Label fx:id="errorLabel" layoutX="16.0" layoutY="269.0" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
       <Label fx:id="feedbackText" layoutX="458.0" layoutY="55.0" prefHeight="34.0" prefWidth="425.0" text="Suc6" visible="false">
          <font>
             <Font name="Verdana" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorLabel" layoutX="16.0" layoutY="284.0" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false">
+         <font>
+            <Font size="20.0" />
          </font>
       </Label>
    </children>

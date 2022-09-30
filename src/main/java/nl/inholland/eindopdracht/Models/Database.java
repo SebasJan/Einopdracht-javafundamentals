@@ -44,7 +44,7 @@ public class Database {
         this.items.add(new Item(2, true, "Lord of the Rings", "J.R.R. Tolkien"));
     }
 
-    public boolean lendItem(int itemCode, int memberId) {
+    public String lendItem(int itemCode, int memberId) {
         // check if the item exists
         for (Item item : items) {
             if (item.itemCode == itemCode && item.available) {
@@ -54,17 +54,17 @@ public class Database {
                     member.addLentItem(item);
                     item.available = false;
                     item.dateOfLending = Calendar.getInstance();
-                    return true;
+                    return null;
                 }
-                return false;
+                return "noMember";
             }
         }
-        return false;
+        return "noItem";
     }
 
     public Item receiveItem(int itemCode) {
         for (Item item : items) {
-            if (item.itemCode == itemCode) {
+            if (item.itemCode == itemCode && !item.available) {
                 item.available = true;
                 return item;
             }

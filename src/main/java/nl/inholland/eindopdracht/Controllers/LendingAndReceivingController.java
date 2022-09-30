@@ -17,9 +17,15 @@ public class LendingAndReceivingController {
     @FXML
     public TextField itemCodeReceiveField;
     @FXML
-    public Label errorLabel;
-    @FXML
     public Label feedbackText;
+    @FXML
+    public Label errorItemCodeLendLabel;
+    @FXML
+    public Label errorMemberIDLabel;
+    @FXML
+    public Label errorItemCodeReceive;
+    @FXML
+    public Label errorLabel;
 
     private Database database;
 
@@ -42,13 +48,18 @@ public class LendingAndReceivingController {
             int itemCode = Integer.parseInt(itemCodeLendField.getText());
             int memberId = Integer.parseInt(memberIdLendField.getText());
             // check if the item/member exists
-            if (this.database.lendItem(itemCode, memberId)) {
-                this.errorLabel.setVisible(false);
+            if (this.database.lendItem(itemCode, memberId) == null) {
+//                this.errorItemCodeLendLabel.setVisible(false);
+//                this.errorLabel.setVisible(false);
+//                this.errorMemberIDLabel.setVisible(false);
                 this.feedbackText.setText("Item successfully lent!");
                 this.feedbackText.setVisible(true);
-            } else {
-                this.errorLabel.setText("Item/user not found or already lent");
-                this.errorLabel.setVisible(true);
+            } else if (this.database.lendItem(itemCode, memberId).equals("noItem")) {
+                this.errorItemCodeLendLabel.setText("Item not found or already lent");
+                this.errorItemCodeLendLabel.setVisible(true);
+            } else if (this.database.lendItem(itemCode, memberId).equals("noMember")) {
+                this.errorMemberIDLabel.setText("That user does not exist");
+                this.errorMemberIDLabel.setVisible(true);
             }
 
             // clear text fields
@@ -75,8 +86,8 @@ public class LendingAndReceivingController {
             // receive item and check if the item exists
             Item receivedItem = this.database.receiveItem(itemCode);
             if (receivedItem == null) {
-                this.errorLabel.setText("Item not found");
-                this.errorLabel.setVisible(true);
+                this.errorItemCodeReceive.setText("Item not found or not lent");
+                this.errorItemCodeReceive.setVisible(true);
                 this.itemCodeReceiveField.setText("");
                 return;
             }
@@ -85,19 +96,25 @@ public class LendingAndReceivingController {
             if (receivedItem.itemIsOverdue()) {
                 this.feedbackText.setText("Item is overdue by " + receivedItem.daysOverdue + " days, item is received");
             } else {
-                this.errorLabel.setVisible(false);
+                //this.errorItemCodeReceive.setVisible(false);
                 this.feedbackText.setText("Item successfully received!");
             }
             this.feedbackText.setVisible(true);
             this.itemCodeReceiveField.setText("");
         } catch (NumberFormatException e) {
-            this.errorLabel.setText("Please enter a valid item code");
-            this.errorLabel.setVisible(true);
+            this.errorItemCodeReceive.setText("Please enter a valid item code");
+            this.errorItemCodeReceive.setVisible(true);
         }
     }
 
     public void newTextIsEntered() {
         this.feedbackText.setText("");
         this.feedbackText.setVisible(false);
+
+        // hide all error labels
+        this.errorItemCodeLendLabel.setVisible(false);
+        this.errorMemberIDLabel.setVisible(false);
+        this.errorItemCodeReceive.setVisible(false);
+        this.errorLabel.setVisible(false);
     }
 }
