@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.inholland.eindopdracht.Controllers.MainController">
+   <children>
+      <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1280.0" style="-fx-background-color: #2596be;">
+         <children>
+            <ImageView fitHeight="82.0" fitWidth="103.0" translateX="10.0" translateY="15.0">
+               <image>
+                  <Image url="@Images/book.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="40.0" prefWidth="285.0" text="Fabula library" textFill="WHITE" translateX="30.0" translateY="30.0">
+               <font>
+                  <Font name="Nirmala UI Bold" size="43.0" />
+               </font>
+            </Label>
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="477.0" style="-fx-background-color: #2596be;" translateX="400.0" translateY="50.0">
+              <items>
+                  <Button fx:id="membersButton" mnemonicParsing="false" onAction="#buttonMembersClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Members" textFill="WHITE" />
+                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#buttonCollectionClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Collection" textFill="WHITE" />
+                <Button fx:id="lndRcvButton" mnemonicParsing="false" onAction="#buttonLndRcvClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Lending/receiving" textFill="WHITE" />
+              </items>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ToolBar>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="dockPane" layoutY="122.0" prefHeight="598.0" prefWidth="1280.0" />
+   </children>
+</AnchorPane>
