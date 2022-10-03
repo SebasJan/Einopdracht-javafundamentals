@@ -93,6 +93,11 @@ public class Database {
         }
     }
 
+    public void addItem(String title, String author) {
+        int itemCode = items.size() + 1;
+        items.add(new Item(itemCode, true, title, author));
+    }
+
     private Member getMemberById(int memberId) {
         for (Member member : members) {
             if (member.id == memberId) {

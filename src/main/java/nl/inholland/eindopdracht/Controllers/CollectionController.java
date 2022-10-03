@@ -3,7 +3,6 @@ package nl.inholland.eindopdracht.Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -25,6 +24,10 @@ public class CollectionController {
     public Label errorLabel;
     @FXML
     public TextField itemCodeDeleteField;
+    @FXML
+    public TextField newAuthorField;
+    @FXML
+    public TextField newTitleField;
     private Database database;
 
     @FXML
@@ -35,7 +38,7 @@ public class CollectionController {
         itemTable.setEditable(true);
 
         // set cell factories to allow editing
-        availableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        //availableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         authorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -43,17 +46,17 @@ public class CollectionController {
     }
 
     private void setOnEditEventHandlers() {
-        availableColumn.setOnEditCommit(event -> {
-            Item item = event.getRowValue();
-            // check if the input is valid
-            if (event.getNewValue().equals("Yes") || event.getNewValue().equals("No")) {
-                item.setAvailable(event.getNewValue());
-                this.database.editItem(item);
-            } else {
-                errorLabel.setText("Please enter 'Yes' or 'No'");
-                errorLabel.setVisible(true);
-            }
-        });
+//        availableColumn.setOnEditCommit(event -> {
+//            Item item = event.getRowValue();
+//            // check if the input is valid
+//            if (event.getNewValue().equals("Yes") || event.getNewValue().equals("No")) {
+//                item.setAvailable(event.getNewValue());
+//                this.database.editItem(item);
+//            } else {
+//                errorLabel.setText("Please enter 'Yes' or 'No'");
+//                errorLabel.setVisible(true);
+//            }
+//        });
 
         titleColumn.setOnEditCommit(event -> {
             Item item = event.getRowValue();
@@ -98,5 +101,21 @@ public class CollectionController {
         });
 
         itemCodeDeleteField.clear();
+    }
+
+    public void addItemButton(ActionEvent actionEvent) {
+        // get the title and author from the text fields
+        String title = newTitleField.getText();
+        String author = newAuthorField.getText();
+
+        // create a new item and add it to the database
+        this.database.addItem(title, author);
+
+        // clear the text fields
+        newTitleField.clear();
+        newAuthorField.clear();
+
+        // update the table
+        setTableItems();
     }
 }
