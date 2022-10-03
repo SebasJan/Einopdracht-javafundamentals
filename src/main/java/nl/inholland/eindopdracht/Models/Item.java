@@ -34,4 +34,32 @@ public class Item {
         this.dateOfLending = null;
         return isOverdue;
     }
+
+    public int getItemCode() {
+        return itemCode;
+    }
+
+    public String isAvailable() {
+        return available ? "Yes" : "No";
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available.equals("Yes");
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }

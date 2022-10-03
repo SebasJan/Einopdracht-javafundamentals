@@ -1,5 +1,7 @@
 package nl.inholland.eindopdracht.Models;
 
+import javafx.scene.control.TreeItem;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -70,6 +72,16 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public void editItem(Item item) {
+        for (Item i : items) {
+            if (i.itemCode == item.itemCode) {
+                i.title = item.title;
+                i.author = item.author;
+                i.available = item.available;
+            }
+        }
     }
 
     private Member getMemberById(int memberId) {
