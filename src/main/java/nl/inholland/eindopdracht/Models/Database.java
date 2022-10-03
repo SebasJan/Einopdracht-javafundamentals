@@ -84,6 +84,15 @@ public class Database {
         }
     }
 
+    public void deleteItem(int itemCode) {
+        for (Item item : items) {
+            if (item.itemCode == itemCode) {
+                items.remove(item);
+                break;
+            }
+        }
+    }
+
     private Member getMemberById(int memberId) {
         for (Member member : members) {
             if (member.id == memberId) {

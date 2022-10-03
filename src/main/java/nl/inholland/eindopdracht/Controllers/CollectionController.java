@@ -2,6 +2,7 @@ package nl.inholland.eindopdracht.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,6 +23,8 @@ public class CollectionController {
     public TableColumn<Item, String> authorColumn;
     @FXML
     public Label errorLabel;
+    @FXML
+    public TextField itemCodeDeleteField;
     private Database database;
 
     @FXML
@@ -74,5 +77,26 @@ public class CollectionController {
     private void setTableItems() {
         ObservableList<Item> items = FXCollections.observableArrayList(this.database.items);
         itemTable.setItems(items);
+    }
+
+    public void deleteItemButtonClick(ActionEvent actionEvent) {
+        // get the item code from the text field
+        int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
+
+        // show prompt to confirm deletion
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete item");
+        alert.setHeaderText("Are you sure you want to delete item " + itemCode + " ?");
+        alert.setContentText("This action cannot be undone");
+
+        // if the user confirms, delete the item
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                this.database.deleteItem(itemCode);
+                setTableItems();
+            }
+        });
+
+        itemCodeDeleteField.clear();
     }
 }
