@@ -14,12 +14,12 @@
             <Font name="Verdana Bold" size="20.0" />
          </font>
       </Label>
-      <TreeTableView layoutX="34.0" layoutY="99.0" prefHeight="421.0" prefWidth="1195.0">
+      <TreeTableView fx:id="itemTable" layoutX="34.0" layoutY="99.0" prefHeight="421.0" prefWidth="1195.0">
         <columns>
-          <TreeTableColumn prefWidth="93.0" text="Item code" />
-          <TreeTableColumn prefWidth="92.0" text="Available" />
-            <TreeTableColumn prefWidth="361.0" text="Title" />
-            <TreeTableColumn prefWidth="131.0" text="Author" />
+          <TreeTableColumn fx:id="itemCodeColumn" prefWidth="93.0" text="Item code" />
+          <TreeTableColumn fx:id="availableColumn" prefWidth="92.0" text="Available" />
+            <TreeTableColumn fx:id="titleColumn" prefWidth="361.0" text="Title" />
+            <TreeTableColumn fx:id="authorColumn" prefWidth="131.0" text="Author" />
         </columns>
       </TreeTableView>
       <Button layoutX="34.0" layoutY="537.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Add item" />

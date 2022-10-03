@@ -9,23 +9,23 @@ import nl.inholland.eindopdracht.Models.User;
 
 public class LendingAndReceivingController {
     @FXML
-    public Label welcomeText;
+    private Label welcomeText;
     @FXML
-    public TextField itemCodeLendField;
+    private TextField itemCodeLendField;
     @FXML
-    public TextField memberIdLendField;
+    private TextField memberIdLendField;
     @FXML
-    public TextField itemCodeReceiveField;
+    private TextField itemCodeReceiveField;
     @FXML
-    public Label feedbackText;
+    private Label feedbackText;
     @FXML
-    public Label errorItemCodeLendLabel;
+    private Label errorItemCodeLendLabel;
     @FXML
-    public Label errorMemberIDLabel;
+    private Label errorMemberIDLabel;
     @FXML
-    public Label errorItemCodeReceive;
+    private Label errorItemCodeReceive;
     @FXML
-    public Label errorLabel;
+    private Label errorLabel;
 
     private Database database;
 

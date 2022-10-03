@@ -26,9 +26,9 @@
             </Label>
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="477.0" style="-fx-background-color: #2596be;" translateX="400.0" translateY="50.0">
               <items>
-                  <Button fx:id="membersButton" mnemonicParsing="false" onAction="#buttonMembersClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Members" textFill="WHITE" />
-                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#buttonCollectionClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Collection" textFill="WHITE" />
-                <Button fx:id="lndRcvButton" mnemonicParsing="false" onAction="#buttonLndRcvClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Lending/receiving" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#buttonMembersClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Members" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#buttonCollectionClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Collection" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#buttonLndRcvClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Lending/receiving" textFill="WHITE" />
               </items>
                <HBox.margin>
                   <Insets />

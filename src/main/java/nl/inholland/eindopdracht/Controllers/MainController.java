@@ -14,13 +14,7 @@ import java.io.IOException;
 
 public class MainController {
     @FXML
-    public Button membersButton;
-    @FXML
-    public Button collectionButton;
-    @FXML
-    public Button lndRcvButton;
-    @FXML
-    public AnchorPane dockPane;
+    private AnchorPane dockPane;
 
     private Database database;
     private User user;
