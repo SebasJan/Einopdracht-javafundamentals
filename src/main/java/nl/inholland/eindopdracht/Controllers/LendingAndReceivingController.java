@@ -32,7 +32,7 @@ public class LendingAndReceivingController {
     public void setData(Database database, User user) {
         // set data and welcome the user
         this.database = database;
-        welcomeText.setText("Welcome " + user.username);
+        welcomeText.setText("Welcome " + user.getUsername());
     }
 
     public void lendItemButtonClick() {

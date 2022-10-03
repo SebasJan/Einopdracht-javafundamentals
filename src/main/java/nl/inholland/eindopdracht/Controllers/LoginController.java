@@ -33,7 +33,7 @@ public class LoginController {
     private void passCodeTextFieldChanges (Observable observable,String oldValue,String newValue) {
         if (newValue.length() == 4) {
             for (User user : database.users) {
-                if (user.username.equals(this.usernameTextField.getText()) && user.passcode.equals(this.passCodeTextField.getText())) {
+                if (user.getUsername().equals(this.usernameTextField.getText()) && user.getPasscode().equals(this.passCodeTextField.getText())) {
                     try {
                         openMainWindow(user);
                     } catch (IOException e) {
@@ -56,7 +56,7 @@ public class LoginController {
 
         // check the username and password
         for (User user : database.users) {
-            if (user.username.equals(this.usernameTextField.getText()) && user.passcode.equals(this.passCodeTextField.getText())) {
+            if (user.getUsername().equals(this.usernameTextField.getText()) && user.getPasscode().equals(this.passCodeTextField.getText())) {
                 openMainWindow(user);
                 return;
             }

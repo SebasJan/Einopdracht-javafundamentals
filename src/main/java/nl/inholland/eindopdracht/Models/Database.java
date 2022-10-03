@@ -97,9 +97,33 @@ public class Database {
         items.add(new Item(itemCode, true, title, author));
     }
 
+    public void addMember(String firstName, String lastName, Calendar dateOfBirth) {
+        int memberId = members.size() + 1;
+        members.add(new Member(memberId, firstName, lastName, dateOfBirth));
+    }
+
+    public void deleteMember(int memberId) {
+        for (Member member : members) {
+            if (member.getId() == memberId) {
+                members.remove(member);
+                break;
+            }
+        }
+    }
+
+    public void editMember(Member member) {
+        for (Member m : members) {
+            if (m.getId() == member.getId()) {
+                m.setFirstName(member.getFirstName());
+                m.setLastName(member.getLastName());
+                m.setDateOfBirth(member.getDateOfBirth());
+            }
+        }
+    }
+
     private Member getMemberById(int memberId) {
         for (Member member : members) {
-            if (member.id == memberId) {
+            if (member.getId() == memberId) {
                 return member;
             }
         }

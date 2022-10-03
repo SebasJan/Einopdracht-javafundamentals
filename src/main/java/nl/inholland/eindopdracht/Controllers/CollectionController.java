@@ -106,7 +106,7 @@ public class CollectionController {
         itemTable.setItems((ObservableList<Item>) items);
     }
 
-    public void deleteItemButtonClick(ActionEvent actionEvent) {
+    public void deleteItemButtonClick() {
         // get the item code from the text field
         int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
 
@@ -127,7 +127,7 @@ public class CollectionController {
         itemCodeDeleteField.clear();
     }
 
-    public void addItemButton(ActionEvent actionEvent) {
+    public void addItemButton() {
         // get the title and author from the text fields
         String title = newTitleField.getText();
         String author = newAuthorField.getText();
