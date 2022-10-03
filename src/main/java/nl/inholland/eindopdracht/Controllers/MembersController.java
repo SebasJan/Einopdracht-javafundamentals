@@ -8,6 +8,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import nl.inholland.eindopdracht.Models.Database;
 import nl.inholland.eindopdracht.Models.Member;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class MembersController {
@@ -31,6 +32,8 @@ public class MembersController {
     public TextField searchField;
     @FXML
     public TextField lastNameField;
+    @FXML
+    public DatePicker birthDatePicker;
 
     private Database database;
 
@@ -57,8 +60,24 @@ public class MembersController {
     }
 
     public void addMemberButton() {
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        Calendar birthDate = Calendar.getInstance();
+        birthDate.set(birthDatePicker.getValue().getYear(), birthDatePicker.getValue().getMonthValue(), birthDatePicker.getValue().getDayOfMonth());
+
+        firstNameField.clear();
+        lastNameField.clear();
+        birthDatePicker.getEditor().clear();
+
+        this.database.addMember(firstName, lastName, birthDate);
+        setTableItems(this.database.members);
     }
 
     public void deleteMemberButton() {
+        int memberID = Integer.parseInt(memberIDDeleteField.getText());
+        memberIDDeleteField.clear();
+
+        this.database.deleteMember(memberID);
+        setTableItems(this.database.members);
     }
 }

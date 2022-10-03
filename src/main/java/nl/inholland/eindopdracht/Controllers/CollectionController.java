@@ -127,6 +127,8 @@ public class CollectionController {
         itemCodeDeleteField.clear();
     }
 
+
+    // ZORGEN DAT ALS JE NIKS INVULT HIJ NIET CRASHT!!
     public void addItemButton() {
         // get the title and author from the text fields
         String title = newTitleField.getText();

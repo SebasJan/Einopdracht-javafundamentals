@@ -49,6 +49,6 @@
       <TextField fx:id="firstNameField" layoutX="36.0" layoutY="344.0" promptText="Firstname" />
       <TextField fx:id="searchField" layoutX="524.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" />
       <TextField fx:id="lastNameField" layoutX="36.0" layoutY="379.0" promptText="Lastname" />
-      <DatePicker layoutX="34.0" layoutY="416.0" promptText="Birthdate" />
+      <DatePicker fx:id="birthDatePicker" layoutX="34.0" layoutY="416.0" promptText="Birthdate" />
    </children>
 </AnchorPane>
