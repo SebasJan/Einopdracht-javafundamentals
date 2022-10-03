@@ -49,13 +49,13 @@ public class Database {
     public String lendItem(int itemCode, int memberId) {
         // check if the item exists
         for (Item item : items) {
-            if (item.itemCode == itemCode && item.available) {
+            if (item.getItemCode() == itemCode && item.getAvailable()) {
                 // check if the member exists, only then lend the item
                 Member member = getMemberById(memberId);
                 if (member != null) {
                     member.addLentItem(item);
-                    item.available = false;
-                    item.dateOfLending = Calendar.getInstance();
+                    item.setAvailable(false);
+                    item.setDateOfLending(Calendar.getInstance());
                     return null;
                 }
                 return "noMember";
@@ -66,8 +66,8 @@ public class Database {
 
     public Item receiveItem(int itemCode) {
         for (Item item : items) {
-            if (item.itemCode == itemCode && !item.available) {
-                item.available = true;
+            if (item.getItemCode() == itemCode && !item.getAvailable()) {
+                item.setAvailable(true);
                 return item;
             }
         }
@@ -76,17 +76,16 @@ public class Database {
 
     public void editItem(Item item) {
         for (Item i : items) {
-            if (i.itemCode == item.itemCode) {
-                i.title = item.title;
-                i.author = item.author;
-                i.available = item.available;
+            if (i.getItemCode() == item.getItemCode()) {
+                i.setTitle(item.getTitle());
+                i.setAuthor(item.getAuthor());
             }
         }
     }
 
     public void deleteItem(int itemCode) {
         for (Item item : items) {
-            if (item.itemCode == itemCode) {
+            if (item.getItemCode() == itemCode) {
                 items.remove(item);
                 break;
             }

@@ -94,7 +94,7 @@ public class LendingAndReceivingController {
 
             // check if the item is overdue
             if (receivedItem.itemIsOverdue()) {
-                this.feedbackText.setText("Item is overdue by " + receivedItem.daysOverdue + " days, item is received");
+                this.feedbackText.setText("Item is overdue by " + receivedItem.getDaysOverdue() + " days, item is received");
             } else {
                 //this.errorItemCodeReceive.setVisible(false);
                 this.feedbackText.setText("Item successfully received!");

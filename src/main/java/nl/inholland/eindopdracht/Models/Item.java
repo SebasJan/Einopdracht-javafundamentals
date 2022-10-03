@@ -3,12 +3,15 @@ package nl.inholland.eindopdracht.Models;
 import java.util.Calendar;
 
 public class Item {
-    public int itemCode;
-    public boolean available;
-    public String title;
-    public String author;
-    public Calendar dateOfLending;
-    public long daysOverdue;
+    private final int itemCode;
+    private boolean available;
+
+    // word wel gebruikt door fxml
+    private String availableString;
+    private String title;
+    private String author;
+    private Calendar dateOfLending;
+    private long daysOverdue;
 
     public Item(int itemCode, boolean available, String title, String author) {
         this.itemCode = itemCode;
@@ -35,12 +38,29 @@ public class Item {
         return isOverdue;
     }
 
+    public long getDaysOverdue() {
+        return daysOverdue;
+    }
+
+    public void setDateOfLending(Calendar dateOfLending) {
+        this.dateOfLending = dateOfLending;
+    }
+
     public int getItemCode() {
         return itemCode;
     }
 
-    public String isAvailable() {
-        return available ? "Yes" : "No";
+    // word wel gebruikt door fxml!!
+    public String getAvailableString() {
+        return this.available ? "Yes" : "No";
+    }
+
+    public boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public String getTitle() {
@@ -49,10 +69,6 @@ public class Item {
 
     public String getAuthor() {
         return author;
-    }
-
-    public void setAvailable(String available) {
-        this.available = available.equals("Yes");
     }
 
     public void setTitle(String title) {

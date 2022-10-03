@@ -25,7 +25,7 @@
           </TableColumn>
           <TableColumn fx:id="availableColumn" prefWidth="92.0" text="Available">
             <cellValueFactory>
-              <PropertyValueFactory property="available" />
+              <PropertyValueFactory property="availableString" />
             </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="titleColumn" prefWidth="361.0" text="Title">

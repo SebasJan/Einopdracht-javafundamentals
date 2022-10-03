@@ -1,6 +1,8 @@
 package nl.inholland.eindopdracht.Controllers;
 
 import javafx.beans.Observable;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,7 +62,7 @@ public class CollectionController {
 
         // find the items that start with the search query
         for (Item item : allItems) {
-            if (item.title.toLowerCase().startsWith(newValue.toLowerCase()) || item.author.toLowerCase().startsWith(newValue.toLowerCase())) {
+            if (item.getTitle().toLowerCase().startsWith(newValue.toLowerCase()) || item.getAuthor().toLowerCase().startsWith(newValue.toLowerCase())) {
                 matchingItems.add(item);
             }
         }
