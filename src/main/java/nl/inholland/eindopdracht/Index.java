@@ -11,6 +11,7 @@ import nl.inholland.eindopdracht.Models.Database;
 import java.io.IOException;
 
 public class Index extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         // create database object

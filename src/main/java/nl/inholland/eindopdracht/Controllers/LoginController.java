@@ -80,7 +80,12 @@ public class LoginController {
         fxmlLoader.<MainController>getController().setData(database, user);
         stage.show();
 
-        // close login window
+        // method for when stage is closed
+        stage.setOnCloseRequest(event -> {
+            database.saveDateBase();
+        });
+
+        // saveDateBase login window
         this.usernameTextField.getScene().getWindow().hide();
     }
 

@@ -1,7 +1,8 @@
 package nl.inholland.eindopdracht.Models;
 
-import javafx.scene.control.TreeItem;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -128,5 +129,10 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public void saveDateBase() {
+        
+
     }
 }
