@@ -12,7 +12,7 @@ public class Member {
     public List<Item> lentItems;
 
     public Member(int id, String firstName, String lastName, Calendar dateOfBirth) {
-        this.lentItems = new ArrayList<Item>();
+        this.lentItems = new ArrayList<>();
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
