@@ -16,7 +16,7 @@
             <Font name="Verdana Bold" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="itemTable" layoutX="560.0" layoutY="99.0" prefHeight="360.0" prefWidth="681.0">
+      <TableView fx:id="itemTable" layoutX="560.0" layoutY="112.0" prefHeight="360.0" prefWidth="681.0">
         <columns>
           <TableColumn fx:id="itemCodeColumn" prefWidth="93.0" text="Item code">
             <cellValueFactory>
@@ -41,11 +41,12 @@
         </columns>
       </TableView>
       <Button layoutX="34.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton" prefHeight="25.0" prefWidth="96.0" text="Add item" />
-      <Button layoutX="389.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteItemButtonClick" prefHeight="25.0" prefWidth="96.0" text="Delete item" />
+      <Button layoutX="231.0" layoutY="448.0" mnemonicParsing="false" onAction="#deleteItemButtonClick" prefHeight="25.0" prefWidth="96.0" text="Delete item" />
       <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="436.0" text="To edit the data, double click on a cell to edit the information.  Hit enter to save. " />
       <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="124.0" text="Label" textFill="RED" visible="false" />
-      <TextField fx:id="itemCodeDeleteField" layoutX="389.0" layoutY="415.0" prefHeight="25.0" prefWidth="130.0" promptText="Item code" />
+      <TextField fx:id="itemCodeDeleteField" layoutX="231.0" layoutY="416.0" prefHeight="25.0" prefWidth="130.0" promptText="Item code" />
       <TextField fx:id="newAuthorField" layoutX="36.0" layoutY="403.0" promptText="Author" />
       <TextField fx:id="newTitleField" layoutX="36.0" layoutY="365.0" promptText="Title" />
+      <TextField fx:id="searchField" layoutX="560.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" />
    </children>
 </AnchorPane>

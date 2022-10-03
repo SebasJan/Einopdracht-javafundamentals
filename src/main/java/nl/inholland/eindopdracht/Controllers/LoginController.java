@@ -74,6 +74,7 @@ public class LoginController {
         stage.setTitle("Fabula Library");
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
+        stage.setResizable(false);
 
         // pass database
         fxmlLoader.<MainController>getController().setData(database, user);

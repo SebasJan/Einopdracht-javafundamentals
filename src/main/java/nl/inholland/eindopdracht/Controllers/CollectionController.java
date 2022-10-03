@@ -1,5 +1,6 @@
 package nl.inholland.eindopdracht.Controllers;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import nl.inholland.eindopdracht.Models.Database;
 import nl.inholland.eindopdracht.Models.Item;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CollectionController {
     @FXML
@@ -28,10 +32,15 @@ public class CollectionController {
     public TextField newAuthorField;
     @FXML
     public TextField newTitleField;
+    @FXML
+    public TextField searchField;
     private Database database;
 
     @FXML
     public void initialize() {
+        // add event listener for search function
+        searchField.textProperty().addListener(this::searchTextFieldChanges);
+
         itemTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // make table editable
@@ -43,6 +52,21 @@ public class CollectionController {
         authorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
         setOnEditEventHandlers();
+    }
+
+    private void searchTextFieldChanges(Observable observable,String oldValue,String newValue) {
+        ArrayList<Item> allItems = (ArrayList<Item>) this.database.items;
+        ArrayList<Item> matchingItems = new ArrayList<>();
+
+        // find the items that start with the search query
+        for (Item item : allItems) {
+            if (item.title.toLowerCase().startsWith(newValue.toLowerCase()) || item.author.toLowerCase().startsWith(newValue.toLowerCase())) {
+                matchingItems.add(item);
+            }
+        }
+
+        // add these items to the new list
+        setTableItems(matchingItems);
     }
 
     private void setOnEditEventHandlers() {
@@ -74,12 +98,12 @@ public class CollectionController {
     public void setDatabase(Database database) {
         this.database = database;
 
-        setTableItems();
+        setTableItems(this.database.items);
     }
 
-    private void setTableItems() {
-        ObservableList<Item> items = FXCollections.observableArrayList(this.database.items);
-        itemTable.setItems(items);
+    private void setTableItems(List<Item> items) {
+        items = FXCollections.observableArrayList(items);
+        itemTable.setItems((ObservableList<Item>) items);
     }
 
     public void deleteItemButtonClick(ActionEvent actionEvent) {
@@ -96,7 +120,7 @@ public class CollectionController {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 this.database.deleteItem(itemCode);
-                setTableItems();
+                setTableItems(this.database.items);
             }
         });
 
@@ -116,6 +140,6 @@ public class CollectionController {
         newAuthorField.clear();
 
         // update the table
-        setTableItems();
+        setTableItems(this.database.items);
     }
 }

@@ -22,6 +22,7 @@ public class Index extends Application {
         stage.setTitle("Fabula Library");
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
+        stage.setResizable(false);
 
         // add database to controller
         fxmlLoader.<LoginController>getController().setDatabase(database);
