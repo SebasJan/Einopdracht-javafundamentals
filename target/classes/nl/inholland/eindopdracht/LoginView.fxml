@@ -27,14 +27,12 @@
       <GridPane.margin>
          <Insets left="100.0" right="100.0" />
       </GridPane.margin></PasswordField>
-    <Button layoutX="176.0" layoutY="277.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: #2596be;" text="Login" translateX="-15.0">
+    <Button layoutX="176.0" layoutY="277.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: #2596be;" text="Login" textFill="WHITE" translateX="-15.0">
       <GridPane.margin>
          <Insets left="230.0" />
       </GridPane.margin></Button>
     <Label fx:id="errorLabel" text="Big oops..." visible="false" GridPane.rowIndex="4" />
-   <ImageView fitHeight="366.0" fitWidth="439.0" layoutX="31.0" layoutY="128.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@Images/book.png" />
-      </image>
-   </ImageView>
+    <ImageView fitHeight="366.0" fitWidth="439.0" layoutX="31.0" layoutY="128.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+        <Image url="@Images/book.png" />
+    </ImageView>
 </AnchorPane>
