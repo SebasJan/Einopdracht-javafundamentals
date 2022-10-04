@@ -5,9 +5,6 @@ import java.util.Calendar;
 public class Item {
     private final int itemCode;
     private boolean available;
-
-    // word wel gebruikt door fxml
-    private String availableString;
     private String title;
     private String author;
     private Calendar dateOfLending;
@@ -27,7 +24,6 @@ public class Item {
         boolean isOverdue = dateOfLending.before(threeWeeksAgo);
         // calculate the amount of days overdue
         if (isOverdue) {
-            Calendar today = Calendar.getInstance();
             // get the difference between day of lending and the three-week point
             long difference = dateOfLending.getTimeInMillis() - threeWeeksAgo.getTimeInMillis();
             daysOverdue = difference / (24 * 60 * 60 * 1000);
@@ -48,11 +44,6 @@ public class Item {
 
     public int getItemCode() {
         return itemCode;
-    }
-
-    // word wel gebruikt door fxml!!
-    public String getAvailableString() {
-        return this.available ? "Yes" : "No";
     }
 
     public boolean getAvailable() {

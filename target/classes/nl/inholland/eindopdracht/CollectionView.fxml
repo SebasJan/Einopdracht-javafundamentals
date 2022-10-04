@@ -24,20 +24,17 @@
             </cellValueFactory>
           </TableColumn>
           <TableColumn fx:id="availableColumn" prefWidth="92.0" text="Available">
-            <cellValueFactory>
-              <PropertyValueFactory property="availableString" />
-            </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="titleColumn" prefWidth="361.0" text="Title">
-                <cellValueFactory>
-                    <PropertyValueFactory property="title" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="authorColumn" prefWidth="131.0" text="Author">
-                <cellValueFactory>
-                    <PropertyValueFactory property="author" />
-                </cellValueFactory>
-            </TableColumn>
+          </TableColumn>
+          <TableColumn fx:id="titleColumn" prefWidth="361.0" text="Title">
+              <cellValueFactory>
+                  <PropertyValueFactory property="title" />
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="authorColumn" prefWidth="131.0" text="Author">
+               <cellValueFactory>
+                   <PropertyValueFactory property="author" />
+               </cellValueFactory>
+          </TableColumn>
         </columns>
       </TableView>
       <Button layoutX="34.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton" prefHeight="25.0" prefWidth="96.0" text="Add item" />

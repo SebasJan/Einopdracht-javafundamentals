@@ -1,9 +1,9 @@
 package nl.inholland.eindopdracht.Controllers;
 
 import javafx.beans.Observable;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -15,29 +15,31 @@ import java.util.List;
 
 public class CollectionController {
     @FXML
-    public TableView<Item> itemTable;
+    private TableView<Item> itemTable;
     @FXML
-    public TableColumn<Item, Integer> itemCodeColumn;
+    protected TableColumn<Item, Integer> itemCodeColumn;
     @FXML
-    public TableColumn<Item, String> availableColumn;
+    private TableColumn<Item, String> availableColumn;
     @FXML
-    public TableColumn<Item, String> titleColumn;
+    private TableColumn<Item, String> titleColumn;
     @FXML
-    public TableColumn<Item, String> authorColumn;
+    private TableColumn<Item, String> authorColumn;
     @FXML
-    public Label errorLabel;
+    protected Label errorLabel;
     @FXML
-    public TextField itemCodeDeleteField;
+    private TextField itemCodeDeleteField;
     @FXML
-    public TextField newAuthorField;
+    private TextField newAuthorField;
     @FXML
-    public TextField newTitleField;
+    private TextField newTitleField;
     @FXML
-    public TextField searchField;
+    private TextField searchField;
     private Database database;
 
     @FXML
     public void initialize() {
+        availableColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getAvailable() ? "Yes" : "No"));
+
         // add event listener for search function
         searchField.textProperty().addListener(this::searchTextFieldChanges);
 
@@ -47,7 +49,6 @@ public class CollectionController {
         itemTable.setEditable(true);
 
         // set cell factories to allow editing
-        //availableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         authorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -70,18 +71,6 @@ public class CollectionController {
     }
 
     private void setOnEditEventHandlers() {
-//        availableColumn.setOnEditCommit(event -> {
-//            Item item = event.getRowValue();
-//            // check if the input is valid
-//            if (event.getNewValue().equals("Yes") || event.getNewValue().equals("No")) {
-//                item.setAvailable(event.getNewValue());
-//                this.database.editItem(item);
-//            } else {
-//                errorLabel.setText("Please enter 'Yes' or 'No'");
-//                errorLabel.setVisible(true);
-//            }
-//        });
-
         titleColumn.setOnEditCommit(event -> {
             Item item = event.getRowValue();
             item.setTitle(event.getNewValue());

@@ -1,44 +1,50 @@
 package nl.inholland.eindopdracht.Controllers;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import nl.inholland.eindopdracht.Models.Database;
+import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.Member;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class MembersController {
     @FXML
-    public TableView<Member> memberTable;
+    private TableView<Member> memberTable;
     @FXML
-    public TableColumn<Member, Integer> memberIDColumn;
+    protected TableColumn<Member, Integer> memberIDColumn;
     @FXML
-    public TableColumn<Member, String>  firstNameColumn;
+    private TableColumn<Member, String>  firstNameColumn;
     @FXML
-    public TableColumn<Member, String>  lastNameColumn;
+    private TableColumn<Member, String>  lastNameColumn;
     @FXML
-    public TableColumn<Member, String>  birthDateColumn;
+    protected TableColumn<Member, String>  birthDateColumn;
     @FXML
-    public Label errorLabel;
+    protected Label errorLabel;
     @FXML
-    public TextField memberIDDeleteField;
+    private TextField memberIDDeleteField;
     @FXML
-    public TextField firstNameField;
+    private TextField firstNameField;
     @FXML
-    public TextField searchField;
+    protected TextField searchField;
     @FXML
-    public TextField lastNameField;
+    private TextField lastNameField;
     @FXML
-    public DatePicker birthDatePicker;
+    private DatePicker birthDatePicker;
 
     private Database database;
 
     @FXML
     public void initialize() {
+        // add event listener for search function
+        searchField.textProperty().addListener(this::searchTextFieldChanges);
+
         memberTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // make table editable
@@ -46,6 +52,37 @@ public class MembersController {
 
         firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        setOnEditEventHandlers();
+    }
+
+    private void searchTextFieldChanges(Observable observable, String oldValue, String newValue) {
+        ArrayList<Member> allMembers = (ArrayList<Member>) this.database.members;
+        ArrayList<Member> matchingMembers = new ArrayList<>();
+
+        // find the items that start with the search query
+        for (Member member : allMembers) {
+            if (member.getFirstName().toLowerCase().startsWith(newValue.toLowerCase()) || member.getLastName().toLowerCase().startsWith(newValue.toLowerCase())) {
+                matchingMembers.add(member);
+            }
+        }
+
+        // add these items to the new list
+        setTableItems(matchingMembers);
+    }
+
+    private void setOnEditEventHandlers() {
+        firstNameColumn.setOnEditCommit(event -> {
+            Member member = event.getRowValue();
+            member.setFirstName(event.getNewValue());
+            this.database.editMember(member);
+        });
+
+        lastNameColumn.setOnEditCommit(event -> {
+            Member member = event.getRowValue();
+            member.setLastName(event.getNewValue());
+            this.database.editMember(member);
+        });
     }
 
     public void setDatabase(Database database) {
@@ -75,9 +112,19 @@ public class MembersController {
 
     public void deleteMemberButton() {
         int memberID = Integer.parseInt(memberIDDeleteField.getText());
-        memberIDDeleteField.clear();
 
-        this.database.deleteMember(memberID);
-        setTableItems(this.database.members);
+        // show prompt to confirm deletion
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete item");
+        alert.setHeaderText("Are you sure you want to delete item " + memberID + " ?");
+        alert.setContentText("This action cannot be undone");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                this.database.deleteMember(memberID);
+                setTableItems(this.database.members);
+            }
+        });
+        memberIDDeleteField.clear();
     }
 }
