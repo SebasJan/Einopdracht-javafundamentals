@@ -25,3 +25,4 @@ replay_pid*
 
 #save database in text file
 *.txt
+*.ser
