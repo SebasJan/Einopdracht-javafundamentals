@@ -86,6 +86,7 @@ public class LoginController {
         });
 
         // saveDateBase login window
+        // CLOSES THE LOGIN WINDOW!!!
         this.usernameTextField.getScene().getWindow().hide();
     }
 
