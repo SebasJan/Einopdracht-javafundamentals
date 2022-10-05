@@ -7,6 +7,7 @@ To do:
 [] - Availalble checkbox maken
 [] - Zorgen dat applicatie niet crasht als de fields niet ingevuld zijn
 [] - Database oplsaan in .txt bestand (Members + Items)
+[] - Externe stylesheet gebruiken
 
 
 
