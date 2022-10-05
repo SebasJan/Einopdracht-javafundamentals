@@ -1,4 +1,8 @@
-package nl.inholland.eindopdracht.Models;
+package nl.inholland.eindopdracht.Data;
+
+import nl.inholland.eindopdracht.Models.Item;
+import nl.inholland.eindopdracht.Models.Member;
+import nl.inholland.eindopdracht.Models.User;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import nl.inholland.eindopdracht.Index;
-import nl.inholland.eindopdracht.Models.Database;
+import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.User;
 
 import java.io.IOException;

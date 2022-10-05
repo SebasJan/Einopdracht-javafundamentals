@@ -9,7 +9,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import nl.inholland.eindopdracht.Models.Database;
+import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
 
 import java.util.ArrayList;

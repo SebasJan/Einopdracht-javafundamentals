@@ -8,8 +8,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import nl.inholland.eindopdracht.Models.Database;
-import nl.inholland.eindopdracht.Models.Item;
+import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Member;
 
 import java.util.ArrayList;
@@ -54,6 +53,7 @@ public class MembersController {
 
         firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        birthDateColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
         setOnEditEventHandlers();
     }
@@ -74,6 +74,28 @@ public class MembersController {
     }
 
     private void setOnEditEventHandlers() {
+        birthDateColumn.setOnEditCommit(event -> {
+            // check if the birthdate is in the correct format (dd-MM-yyyy)
+            if (event.getNewValue().matches("\\d{2}-\\d{2}-\\d{4}")) {
+                // get the member that is being edited
+                Member member = event.getRowValue();
+
+                // parse the string to a date
+                String[] dateParts = event.getNewValue().split("-");
+                Calendar dateOfBirth = Calendar.getInstance();
+                dateOfBirth.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[0]));
+                dateOfBirth.set(Calendar.MONTH, Integer.parseInt(dateParts[1]) - 1);
+                dateOfBirth.set(Calendar.YEAR, Integer.parseInt(dateParts[2]));
+
+                // edit member in database
+                member.setDateOfBirth(dateOfBirth);
+                database.editMember(member);
+            } else {
+                // show error message
+                errorLabel.setText("Birthdate must be in the format dd-MM-yyyy");
+            }
+        });
+
         firstNameColumn.setOnEditCommit(event -> {
             Member member = event.getRowValue();
             member.setFirstName(event.getNewValue());

@@ -9,4 +9,6 @@ module nl.inholland.eindopdracht {
     opens nl.inholland.eindopdracht.Controllers to javafx.fxml;
     exports nl.inholland.eindopdracht.Models;
     opens nl.inholland.eindopdracht.Models to javafx.fxml;
+    exports nl.inholland.eindopdracht.Data;
+    opens nl.inholland.eindopdracht.Data to javafx.fxml;
 }

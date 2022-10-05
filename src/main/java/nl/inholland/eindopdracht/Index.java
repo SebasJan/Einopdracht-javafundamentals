@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import nl.inholland.eindopdracht.Controllers.LoginController;
-import nl.inholland.eindopdracht.Models.Database;
+import nl.inholland.eindopdracht.Data.Database;
 
 import java.io.IOException;
 

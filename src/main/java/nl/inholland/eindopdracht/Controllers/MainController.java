@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import nl.inholland.eindopdracht.Index;
-import nl.inholland.eindopdracht.Models.Database;
+import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.User;
 
 import java.io.IOException;
