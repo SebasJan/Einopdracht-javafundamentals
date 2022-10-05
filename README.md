@@ -5,5 +5,6 @@ To do:
 [] - Availalble kunnen aanpassen
 [] - Zorgen dat applicatie niet crasht als de fields niet ingevuld zijn
 [] - Database oplsaan in .txt bestand (Members + Items)
+[] - Extends initalizable (Load event controller C#)
 
  
