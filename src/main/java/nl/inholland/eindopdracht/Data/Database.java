@@ -4,8 +4,7 @@ import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.Member;
 import nl.inholland.eindopdracht.Models.User;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -135,7 +134,18 @@ public class Database {
     }
 
     public void saveDateBase() {
+        try {
+            FileOutputStream outputStream = new FileOutputStream("items.ser", false);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(items);
+            objectOutputStream.close();
 
-
+            outputStream = new FileOutputStream("members.ser", false);
+            objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(members);
+            objectOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

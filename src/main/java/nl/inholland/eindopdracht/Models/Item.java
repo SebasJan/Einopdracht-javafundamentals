@@ -1,8 +1,9 @@
 package nl.inholland.eindopdracht.Models;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Item {
+public class Item implements Serializable {
     private final int itemCode;
     private boolean available;
     private String title;
