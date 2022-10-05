@@ -53,6 +53,7 @@ public class CollectionController {
         // set cell factories to allow editing
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         authorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        availableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
         setOnEditEventHandlers();
     }
@@ -73,6 +74,23 @@ public class CollectionController {
     }
 
     private void setOnEditEventHandlers() {
+        availableColumn.setOnEditCommit(event -> {
+            // check if the new value is No or Yes
+            if (event.getNewValue().equalsIgnoreCase("yes") || event.getNewValue().equalsIgnoreCase("no")) {
+                // get the item that was edited
+                Item item = event.getRowValue();
+
+                // set the available property of the item
+                item.setAvailable(event.getNewValue().equalsIgnoreCase("yes"));
+
+                // update the item in the database
+                this.database.editItem(item);
+            } else {
+                // show error message
+                errorLabel.setText("Available can only be Yes or No");
+            }
+        });
+
         titleColumn.setOnEditCommit(event -> {
             Item item = event.getRowValue();
             item.setTitle(event.getNewValue());
