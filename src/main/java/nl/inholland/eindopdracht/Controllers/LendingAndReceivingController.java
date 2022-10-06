@@ -94,7 +94,6 @@ public class LendingAndReceivingController extends MouseEvent {
             if (receivedItem.itemIsOverdue()) {
                 this.feedbackText.setText("Item is overdue by " + receivedItem.getDaysOverdue() + " days, item is received");
             } else {
-                //this.errorItemCodeReceive.setVisible(false);
                 this.feedbackText.setText("Item successfully received!");
             }
             this.feedbackText.setVisible(true);

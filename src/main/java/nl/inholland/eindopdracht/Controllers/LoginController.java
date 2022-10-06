@@ -37,7 +37,7 @@ public class LoginController extends MouseEvent {
                     try {
                         openMainWindow(user);
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        e.printStackTrace();
                     }
                     return;
                 }
@@ -82,9 +82,7 @@ public class LoginController extends MouseEvent {
         stage.show();
 
         // method for when stage is closed
-        stage.setOnCloseRequest(event -> {
-            database.saveDateBase();
-        });
+        stage.setOnCloseRequest(event -> database.saveDateBase());
 
         // close login window
         Stage loginStage = (Stage) this.usernameTextField.getScene().getWindow();

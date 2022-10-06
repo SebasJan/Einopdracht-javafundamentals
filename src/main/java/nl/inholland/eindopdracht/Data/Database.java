@@ -3,7 +3,6 @@ package nl.inholland.eindopdracht.Data;
 import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.Member;
 import nl.inholland.eindopdracht.Models.User;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
