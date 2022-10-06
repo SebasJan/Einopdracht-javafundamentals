@@ -10,3 +10,7 @@
 .bar {
     -fx-background-color: #2596be;
 }
+
+.table-view .column-header {
+    -fx-background-color: #2596be;
+}
