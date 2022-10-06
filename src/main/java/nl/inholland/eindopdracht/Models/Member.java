@@ -11,18 +11,12 @@ public class Member implements Serializable {
     private String lastName;
     private Calendar dateOfBirth;
     private String birthDateString;
-    private List<Item> lentItems;
 
     public Member(int id, String firstName, String lastName, Calendar dateOfBirth) {
-        this.lentItems = new ArrayList<>();
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public void addLentItem(Item item) {
-        this.lentItems.add(item);
     }
 
     public String getBirthDateString() {

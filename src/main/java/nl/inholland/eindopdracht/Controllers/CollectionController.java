@@ -56,7 +56,7 @@ public class CollectionController extends MouseEvent {
         setOnEditEventHandlers();
     }
 
-    private void searchTextFieldChanges(Observable observable,String oldValue,String newValue) {
+    private void searchTextFieldChanges(Observable ignoredObservable, String ignoredOldValue, String newValue) {
         ArrayList<Item> allItems = (ArrayList<Item>) this.database.items;
         ArrayList<Item> matchingItems = new ArrayList<>();
 

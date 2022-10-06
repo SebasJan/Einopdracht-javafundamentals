@@ -10,9 +10,9 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Database {
-    public List<User> users;
-    public List<Item> items;
-    public List<Member> members;
+    public final List<User> users;
+    public final List<Item> items;
+    public final List<Member> members;
 
     public Database() {
         this.users = new ArrayList<>();
@@ -86,7 +86,6 @@ public class Database {
                 // check if the member exists, only then lend the item
                 Member member = getMemberById(memberId);
                 if (member != null) {
-                    member.addLentItem(item);
                     item.setAvailable(false);
                     item.setDateOfLending(Calendar.getInstance());
                     return null;

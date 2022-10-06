@@ -50,9 +50,6 @@ public class LendingAndReceivingController extends MouseEvent {
             int memberId = Integer.parseInt(memberIdLendField.getText());
             // check if the item/member exists
             if (this.database.lendItem(itemCode, memberId) == null) {
-//                this.errorItemCodeLendLabel.setVisible(false);
-//                this.errorLabel.setVisible(false);
-//                this.errorMemberIDLabel.setVisible(false);
                 this.feedbackText.setText("Item successfully lent!");
                 this.feedbackText.setVisible(true);
             } else if (this.database.lendItem(itemCode, memberId).equals("noItem")) {
