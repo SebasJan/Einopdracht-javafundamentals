@@ -14,8 +14,3 @@
 .table-view .column-header {
     -fx-background-color: #2596be;
 }
-
-/*style selected colum*/
-.table-view .column-header:filled:selected {
-    -fx-background-color: #da0000;
-}

@@ -135,12 +135,12 @@ public class Database {
 
     public void saveDateBase() {
         try {
-            FileOutputStream outputStream = new FileOutputStream("items.ser", false);
+            FileOutputStream outputStream = new FileOutputStream("items.dat", false);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(items);
             objectOutputStream.close();
 
-            outputStream = new FileOutputStream("members.ser", false);
+            outputStream = new FileOutputStream("members.dat", false);
             objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(members);
             objectOutputStream.close();
