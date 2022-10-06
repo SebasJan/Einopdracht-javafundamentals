@@ -44,7 +44,7 @@
       <Button layoutX="164.0" layoutY="444.0" mnemonicParsing="false" onAction="#addMemberButton" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #2596be;" text="Add member" textFill="WHITE" />
       <Button layoutX="361.0" layoutY="445.0" mnemonicParsing="false" onAction="#deleteMemberButton" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #2596be;" text="Delete member" textFill="WHITE" />
       <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="470.0" text="To edit a member, double click on a cell to edit the information.  Hit enter to save. " />
-      <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="124.0" text="Label" textFill="RED" visible="false" />
+      <Label fx:id="errorLabel" layoutX="527.0" layoutY="470.0" prefHeight="17.0" prefWidth="124.0" text="Error..." textFill="RED" visible="false" />
       <TextField fx:id="memberIDDeleteField" layoutX="361.0" layoutY="413.0" prefHeight="25.0" prefWidth="130.0" promptText="member id" style="-fx-border-color: #2596be; -fx-border-radius: 5;" />
       <TextField fx:id="firstNameField" layoutX="166.0" layoutY="341.0" promptText="Firstname" style="-fx-border-color: #2596be; -fx-border-radius: 5;" />
       <TextField fx:id="searchField" layoutX="524.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" style="-fx-border-color: #2596be; -fx-border-radius: 5;" />

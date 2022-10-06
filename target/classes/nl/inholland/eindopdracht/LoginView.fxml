@@ -12,6 +12,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.inholland.eindopdracht.Controllers.LoginController">
+    <ImageView fitHeight="366.0" fitWidth="439.0" layoutX="31.0" layoutY="109.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+        <Image url="@Images/book.png" />
+    </ImageView>
     <Label layoutX="23.0" layoutY="117.0" text="Welcome to Fabula library!">
       <font>
          <Font name="Verdana Bold" size="30.0" />
@@ -27,12 +30,9 @@
       <GridPane.margin>
          <Insets left="100.0" right="100.0" />
       </GridPane.margin></PasswordField>
-    <Button layoutX="176.0" layoutY="277.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: #2596be;" text="Login" textFill="WHITE" translateX="-15.0">
+    <Button layoutX="176.0" layoutY="282.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: #2596be;" text="Login" textFill="WHITE" translateX="-15.0">
       <GridPane.margin>
          <Insets left="230.0" />
       </GridPane.margin></Button>
-    <Label fx:id="errorLabel" text="Big oops..." visible="false" GridPane.rowIndex="4" />
-    <ImageView fitHeight="366.0" fitWidth="439.0" layoutX="31.0" layoutY="128.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
-        <Image url="@Images/book.png" />
-    </ImageView>
+   <Label fx:id="errorLabel" layoutX="142.0" layoutY="265.0" prefHeight="17.0" prefWidth="216.0" text="Oops" textFill="RED" visible="false" />
 </AnchorPane>
