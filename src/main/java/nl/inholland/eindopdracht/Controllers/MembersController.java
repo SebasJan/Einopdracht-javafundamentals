@@ -1,6 +1,5 @@
 package nl.inholland.eindopdracht.Controllers;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,9 +41,10 @@ public class MembersController extends MouseEvent {
     @FXML
     public void initialize() {
         // add event listener for search function
-        searchField.textProperty().addListener(this::searchTextFieldChanges);
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> searchTextFieldChanges(newValue));
 
         memberTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        memberTable.setPlaceholder(new Label("Er zijn geen medewerkers gevonden"));
 
         // make table editable
         memberTable.setEditable(true);
@@ -55,7 +55,7 @@ public class MembersController extends MouseEvent {
         setOnEditEventHandlers();
     }
 
-    private void searchTextFieldChanges(Observable observable, String oldValue, String newValue) {
+    private void searchTextFieldChanges(String newValue) {
         ArrayList<Member> allMembers = (ArrayList<Member>) this.database.members;
         ArrayList<Member> matchingMembers = new ArrayList<>();
 

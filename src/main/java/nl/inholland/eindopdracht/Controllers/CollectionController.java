@@ -44,6 +44,7 @@ public class CollectionController extends MouseEvent {
         searchField.textProperty().addListener(this::searchTextFieldChanges);
 
         itemTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        itemTable.setPlaceholder(new Label("Er zijn geen boeken gevonden"));
 
         // make table editable
         itemTable.setEditable(true);
