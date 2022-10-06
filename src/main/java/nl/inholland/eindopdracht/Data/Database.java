@@ -44,7 +44,7 @@ public class Database {
             calendar.set(2002, Calendar.SEPTEMBER, 6);
             members.add(new Member(1, "Sebastiaan", "van Vliet", calendar));
 
-            calendar.set(2002, Calendar.JUNE, 8);
+            calendar.set(2002, Calendar.JUNE, 2);
             members.add(new Member(2, "Luc", "Moetwil", calendar));
 
             calendar.set(2002, Calendar.AUGUST, 15);
@@ -54,8 +54,8 @@ public class Database {
 
     private void loadUsers() {
         // add 2 users
-        this.users.add(new User("admin", "1234"));
-        this.users.add(new User("sebas", "1234"));
+        this.users.add(new User("eros", "0512"));
+        this.users.add(new User("hestia", "0609"));
     }
 
     private void loadItems() {
@@ -73,9 +73,9 @@ public class Database {
             }
         } catch (IOException e) {
             // if the file doesn't exist load the default items
-            System.out.println("File not found, loading default items");
-            this.items.add(new Item(1, true, "Harry Potter", "J.K. Rowling"));
-            this.items.add(new Item(2, true, "Lord of the Rings", "J.R.R. Tolkien"));
+            this.items.add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
+            this.items.add(new Item(2, true, "Godendrank", "Ilja Gort"));
+            this.items.add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
         }
     }
 
