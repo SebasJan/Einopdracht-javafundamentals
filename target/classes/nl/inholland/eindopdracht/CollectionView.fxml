@@ -40,7 +40,7 @@
       <Button layoutX="197.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #2596be;" text="Add item" textFill="WHITE" />
       <Button layoutX="392.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteItemButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #2596be;" text="Delete item" textFill="WHITE" />
       <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="436.0" text="To edit the data, double click on a cell to edit the information.  Hit enter to save. " />
-      <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="124.0" text="Label" textFill="RED" visible="false" />
+      <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="124.0" text="error...." textFill="RED" visible="false" />
       <TextField fx:id="itemCodeDeleteField" layoutX="392.0" layoutY="408.0" prefHeight="25.0" prefWidth="130.0" promptText="Item code" style="-fx-border-color: #2596be; -fx-border-radius: 5;" />
       <TextField fx:id="newAuthorField" layoutX="197.0" layoutY="408.0" promptText="Author" style="-fx-border-color: #2596be; -fx-border-radius: 5;" />
       <TextField fx:id="newTitleField" layoutX="197.0" layoutY="370.0" promptText="Title" style="-fx-border-color: #2596be; -fx-border-radius: 5;" />

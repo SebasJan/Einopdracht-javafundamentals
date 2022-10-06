@@ -71,6 +71,7 @@ public class LoginController {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MainView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        scene.getStylesheets().add("file:src/main/resources/nl/inholland/eindopdracht/Style/style.css");
         stage.setTitle("Fabula Library");
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
