@@ -26,15 +26,30 @@ public class Database {
     }
 
     private void loadMembers() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2002, Calendar.SEPTEMBER, 6);
-        members.add(new Member(1, "Sebastiaan", "van Vliet", calendar));
+        try {
+            FileInputStream fis = new FileInputStream("members.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            // read items
+            while (true) {
+                try {
+                    Member member = (Member) ois.readObject();
+                    members.add(member);
+                } catch (EOFException | ClassNotFoundException e) {
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            // if the file doesn't exist load the default members
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(2002, Calendar.SEPTEMBER, 6);
+            members.add(new Member(1, "Sebastiaan", "van Vliet", calendar));
 
-        calendar.set(2002, Calendar.JUNE, 8);
-        members.add(new Member(2, "Luc", "Moetwil", calendar));
+            calendar.set(2002, Calendar.JUNE, 8);
+            members.add(new Member(2, "Luc", "Moetwil", calendar));
 
-        calendar.set(2002, Calendar.AUGUST, 15);
-        members.add(new Member(3, "Lars", "Hartendorp", calendar));
+            calendar.set(2002, Calendar.AUGUST, 15);
+            members.add(new Member(3, "Lars", "Hartendorp", calendar));
+        }
     }
 
     private void loadUsers() {
@@ -44,9 +59,24 @@ public class Database {
     }
 
     private void loadItems() {
-        // add 2 items
-        this.items.add(new Item(1, true, "Harry Potter", "J.K. Rowling"));
-        this.items.add(new Item(2, true, "Lord of the Rings", "J.R.R. Tolkien"));
+        try {
+            FileInputStream fis = new FileInputStream("items.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            // read items
+            while (true) {
+                try {
+                    Item item = (Item) ois.readObject();
+                    items.add(item);
+                } catch (EOFException | ClassNotFoundException e) {
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            // if the file doesn't exist load the default items
+            System.out.println("File not found, loading default items");
+            this.items.add(new Item(1, true, "Harry Potter", "J.K. Rowling"));
+            this.items.add(new Item(2, true, "Lord of the Rings", "J.R.R. Tolkien"));
+        }
     }
 
     public String lendItem(int itemCode, int memberId) {
@@ -137,12 +167,16 @@ public class Database {
         try {
             FileOutputStream outputStream = new FileOutputStream("items.dat", false);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(items);
+            for (Item item : items) {
+                objectOutputStream.writeObject(item);
+            }
             objectOutputStream.close();
 
             outputStream = new FileOutputStream("members.dat", false);
             objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(members);
+            for (Member member : members) {
+                objectOutputStream.writeObject(member);
+            }
             objectOutputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
