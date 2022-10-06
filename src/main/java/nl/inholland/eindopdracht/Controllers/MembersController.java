@@ -111,7 +111,6 @@ public class MembersController {
 
     public void setDatabase(Database database) {
         this.database = database;
-
         setTableItems(this.database.members);
     }
 
@@ -121,6 +120,10 @@ public class MembersController {
     }
 
     public void addMemberButton() {
+        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || birthDatePicker.getValue() == null) {
+            errorLabel.setText("Please fill in all fields");
+            return;
+        }
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         Calendar birthDate = Calendar.getInstance();
@@ -135,6 +138,10 @@ public class MembersController {
     }
 
     public void deleteMemberButton() {
+        if (memberIDDeleteField.getText().isEmpty()) {
+            errorLabel.setText("Please fill in the member ID");
+            return;
+        }
         int memberID = Integer.parseInt(memberIDDeleteField.getText());
 
         // show prompt to confirm deletion

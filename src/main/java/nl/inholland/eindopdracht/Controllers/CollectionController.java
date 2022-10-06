@@ -116,42 +116,46 @@ public class CollectionController {
     }
 
     public void deleteItemButtonClick() {
-        // get the item code from the text field
-        int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
+        // check if the item code field is empty
+        if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("[0-9]+") && database.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
+            // get the item code from the text field
+            int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
 
-        // show prompt to confirm deletion
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete item");
-        alert.setHeaderText("Are you sure you want to delete item " + itemCode + " ?");
-        alert.setContentText("This action cannot be undone");
+            // show prompt to confirm deletion
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete item");
+            alert.setHeaderText("Are you sure you want to delete item " + itemCode + " ?");
+            alert.setContentText("This action cannot be undone");
 
-        // if the user confirms, delete the item
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                this.database.deleteItem(itemCode);
-                setTableItems(this.database.items);
-            }
-        });
+            // if the user confirms, delete the item
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    this.database.deleteItem(itemCode);
+                    setTableItems(this.database.items);
+                }
+            });
 
-        itemCodeDeleteField.clear();
+            itemCodeDeleteField.clear();
+        } else {
+            errorLabel.setText("Please enter an (valid) item code");
+        }
     }
 
-
-    // ZORGEN DAT ALS JE NIKS INVULT HIJ NIET CRASHT!!
     public void addItemButton() {
-        // get the title and author from the text fields
-        String title = newTitleField.getText();
-        String author = newAuthorField.getText();
+        // check if the title and author fields are not empty
+        if (!newTitleField.getText().isEmpty() && !newAuthorField.getText().isEmpty()) {
+            String title = newTitleField.getText();
+            String author = newAuthorField.getText();
+            this.database.addItem(title, author);
 
-        // create a new item and add it to the database
-        this.database.addItem(title, author);
+            // clear the text fields
+            newTitleField.clear();
+            newAuthorField.clear();
 
-        // clear the text fields
-        newTitleField.clear();
-        newAuthorField.clear();
-
-        // update the table
-        setTableItems(this.database.items);
+            setTableItems(this.database.items);
+        } else {
+            errorLabel.setText("Title and author cannot be empty");
+        }
     }
 
     public void mouseEnteredButton(MouseEvent mouseEvent) {

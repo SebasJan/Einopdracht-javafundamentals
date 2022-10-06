@@ -182,4 +182,13 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+    public boolean itemExists(int itemCode) {
+        for (Item item : items) {
+            if (item.getItemCode() == itemCode) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -86,9 +86,9 @@ public class LoginController {
             database.saveDateBase();
         });
 
-        // saveDateBase login window
-        // CLOSES THE LOGIN WINDOW!!!
-        this.usernameTextField.getScene().getWindow().hide();
+        // close login window
+        Stage loginStage = (Stage) this.usernameTextField.getScene().getWindow();
+        loginStage.close();
     }
 
     public void setDatabase(Database database) {
