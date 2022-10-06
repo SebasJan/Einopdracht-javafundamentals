@@ -14,6 +14,11 @@
 
 <AnchorPane prefHeight="598.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.inholland.eindopdracht.Controllers.LendingAndReceivingController">
    <children>
+      <ImageView fitHeight="538.0" fitWidth="813.0" layoutX="19.0" layoutY="156.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/bookshelf.jpg" />
+         </image>
+      </ImageView>
       <Label fx:id="welcomeText" layoutX="43.0" layoutY="23.0" prefHeight="32.0" prefWidth="407.0" text="Welcome {Name of user}">
          <font>
             <Font name="Verdana Bold" size="25.0" />
@@ -89,10 +94,5 @@
          </font>
       </Label>
       <Label fx:id="errorLabel" layoutX="16.0" layoutY="284.0" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" />
-      <ImageView fitHeight="352.0" fitWidth="504.0" layoutX="345.0" layoutY="257.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/bookshelf.jpg" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

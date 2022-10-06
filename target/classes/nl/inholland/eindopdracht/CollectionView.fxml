@@ -6,11 +6,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="598.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.inholland.eindopdracht.Controllers.CollectionController">
    <children>
+       <ImageView fitHeight="538.0" fitWidth="813.0" layoutX="19.0" layoutY="156.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+           <image>
+               <Image url="@Images/bookshelf.jpg" />
+           </image>
+       </ImageView>
       <Label layoutX="34.0" layoutY="40.0" prefHeight="34.0" prefWidth="76.0" text="Items">
          <font>
             <Font name="Verdana Bold" size="20.0" />
@@ -37,13 +44,13 @@
           </TableColumn>
         </columns>
       </TableView>
-      <Button styleClass="customButton" layoutX="197.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" text="Add item" textFill="WHITE" />
-      <Button styleClass="customButton" layoutX="392.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteItemButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" text="Delete item" textFill="WHITE" />
+      <Button layoutX="197.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" styleClass="customButton" text="Add item" textFill="WHITE" />
+      <Button layoutX="392.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteItemButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" styleClass="customButton" text="Delete item" textFill="WHITE" />
       <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="436.0" text="To edit the data, double click on a cell to edit the information.  Hit enter to save. " />
       <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="124.0" text="error...." textFill="RED" visible="false" />
-      <TextField styleClass="textField" fx:id="itemCodeDeleteField" layoutX="392.0" layoutY="408.0" prefHeight="25.0" prefWidth="130.0" promptText="Item code" />
-      <TextField styleClass="textField" fx:id="newAuthorField" layoutX="197.0" layoutY="408.0" promptText="Author" />
-      <TextField styleClass="textField" fx:id="newTitleField" layoutX="197.0" layoutY="370.0" promptText="Title" />
-      <TextField styleClass="textField" fx:id="searchField" layoutX="560.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" />
+      <TextField fx:id="itemCodeDeleteField" layoutX="392.0" layoutY="408.0" prefHeight="25.0" prefWidth="130.0" promptText="Item code" styleClass="textField" />
+      <TextField fx:id="newAuthorField" layoutX="197.0" layoutY="408.0" promptText="Author" styleClass="textField" />
+      <TextField fx:id="newTitleField" layoutX="197.0" layoutY="370.0" promptText="Title" styleClass="textField" />
+      <TextField fx:id="searchField" layoutX="560.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" styleClass="textField" />
    </children>
 </AnchorPane>
