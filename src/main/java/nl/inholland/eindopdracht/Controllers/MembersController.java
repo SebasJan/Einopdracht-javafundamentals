@@ -10,7 +10,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Member;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -50,7 +49,6 @@ public class MembersController {
 
         // make table editable
         memberTable.setEditable(true);
-
         firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         birthDateColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -68,8 +66,6 @@ public class MembersController {
                 matchingMembers.add(member);
             }
         }
-
-        // add these items to the new list
         setTableItems(matchingMembers);
     }
 
@@ -77,7 +73,6 @@ public class MembersController {
         birthDateColumn.setOnEditCommit(event -> {
             // check if the birthdate is in the correct format (dd-MM-yyyy)
             if (event.getNewValue().matches("\\d{2}-\\d{2}-\\d{4}")) {
-                // get the member that is being edited
                 Member member = event.getRowValue();
 
                 // parse the string to a date
@@ -87,11 +82,9 @@ public class MembersController {
                 dateOfBirth.set(Calendar.MONTH, Integer.parseInt(dateParts[1]) - 1);
                 dateOfBirth.set(Calendar.YEAR, Integer.parseInt(dateParts[2]));
 
-                // edit member in database
                 member.setDateOfBirth(dateOfBirth);
                 database.editMember(member);
             } else {
-                // show error message
                 errorLabel.setText("Birthdate must be in the format dd-MM-yyyy");
             }
         });
@@ -149,7 +142,6 @@ public class MembersController {
         alert.setTitle("Delete item");
         alert.setHeaderText("Are you sure you want to delete item " + memberID + " ?");
         alert.setContentText("This action cannot be undone");
-
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 this.database.deleteMember(memberID);
