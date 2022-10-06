@@ -1,6 +1,5 @@
 package nl.inholland.eindopdracht.Controllers;
 
-import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -28,10 +27,10 @@ public class LoginController extends MouseEvent {
     @FXML
     public void initialize() {
         // set event listeners for when passcode field changes
-        passCodeTextField.textProperty().addListener(this::passCodeTextFieldChanges);
+        passCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> passCodeTextFieldChanges(newValue));
     }
 
-    private void passCodeTextFieldChanges (Observable observable,String oldValue,String newValue) {
+    private void passCodeTextFieldChanges (String newValue) {
         if (newValue.length() == 4) {
             for (User user : database.users) {
                 if (user.getUsername().equals(this.usernameTextField.getText()) && user.getPasscode().equals(this.passCodeTextField.getText())) {

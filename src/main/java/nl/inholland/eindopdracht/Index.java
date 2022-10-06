@@ -9,7 +9,6 @@ import nl.inholland.eindopdracht.Controllers.LoginController;
 import nl.inholland.eindopdracht.Data.Database;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Index extends Application {
 

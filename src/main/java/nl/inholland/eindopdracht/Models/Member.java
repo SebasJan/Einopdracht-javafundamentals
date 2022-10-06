@@ -1,9 +1,7 @@
 package nl.inholland.eindopdracht.Models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class Member implements Serializable {
     private final int id;
