@@ -3,6 +3,7 @@ package nl.inholland.eindopdracht.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import nl.inholland.eindopdracht.Controllers.Interfaces.MouseEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.User;
