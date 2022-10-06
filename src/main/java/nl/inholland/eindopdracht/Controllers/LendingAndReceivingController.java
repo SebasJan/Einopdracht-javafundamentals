@@ -1,16 +1,13 @@
 package nl.inholland.eindopdracht.Controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.User;
 
-public class LendingAndReceivingController {
+public class LendingAndReceivingController extends MouseEvent {
     @FXML
     private Label welcomeText;
     @FXML
@@ -119,17 +116,5 @@ public class LendingAndReceivingController {
         this.errorMemberIDLabel.setVisible(false);
         this.errorItemCodeReceive.setVisible(false);
         this.errorLabel.setVisible(false);
-    }
-
-    public void mouseEnteredButton(MouseEvent mouseEvent) {
-        Button button = (Button) mouseEvent.getSource();
-        button.setStyle("-fx-background-color: #2c3e50; -fx-text-fill: #ffffff;");
-        button.getScene().setCursor(javafx.scene.Cursor.HAND);
-    }
-
-    public void mouseExitedButton(MouseEvent mouseEvent) {
-        Button button = (Button) mouseEvent.getSource();
-        button.setStyle("-fx-background-color: #1d6882; -fx-text-fill: #ffffff;");
-        button.getScene().setCursor(Cursor.DEFAULT);
     }
 }

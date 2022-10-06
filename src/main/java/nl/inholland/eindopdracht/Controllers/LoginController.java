@@ -14,7 +14,7 @@ import nl.inholland.eindopdracht.Models.User;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginController extends MouseEvent {
     @FXML
     private TextField usernameTextField;
     @FXML
