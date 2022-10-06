@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.inholland.eindopdracht.Controllers.MainController">
    <children>
-      <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1280.0" style="-fx-background-color: #2596be;">
+      <HBox styleClass="bar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1280.0">
          <children>
             <ImageView fitHeight="82.0" fitWidth="103.0" translateX="10.0" translateY="15.0">
                <image>
@@ -24,11 +24,11 @@
                   <Font name="Nirmala UI Bold" size="43.0" />
                </font>
             </Label>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="477.0" style="-fx-background-color: #2596be;" translateX="400.0" translateY="50.0">
+            <ToolBar styleClass="bar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="477.0" translateX="400.0" translateY="50.0">
               <items>
-                  <Button mnemonicParsing="false" onAction="#buttonMembersClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Members" textFill="WHITE" />
-                  <Button mnemonicParsing="false" onAction="#buttonCollectionClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Collection" textFill="WHITE" />
-                <Button mnemonicParsing="false" onAction="#buttonLndRcvClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1d6882;" text="Lending/receiving" textFill="WHITE" />
+                  <Button styleClass="customButton" mnemonicParsing="false" onAction="#buttonMembersClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" text="Members" textFill="WHITE" />
+                  <Button styleClass="customButton" mnemonicParsing="false" onAction="#buttonCollectionClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" text="Collection" textFill="WHITE" />
+                  <Button styleClass="customButton" mnemonicParsing="false" onAction="#buttonLndRcvClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0" prefWidth="150.0" text="Lending/receiving" textFill="WHITE" />
               </items>
                <HBox.margin>
                   <Insets />

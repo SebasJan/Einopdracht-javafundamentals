@@ -1,7 +1,12 @@
 .textField {
-
+    -fx-border-color: #2596be;
+    -fx-border-radius: 5;
 }
 
-.root {
-    -fx-background-color: #ea0000;
+.customButton {
+    -fx-background-color: #2596be;
+}
+
+.bar {
+    -fx-background-color: #2596be;
 }

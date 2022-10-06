@@ -22,15 +22,15 @@
       <GridPane.margin>
          <Insets left="250.0" right="250.0" />
       </GridPane.margin></Label>
-    <TextField styleClass="textField" fx:id="usernameTextField" layoutX="142.0" layoutY="198.0" prefHeight="25.0" prefWidth="216.0" promptText="Username" style="-fx-border-color: #2596be; -fx-border-radius: 5;">
+    <TextField styleClass="textField" fx:id="usernameTextField" layoutX="142.0" layoutY="198.0" prefHeight="25.0" prefWidth="216.0" promptText="Username">
       <GridPane.margin>
          <Insets left="100.0" right="100.0" />
       </GridPane.margin></TextField>
-    <PasswordField fx:id="passCodeTextField" layoutX="142.0" layoutY="236.0" prefHeight="25.0" prefWidth="216.0" promptText="Passcode" style="-fx-border-color: #2596be; -fx-border-radius: 5;">
+    <PasswordField styleClass="textField" fx:id="passCodeTextField" layoutX="142.0" layoutY="236.0" prefHeight="25.0" prefWidth="216.0" promptText="Passcode" >
       <GridPane.margin>
          <Insets left="100.0" right="100.0" />
       </GridPane.margin></PasswordField>
-    <Button layoutX="176.0" layoutY="282.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: #2596be;" text="Login" textFill="WHITE" translateX="-15.0">
+    <Button styleClass="customButton" layoutX="176.0" layoutY="282.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" text="Login" textFill="WHITE" translateX="-15.0">
       <GridPane.margin>
          <Insets left="230.0" />
       </GridPane.margin></Button>
