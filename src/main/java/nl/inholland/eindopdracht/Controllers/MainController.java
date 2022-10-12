@@ -3,7 +3,7 @@ package nl.inholland.eindopdracht.Controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import nl.inholland.eindopdracht.Controllers.Interfaces.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Index;
 import nl.inholland.eindopdracht.Models.User;

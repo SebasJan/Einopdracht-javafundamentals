@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import nl.inholland.eindopdracht.Controllers.Interfaces.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
 import nl.inholland.eindopdracht.Index;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.User;

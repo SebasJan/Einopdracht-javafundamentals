@@ -11,6 +11,6 @@ module nl.inholland.eindopdracht {
     opens nl.inholland.eindopdracht.Models to javafx.fxml;
     exports nl.inholland.eindopdracht.Data;
     opens nl.inholland.eindopdracht.Data to javafx.fxml;
-    exports nl.inholland.eindopdracht.Controllers.Interfaces;
-    opens nl.inholland.eindopdracht.Controllers.Interfaces to javafx.fxml;
+    exports nl.inholland.eindopdracht.Controllers.Events;
+    opens nl.inholland.eindopdracht.Controllers.Events to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package nl.inholland.eindopdracht.Controllers.Interfaces;
+package nl.inholland.eindopdracht.Controllers.Events;
 
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
