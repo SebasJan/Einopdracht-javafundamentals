@@ -33,7 +33,7 @@ public class LoginController extends MouseEvent {
     private void passCodeTextFieldChanges (String newValue) {
         if (newValue.length() == 4) {
             for (User user : database.users) {
-                if (user.getUsername().equals(this.usernameTextField.getText()) && user.getPasscode().equals(this.passCodeTextField.getText())) {
+                if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
                     try {
                         openMainWindow(user);
                     } catch (IOException e) {
@@ -56,7 +56,7 @@ public class LoginController extends MouseEvent {
 
         // check the username and password
         for (User user : database.users) {
-            if (user.getUsername().equals(this.usernameTextField.getText()) && user.getPasscode().equals(this.passCodeTextField.getText())) {
+            if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
                 openMainWindow(user);
                 return;
             }

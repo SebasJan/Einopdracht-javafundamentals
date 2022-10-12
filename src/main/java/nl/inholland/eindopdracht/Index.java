@@ -14,7 +14,7 @@ public class Index extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        // create database object
+        // create THE database object
         Database database = new Database();
 
         // create login screen
@@ -29,7 +29,6 @@ public class Index extends Application {
         // add database to controller
         fxmlLoader.<LoginController>getController().setDatabase(database);
 
-        // show stage
         stage.show();
     }
 

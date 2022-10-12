@@ -53,8 +53,8 @@ public class Database {
 
     private void loadUsers() {
         // add 2 users
-        this.users.add(new User("eros", "0512"));
-        this.users.add(new User("hestia", "0609"));
+        this.users.add(new User("eros", "0512", "Eros Adamos"));
+        this.users.add(new User("hestia", "0609", "Hestia Argyros"));
     }
 
     private void loadItems() {

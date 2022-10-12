@@ -47,9 +47,8 @@ public class CollectionController extends MouseEvent {
         itemTable.setPlaceholder(new Label("Er zijn geen boeken gevonden"));
 
         // make table editable
-        itemTable.setEditable(true);
-
         // set cell factories to allow editing
+        itemTable.setEditable(true);
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         authorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         availableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -57,6 +56,7 @@ public class CollectionController extends MouseEvent {
         setOnEditEventHandlers();
     }
 
+    // Search in items list when the search field changes
     private void searchTextFieldChanges(Observable ignoredObservable, String ignoredOldValue, String newValue) {
         ArrayList<Item> allItems = (ArrayList<Item>) this.database.items;
         ArrayList<Item> matchingItems = new ArrayList<>();
@@ -72,6 +72,7 @@ public class CollectionController extends MouseEvent {
         setTableItems(matchingItems);
     }
 
+    // edit event handlers for the editable columns
     private void setOnEditEventHandlers() {
         availableColumn.setOnEditCommit(event -> {
             // check if the new value is No or Yes
@@ -105,10 +106,10 @@ public class CollectionController extends MouseEvent {
 
     public void setDatabase(Database database) {
         this.database = database;
-
         setTableItems(this.database.items);
     }
 
+    // fill the table with items
     private void setTableItems(List<Item> items) {
         items = FXCollections.observableArrayList(items);
         itemTable.setItems((ObservableList<Item>) items);

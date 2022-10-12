@@ -33,7 +33,7 @@ public class LendingAndReceivingController extends MouseEvent {
     public void setData(Database database, User user) {
         // set data and welcome the user
         this.database = database;
-        welcomeText.setText("Welcome " + user.getUsername());
+        welcomeText.setText("Welcome " + user.fullName());
     }
 
     public void lendItemButtonClick() {
@@ -52,6 +52,8 @@ public class LendingAndReceivingController extends MouseEvent {
             if (this.database.lendItem(itemCode, memberId) == null) {
                 this.feedbackText.setText("Item successfully lent!");
                 this.feedbackText.setVisible(true);
+
+            // if the item/member doesn't exist, show the error
             } else if (this.database.lendItem(itemCode, memberId).equals("noItem")) {
                 this.errorItemCodeLendLabel.setText("Item not found or already lent");
                 this.errorItemCodeLendLabel.setVisible(true);
