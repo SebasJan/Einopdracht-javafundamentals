@@ -111,6 +111,8 @@ public class LendingAndReceivingController extends MouseEvent {
             } else {
                 this.feedbackText.setText("Item successfully received!");
             }
+            receivedItem.setDateOfLending(null);
+
             this.feedbackText.setVisible(true);
             this.itemCodeReceiveField.setText("");
         } catch (NumberFormatException e) {
