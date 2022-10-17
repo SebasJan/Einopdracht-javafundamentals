@@ -3,7 +3,7 @@ package nl.inholland.eindopdracht.Controllers.Events;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 
-public class MouseEvent {
+public abstract class MouseEvent {
     // add event handlers for mouse events
     // set the color and cursor for hovering a button the button
     public void mouseEnteredButton(javafx.scene.input.MouseEvent mouseEvent) {
