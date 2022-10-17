@@ -14,32 +14,37 @@ import java.util.List;
 
 public class MembersController extends MouseEvent {
     @FXML
-    private TableView<Member> memberTable;
+    public TableView<Member> memberTable;
     @FXML
-    protected TableColumn<Member, Integer> memberIDColumn;
+    public TableColumn<Member, Integer> memberIDColumn;
     @FXML
-    private TableColumn<Member, String>  firstNameColumn;
+    public TableColumn<Member, String>  firstNameColumn;
     @FXML
-    private TableColumn<Member, String>  lastNameColumn;
+    public TableColumn<Member, String>  lastNameColumn;
     @FXML
-    protected TableColumn<Member, String>  birthDateColumn;
+    public TableColumn<Member, String>  birthDateColumn;
     @FXML
-    protected Label errorLabel;
+    public Label errorLabel;
     @FXML
-    private TextField memberIDDeleteField;
+    public TextField memberIDDeleteField;
     @FXML
-    private TextField firstNameField;
+    public TextField firstNameField;
     @FXML
-    protected TextField searchField;
+    public TextField searchField;
     @FXML
-    private TextField lastNameField;
+    public TextField lastNameField;
     @FXML
-    private DatePicker birthDatePicker;
+    public DatePicker birthDatePicker;
 
     private Database database;
 
+    public MembersController(Database database) {
+        this.database = database;
+    }
+
     @FXML
     public void initialize() {
+        setTableItems(this.database.members);
         // add event listener for search function
         searchField.textProperty().addListener((observable, oldValue, newValue) -> searchTextFieldChanges(newValue));
 
@@ -99,11 +104,6 @@ public class MembersController extends MouseEvent {
             member.setLastName(event.getNewValue());
             this.database.editMember(member);
         });
-    }
-
-    public void setDatabase(Database database) {
-        this.database = database;
-        setTableItems(this.database.members);
     }
 
     private void setTableItems(List<Member> members) {

@@ -16,13 +16,17 @@ import java.io.IOException;
 
 public class LoginController extends MouseEvent {
     @FXML
-    private TextField usernameTextField;
+    public TextField usernameTextField;
     @FXML
-    private TextField passCodeTextField;
+    public TextField passCodeTextField;
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
 
     private Database database;
+
+    public LoginController(Database database) {
+        this.database = database;
+    }
 
     @FXML
     public void initialize() {
@@ -70,26 +74,17 @@ public class LoginController extends MouseEvent {
         // create main screen
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MainView.fxml"));
+        fxmlLoader.setController(new MainController(database, user));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add("file:src/main/resources/nl/inholland/eindopdracht/Style/style.css");
         stage.setTitle("Fabula Library");
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
         stage.setResizable(false);
-
-        // pass database
-        fxmlLoader.<MainController>getController().setData(database, user);
         stage.show();
-
-        // method for when stage is closed
-        stage.setOnCloseRequest(event -> database.saveDateBase());
 
         // close login window
         Stage loginStage = (Stage) this.usernameTextField.getScene().getWindow();
         loginStage.close();
-    }
-
-    public void setDatabase(Database database) {
-        this.database = database;
     }
 }

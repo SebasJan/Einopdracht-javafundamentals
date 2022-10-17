@@ -19,6 +19,7 @@ public class Index extends Application {
 
         // create login screen
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("LoginView.fxml"));
+        fxmlLoader.setController(new LoginController(database));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         scene.getStylesheets().add("file:src/main/resources/nl/inholland/eindopdracht/Style/style.css");
         stage.setTitle("Fabula Library");
@@ -26,8 +27,8 @@ public class Index extends Application {
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
         stage.setResizable(false);
 
-        // add database to controller
-        fxmlLoader.<LoginController>getController().setDatabase(database);
+        // save database when the stage is closed
+        stage.setOnCloseRequest(event -> database.saveDateBase());
 
         stage.show();
     }

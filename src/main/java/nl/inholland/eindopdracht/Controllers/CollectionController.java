@@ -36,8 +36,13 @@ public class CollectionController extends MouseEvent {
     private TextField searchField;
     private Database database;
 
+    public CollectionController(Database database) {
+        this.database = database;
+    }
+
     @FXML
     public void initialize() {
+        setTableItems(this.database.items);
         availableColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getAvailable() ? "Yes" : "No"));
 
         // add event listener for search function
@@ -102,11 +107,6 @@ public class CollectionController extends MouseEvent {
             item.setAuthor(event.getNewValue());
             this.database.editItem(item);
         });
-    }
-
-    public void setDatabase(Database database) {
-        this.database = database;
-        setTableItems(this.database.items);
     }
 
     // fill the table with items

@@ -7,25 +7,30 @@ import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Index;
 import nl.inholland.eindopdracht.Models.User;
+
 import java.io.IOException;
 
 public class MainController extends MouseEvent {
     @FXML
-    private AnchorPane dockPane;
+    public AnchorPane dockPane;
 
-    private Database database;
-    private User user;
+    private final Database database;
+    public User user;
 
-    public void setData(Database database, User user) throws IOException {
+    public MainController(Database database, User user) {
         this.database = database;
         this.user = user;
+    }
+
+    @FXML
+    public void initialize() throws IOException {
         loadLndRcvScreen();
     }
 
     private void loadLndRcvScreen() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("LendingReceivingView.fxml"));
+        fxmlLoader.setController(new LendingAndReceivingController(database, user));
         AnchorPane pane = fxmlLoader.load();
-        fxmlLoader.<LendingAndReceivingController>getController().setData(database, user);
         dockPane.getChildren().setAll(pane);
     }
 
@@ -35,15 +40,15 @@ public class MainController extends MouseEvent {
 
     public void buttonCollectionClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("CollectionView.fxml"));
+        fxmlLoader.setController(new CollectionController(database));
         AnchorPane pane = fxmlLoader.load();
-        fxmlLoader.<CollectionController>getController().setDatabase(database);
         dockPane.getChildren().setAll(pane);
     }
 
     public void buttonMembersClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MembersView.fxml"));
+        fxmlLoader.setController(new MembersController(database));
         AnchorPane pane = fxmlLoader.load();
-        fxmlLoader.<MembersController>getController().setDatabase(database);
         dockPane.getChildren().setAll(pane);
     }
 }

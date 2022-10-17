@@ -10,29 +10,34 @@ import nl.inholland.eindopdracht.Models.User;
 
 public class LendingAndReceivingController extends MouseEvent {
     @FXML
-    private Label welcomeText;
+    public Label welcomeText;
     @FXML
-    private TextField itemCodeLendField;
+    public TextField itemCodeLendField;
     @FXML
-    private TextField memberIdLendField;
+    public TextField memberIdLendField;
     @FXML
-    private TextField itemCodeReceiveField;
+    public TextField itemCodeReceiveField;
     @FXML
-    private Label feedbackText;
+    public Label feedbackText;
     @FXML
-    private Label errorItemCodeLendLabel;
+    public Label errorItemCodeLendLabel;
     @FXML
-    private Label errorMemberIDLabel;
+    public Label errorMemberIDLabel;
     @FXML
-    private Label errorItemCodeReceive;
+    public Label errorItemCodeReceive;
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
 
     private Database database;
+    private User user;
 
-    public void setData(Database database, User user) {
-        // set data and welcome the user
+    public LendingAndReceivingController(Database database, User user) {
         this.database = database;
+        this.user = user;
+    }
+
+    @FXML
+    public void initialize() {
         welcomeText.setText("Welcome " + user.fullName());
     }
 
