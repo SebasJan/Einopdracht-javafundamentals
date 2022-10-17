@@ -16,8 +16,6 @@ public class MembersController extends MouseEvent {
     @FXML
     public TableView<Member> memberTable;
     @FXML
-    public TableColumn<Member, Integer> memberIDColumn;
-    @FXML
     public TableColumn<Member, String>  firstNameColumn;
     @FXML
     public TableColumn<Member, String>  lastNameColumn;
@@ -116,6 +114,11 @@ public class MembersController extends MouseEvent {
             errorLabel.setText("Please fill in all fields");
             return;
         }
+        createAndSaveNewMember();
+        setTableItems(this.database.members);
+    }
+
+    private void createAndSaveNewMember() {
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         Calendar birthDate = Calendar.getInstance();
@@ -126,7 +129,6 @@ public class MembersController extends MouseEvent {
         birthDatePicker.getEditor().clear();
 
         this.database.addMember(firstName, lastName, birthDate);
-        setTableItems(this.database.members);
     }
 
     public void deleteMemberButton() {

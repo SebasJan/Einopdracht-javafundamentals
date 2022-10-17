@@ -19,7 +19,7 @@
    <TextField fx:id="searchField" layoutX="524.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" styleClass="textField" />
    <TableView fx:id="memberTable" layoutX="518.0" layoutY="112.0" prefHeight="360.0" prefWidth="723.0">
       <columns>
-         <TableColumn fx:id="memberIDColumn" prefWidth="71.0" text="Member ID">
+         <TableColumn prefWidth="71.0" text="Member ID">
             <cellValueFactory>
                <PropertyValueFactory property="id" />
             </cellValueFactory>

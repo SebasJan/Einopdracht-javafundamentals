@@ -51,21 +51,7 @@ public class LendingAndReceivingController extends MouseEvent {
 
         // check if the item/member code is a number
         try {
-            int itemCode = Integer.parseInt(itemCodeLendField.getText());
-            int memberId = Integer.parseInt(memberIdLendField.getText());
-            // check if the item/member exists
-            if (this.database.lendItem(itemCode, memberId) == null) {
-                this.feedbackText.setText("Item successfully lent!");
-                this.feedbackText.setVisible(true);
-
-            // if the item/member doesn't exist, show the error
-            } else if (this.database.lendItem(itemCode, memberId).equals("noItem")) {
-                this.errorItemCodeLendLabel.setText("Item not found or already lent");
-                this.errorItemCodeLendLabel.setVisible(true);
-            } else if (this.database.lendItem(itemCode, memberId).equals("noMember")) {
-                this.errorMemberIDLabel.setText("That user does not exist");
-                this.errorMemberIDLabel.setVisible(true);
-            }
+            lendItem();
 
             // clear text fields
             this.itemCodeLendField.setText("");
@@ -73,6 +59,24 @@ public class LendingAndReceivingController extends MouseEvent {
         } catch (NumberFormatException e) {
             this.errorLabel.setText("Please enter a valid item/member code");
             this.errorLabel.setVisible(true);
+        }
+    }
+
+    private void lendItem() {
+        int itemCode = Integer.parseInt(itemCodeLendField.getText());
+        int memberId = Integer.parseInt(memberIdLendField.getText());
+        // check if the item/member exists
+        if (this.database.lendItem(itemCode, memberId) == null) {
+            this.feedbackText.setText("Item successfully lent!");
+            this.feedbackText.setVisible(true);
+
+        // if the item/member doesn't exist, show the error
+        } else if (this.database.lendItem(itemCode, memberId).equals("noItem")) {
+            this.errorItemCodeLendLabel.setText("Item not found or already lent");
+            this.errorItemCodeLendLabel.setVisible(true);
+        } else if (this.database.lendItem(itemCode, memberId).equals("noMember")) {
+            this.errorMemberIDLabel.setText("That user does not exist");
+            this.errorMemberIDLabel.setVisible(true);
         }
     }
 
@@ -84,6 +88,10 @@ public class LendingAndReceivingController extends MouseEvent {
             return;
         }
 
+        receiveItem();
+    }
+
+    private void receiveItem() {
         // try to parse the item code
         try {
             int itemCode = Integer.parseInt(itemCodeReceiveField.getText());
