@@ -34,15 +34,16 @@ public class MembersController extends MouseEvent {
     @FXML
     public DatePicker birthDatePicker;
 
-    private Database database;
+    private final Database DATABASE;
 
     public MembersController(Database database) {
-        this.database = database;
+        this.DATABASE = database;
     }
 
+    // Word gebruikt door FXML file!
     @FXML
     public void initialize() {
-        setTableItems(this.database.members);
+        setTableItems(this.DATABASE.MEMBERS);
         // add event listener for search function
         searchField.textProperty().addListener((observable, oldValue, newValue) -> searchTextFieldChanges(newValue));
 
@@ -59,7 +60,7 @@ public class MembersController extends MouseEvent {
     }
 
     private void searchTextFieldChanges(String newValue) {
-        ArrayList<Member> allMembers = (ArrayList<Member>) this.database.members;
+        ArrayList<Member> allMembers = (ArrayList<Member>) this.DATABASE.MEMBERS;
         ArrayList<Member> matchingMembers = new ArrayList<>();
 
         // find the items that start with the search query
@@ -85,7 +86,7 @@ public class MembersController extends MouseEvent {
                 dateOfBirth.set(Calendar.YEAR, Integer.parseInt(dateParts[2]));
 
                 member.setDateOfBirth(dateOfBirth);
-                database.editMember(member);
+                DATABASE.editMember(member);
             } else {
                 errorLabel.setText("Birthdate must be in the format dd-MM-yyyy");
             }
@@ -94,13 +95,13 @@ public class MembersController extends MouseEvent {
         firstNameColumn.setOnEditCommit(event -> {
             Member member = event.getRowValue();
             member.setFirstName(event.getNewValue());
-            this.database.editMember(member);
+            this.DATABASE.editMember(member);
         });
 
         lastNameColumn.setOnEditCommit(event -> {
             Member member = event.getRowValue();
             member.setLastName(event.getNewValue());
-            this.database.editMember(member);
+            this.DATABASE.editMember(member);
         });
     }
 
@@ -109,13 +110,14 @@ public class MembersController extends MouseEvent {
         memberTable.setItems((ObservableList<Member>) members);
     }
 
+    // Word gebruikt door FXML file!
     public void addMemberButton() {
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || birthDatePicker.getValue() == null) {
             errorLabel.setText("Please fill in all fields");
             return;
         }
         createAndSaveNewMember();
-        setTableItems(this.database.members);
+        setTableItems(this.DATABASE.MEMBERS);
     }
 
     private void createAndSaveNewMember() {
@@ -128,9 +130,10 @@ public class MembersController extends MouseEvent {
         lastNameField.clear();
         birthDatePicker.getEditor().clear();
 
-        this.database.addMember(firstName, lastName, birthDate);
+        this.DATABASE.addMember(firstName, lastName, birthDate);
     }
 
+    // Word gebruikt door FXML file!
     public void deleteMemberButton() {
         if (memberIDDeleteField.getText().isEmpty()) {
             errorLabel.setText("Please fill in the member ID");
@@ -145,8 +148,8 @@ public class MembersController extends MouseEvent {
         alert.setContentText("This action cannot be undone");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                this.database.deleteMember(memberID);
-                setTableItems(this.database.members);
+                this.DATABASE.deleteMember(memberID);
+                setTableItems(this.DATABASE.MEMBERS);
             }
         });
         memberIDDeleteField.clear();

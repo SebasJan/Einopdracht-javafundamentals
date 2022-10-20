@@ -9,7 +9,7 @@ public class Member implements Serializable {
     private String lastName;
     private Calendar dateOfBirth;
 
-    // de birthdate string word wel gebruikt door de Fxml en niet herkent door de IDE!
+    // Word gebruikt door FXML file!
     private String birthDateString;
 
     public Member(int id, String firstName, String lastName, Calendar dateOfBirth) {
@@ -19,7 +19,7 @@ public class Member implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    // de birthdate string word wel gebruikt door de Fxml en niet herkent door de IDE!
+    // Word gebruikt door FXML file!
     public String getBirthDateString() {
         return this.dateOfBirth.get(Calendar.DAY_OF_MONTH) + "-" + (this.dateOfBirth.get(Calendar.MONTH) + 1) + "-" + this.dateOfBirth.get(Calendar.YEAR);
     }

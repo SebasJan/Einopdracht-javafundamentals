@@ -14,14 +14,15 @@ public class MainController extends MouseEvent {
     @FXML
     public AnchorPane dockPane;
 
-    private final Database database;
+    private final Database DATABASE;
     public User user;
 
     public MainController(Database database, User user) {
-        this.database = database;
+        this.DATABASE = database;
         this.user = user;
     }
 
+    // Word gebruikt door FXML file!
     @FXML
     public void initialize() throws IOException {
         loadLndRcvScreen();
@@ -29,25 +30,28 @@ public class MainController extends MouseEvent {
 
     private void loadLndRcvScreen() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("LendingReceivingView.fxml"));
-        fxmlLoader.setController(new LendingAndReceivingController(database, user));
+        fxmlLoader.setController(new LendingAndReceivingController(DATABASE, user));
         AnchorPane pane = fxmlLoader.load();
         dockPane.getChildren().setAll(pane);
     }
 
+    // Word gebruikt door FXML file!
     public void buttonLndRcvClick() throws IOException {
         loadLndRcvScreen();
     }
 
+    // Word gebruikt door FXML file!
     public void buttonCollectionClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("CollectionView.fxml"));
-        fxmlLoader.setController(new CollectionController(database));
+        fxmlLoader.setController(new CollectionController(DATABASE));
         AnchorPane pane = fxmlLoader.load();
         dockPane.getChildren().setAll(pane);
     }
 
+    // Word gebruikt door FXML file!
     public void buttonMembersClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MembersView.fxml"));
-        fxmlLoader.setController(new MembersController(database));
+        fxmlLoader.setController(new MembersController(DATABASE));
         AnchorPane pane = fxmlLoader.load();
         dockPane.getChildren().setAll(pane);
     }

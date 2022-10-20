@@ -42,7 +42,7 @@ public class CollectionController extends MouseEvent {
 
     @FXML
     public void initialize() {
-        setTableItems(this.database.items);
+        setTableItems(this.database.ITEMS);
         availableColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getAvailable() ? "Yes" : "No"));
 
         // add event listener for search function
@@ -63,7 +63,7 @@ public class CollectionController extends MouseEvent {
 
     // Search in items list when the search field changes
     private void searchTextFieldChanges(Observable ignoredObservable, String ignoredOldValue, String newValue) {
-        ArrayList<Item> allItems = (ArrayList<Item>) this.database.items;
+        ArrayList<Item> allItems = (ArrayList<Item>) this.database.ITEMS;
         ArrayList<Item> matchingItems = new ArrayList<>();
 
         // find the items that start with the search query
@@ -131,7 +131,7 @@ public class CollectionController extends MouseEvent {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     this.database.deleteItem(itemCode);
-                    setTableItems(this.database.items);
+                    setTableItems(this.database.ITEMS);
                 }
             });
 
@@ -152,7 +152,7 @@ public class CollectionController extends MouseEvent {
             newTitleField.clear();
             newAuthorField.clear();
 
-            setTableItems(this.database.items);
+            setTableItems(this.database.ITEMS);
         } else {
             errorLabel.setText("Title and author cannot be empty");
         }

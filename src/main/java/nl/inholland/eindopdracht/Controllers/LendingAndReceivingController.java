@@ -28,19 +28,21 @@ public class LendingAndReceivingController extends MouseEvent {
     @FXML
     public Label errorLabel;
 
-    private Database database;
-    private User user;
+    private final Database DATABASE;
+    private final User USER;
 
     public LendingAndReceivingController(Database database, User user) {
-        this.database = database;
-        this.user = user;
+        this.DATABASE = database;
+        this.USER = user;
     }
 
+    // Word gebruikt door FXML file!
     @FXML
     public void initialize() {
-        welcomeText.setText("Welcome " + user.fullName());
+        welcomeText.setText("Welcome " + USER.fullName());
     }
 
+    // Word gebruikt door FXML file!
     public void lendItemButtonClick() {
         // check if the fields are empty
         if (itemCodeLendField.getText().isEmpty() || memberIdLendField.getText().isEmpty()) {
@@ -66,20 +68,21 @@ public class LendingAndReceivingController extends MouseEvent {
         int itemCode = Integer.parseInt(itemCodeLendField.getText());
         int memberId = Integer.parseInt(memberIdLendField.getText());
         // check if the item/member exists
-        if (this.database.lendItem(itemCode, memberId) == null) {
+        if (this.DATABASE.lendItem(itemCode, memberId) == null) {
             this.feedbackText.setText("Item successfully lent!");
             this.feedbackText.setVisible(true);
 
         // if the item/member doesn't exist, show the error
-        } else if (this.database.lendItem(itemCode, memberId).equals("noItem")) {
+        } else if (this.DATABASE.lendItem(itemCode, memberId).equals("noItem")) {
             this.errorItemCodeLendLabel.setText("Item not found or already lent");
             this.errorItemCodeLendLabel.setVisible(true);
-        } else if (this.database.lendItem(itemCode, memberId).equals("noMember")) {
+        } else if (this.DATABASE.lendItem(itemCode, memberId).equals("noMember")) {
             this.errorMemberIDLabel.setText("That user does not exist");
             this.errorMemberIDLabel.setVisible(true);
         }
     }
 
+    // Word gebruikt door FXML file!
     public void receiveItemButtonClick() {
         // check if the field is empty
         if (itemCodeReceiveField.getText().isEmpty()) {
@@ -97,7 +100,7 @@ public class LendingAndReceivingController extends MouseEvent {
             int itemCode = Integer.parseInt(itemCodeReceiveField.getText());
 
             // receive item and check if the item exists
-            Item receivedItem = this.database.receiveItem(itemCode);
+            Item receivedItem = this.DATABASE.receiveItem(itemCode);
             if (receivedItem == null) {
                 this.errorItemCodeReceive.setText("Item not found or not lent");
                 this.errorItemCodeReceive.setVisible(true);
@@ -121,6 +124,7 @@ public class LendingAndReceivingController extends MouseEvent {
         }
     }
 
+    // Word gebruikt door FXML file!
     public void newTextIsEntered() {
         this.feedbackText.setText("");
         this.feedbackText.setVisible(false);

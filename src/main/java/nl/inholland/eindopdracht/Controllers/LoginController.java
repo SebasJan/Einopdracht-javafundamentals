@@ -28,6 +28,7 @@ public class LoginController extends MouseEvent {
         this.database = database;
     }
 
+    // Word gebruikt door FXML file!
     @FXML
     public void initialize() {
         // set event listeners for when passcode field changes
@@ -36,7 +37,7 @@ public class LoginController extends MouseEvent {
 
     private void passCodeTextFieldChanges (String newValue) {
         if (newValue.length() == 4) {
-            for (User user : database.users) {
+            for (User user : database.USERS) {
                 if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
                     try {
                         openMainWindow(user);
@@ -49,8 +50,9 @@ public class LoginController extends MouseEvent {
         }
     }
 
+    // Word gebruikt door FXML file!
     @FXML
-    private void login() throws IOException {
+    private void loginButtonClick() throws IOException {
         // check if the text fields are empty
         if (this.usernameTextField.getText().isEmpty() || this.passCodeTextField.getText().isEmpty()) {
             this.errorLabel.setText("Please fill in all the fields..");
@@ -59,7 +61,7 @@ public class LoginController extends MouseEvent {
         }
 
         // check the username and password
-        for (User user : database.users) {
+        for (User user : database.USERS) {
             if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
                 openMainWindow(user);
                 return;
@@ -82,6 +84,9 @@ public class LoginController extends MouseEvent {
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
         stage.setResizable(false);
         stage.show();
+
+        // save database when the stage is closed
+        stage.setOnCloseRequest(event -> database.saveDateBase());
 
         // close login window
         Stage loginStage = (Stage) this.usernameTextField.getScene().getWindow();

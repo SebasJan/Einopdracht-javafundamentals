@@ -9,18 +9,18 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Database {
-    public final List<User> users;
-    public final List<Item> items;
-    public final List<Member> members;
+    public final List<User> USERS;
+    public final List<Item> ITEMS;
+    public final List<Member> MEMBERS;
 
     public Database() {
-        this.users = new ArrayList<>();
+        this.USERS = new ArrayList<>();
         loadUsers();
 
-        this.items = new ArrayList<>();
+        this.ITEMS = new ArrayList<>();
         loadItems();
 
-        this.members = new ArrayList<>();
+        this.MEMBERS = new ArrayList<>();
         loadMembers();
     }
 
@@ -32,29 +32,31 @@ public class Database {
             while (true) {
                 try {
                     Member member = (Member) ois.readObject();
-                    members.add(member);
+                    MEMBERS.add(member);
                 } catch (EOFException | ClassNotFoundException e) {
                     break;
                 }
             }
+            ois.close();
+            fis.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default members
             Calendar calendar = Calendar.getInstance();
             calendar.set(2002, Calendar.SEPTEMBER, 6);
-            members.add(new Member(1, "Sebastiaan", "van Vliet", calendar));
+            MEMBERS.add(new Member(1, "Sebastiaan", "van Vliet", calendar));
 
             calendar.set(2002, Calendar.JUNE, 2);
-            members.add(new Member(2, "Luc", "Moetwil", calendar));
+            MEMBERS.add(new Member(2, "Luc", "Moetwil", calendar));
 
             calendar.set(2002, Calendar.AUGUST, 15);
-            members.add(new Member(3, "Lars", "Hartendorp", calendar));
+            MEMBERS.add(new Member(3, "Lars", "Hartendorp", calendar));
         }
     }
 
     private void loadUsers() {
         // add 2 users
-        this.users.add(new User("eros", "0512", "Eros Adamos"));
-        this.users.add(new User("hestia", "0609", "Hestia Argyros"));
+        this.USERS.add(new User("eros", "0512", "Eros Adamos"));
+        this.USERS.add(new User("hestia", "0609", "Hestia Argyros"));
     }
 
     private void loadItems() {
@@ -65,22 +67,25 @@ public class Database {
             while (true) {
                 try {
                     Item item = (Item) ois.readObject();
-                    items.add(item);
+                    ITEMS.add(item);
                 } catch (EOFException | ClassNotFoundException e) {
                     break;
                 }
             }
+            fis.close();
+            ois.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default items
-            this.items.add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
-            this.items.add(new Item(2, true, "Godendrank", "Ilja Gort"));
-            this.items.add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
+            this.ITEMS.add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
+            this.ITEMS.add(new Item(2, true, "Godendrank", "Ilja Gort"));
+            this.ITEMS.add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
         }
     }
 
+    // this method return a string so the controller can see what went wrong if something went wrong
     public String lendItem(int itemCode, int memberId) {
         // check if the item exists
-        for (Item item : items) {
+        for (Item item : ITEMS) {
             if (item.getItemCode() == itemCode && item.getAvailable()) {
                 // check if the member exists, only then lend the item
                 Member member = getMemberById(memberId);
@@ -96,7 +101,7 @@ public class Database {
     }
 
     public Item receiveItem(int itemCode) {
-        for (Item item : items) {
+        for (Item item : ITEMS) {
             if (item.getItemCode() == itemCode && !item.getAvailable()) {
                 item.setAvailable(true);
                 return item;
@@ -106,7 +111,7 @@ public class Database {
     }
 
     public void editItem(Item item) {
-        for (Item i : items) {
+        for (Item i : ITEMS) {
             if (i.getItemCode() == item.getItemCode()) {
                 i.setTitle(item.getTitle());
                 i.setAuthor(item.getAuthor());
@@ -115,35 +120,35 @@ public class Database {
     }
 
     public void deleteItem(int itemCode) {
-        for (Item item : items) {
+        for (Item item : ITEMS) {
             if (item.getItemCode() == itemCode) {
-                items.remove(item);
+                ITEMS.remove(item);
                 break;
             }
         }
     }
 
     public void addItem(String title, String author) {
-        int itemCode = items.size() + 1;
-        items.add(new Item(itemCode, true, title, author));
+        int itemCode = ITEMS.size() + 1;
+        ITEMS.add(new Item(itemCode, true, title, author));
     }
 
     public void addMember(String firstName, String lastName, Calendar dateOfBirth) {
-        int memberId = members.size() + 1;
-        members.add(new Member(memberId, firstName, lastName, dateOfBirth));
+        int memberId = MEMBERS.size() + 1;
+        MEMBERS.add(new Member(memberId, firstName, lastName, dateOfBirth));
     }
 
     public void deleteMember(int memberId) {
-        for (Member member : members) {
+        for (Member member : MEMBERS) {
             if (member.getId() == memberId) {
-                members.remove(member);
+                MEMBERS.remove(member);
                 break;
             }
         }
     }
 
     public void editMember(Member member) {
-        for (Member m : members) {
+        for (Member m : MEMBERS) {
             if (m.getId() == member.getId()) {
                 m.setFirstName(member.getFirstName());
                 m.setLastName(member.getLastName());
@@ -153,7 +158,7 @@ public class Database {
     }
 
     private Member getMemberById(int memberId) {
-        for (Member member : members) {
+        for (Member member : MEMBERS) {
             if (member.getId() == memberId) {
                 return member;
             }
@@ -165,24 +170,26 @@ public class Database {
         try {
             FileOutputStream outputStream = new FileOutputStream("items.dat", false);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            for (Item item : items) {
+            for (Item item : ITEMS) {
                 objectOutputStream.writeObject(item);
             }
             objectOutputStream.close();
+            outputStream.close();
 
             outputStream = new FileOutputStream("members.dat", false);
             objectOutputStream = new ObjectOutputStream(outputStream);
-            for (Member member : members) {
+            for (Member member : MEMBERS) {
                 objectOutputStream.writeObject(member);
             }
             objectOutputStream.close();
+            outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public boolean itemExists(int itemCode) {
-        for (Item item : items) {
+        for (Item item : ITEMS) {
             if (item.getItemCode() == itemCode) {
                 return true;
             }

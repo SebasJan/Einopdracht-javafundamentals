@@ -27,9 +27,6 @@ public class Index extends Application {
         stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
         stage.setResizable(false);
 
-        // save database when the stage is closed
-        stage.setOnCloseRequest(event -> database.saveDateBase());
-
         stage.show();
     }
 
