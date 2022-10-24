@@ -15,25 +15,25 @@ import java.util.List;
 
 public class CollectionController extends MouseEvent {
     @FXML
-    private TableView<Item> itemTable;
+    public TableView<Item> itemTable;
     @FXML
-    protected TableColumn<Item, Integer> itemCodeColumn;
+    public TableColumn<Item, Integer> itemCodeColumn;
     @FXML
-    private TableColumn<Item, String> availableColumn;
+    public TableColumn<Item, String> availableColumn;
     @FXML
-    private TableColumn<Item, String> titleColumn;
+    public TableColumn<Item, String> titleColumn;
     @FXML
-    private TableColumn<Item, String> authorColumn;
+    public TableColumn<Item, String> authorColumn;
     @FXML
-    protected Label errorLabel;
+    public Label errorLabel;
     @FXML
-    private TextField itemCodeDeleteField;
+    public TextField itemCodeDeleteField;
     @FXML
-    private TextField newAuthorField;
+    public TextField newAuthorField;
     @FXML
-    private TextField newTitleField;
+    public TextField newTitleField;
     @FXML
-    private TextField searchField;
+    public TextField searchField;
     private Database database;
 
     public CollectionController(Database database) {

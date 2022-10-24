@@ -22,7 +22,6 @@ public class MainController extends MouseEvent {
         this.user = user;
     }
 
-    // Word gebruikt door FXML file!
     @FXML
     public void initialize() throws IOException {
         loadLndRcvScreen();
@@ -35,12 +34,10 @@ public class MainController extends MouseEvent {
         dockPane.getChildren().setAll(pane);
     }
 
-    // Word gebruikt door FXML file!
     public void buttonLndRcvClick() throws IOException {
         loadLndRcvScreen();
     }
 
-    // Word gebruikt door FXML file!
     public void buttonCollectionClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("CollectionView.fxml"));
         fxmlLoader.setController(new CollectionController(DATABASE));
@@ -48,7 +45,6 @@ public class MainController extends MouseEvent {
         dockPane.getChildren().setAll(pane);
     }
 
-    // Word gebruikt door FXML file!
     public void buttonMembersClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MembersView.fxml"));
         fxmlLoader.setController(new MembersController(DATABASE));

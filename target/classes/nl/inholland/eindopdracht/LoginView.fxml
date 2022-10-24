@@ -30,7 +30,7 @@
       <GridPane.margin>
          <Insets left="100.0" right="100.0" />
       </GridPane.margin></PasswordField>
-    <Button onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" styleClass="customButton" layoutX="176.0" layoutY="282.0" onAction="#login" prefHeight="25.0" prefWidth="179.0" text="Login" textFill="WHITE" translateX="-15.0">
+    <Button onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" styleClass="customButton" layoutX="176.0" layoutY="282.0" onAction="#loginButtonClick" prefHeight="25.0" prefWidth="179.0" text="Login" textFill="WHITE" translateX="-15.0">
       <GridPane.margin>
          <Insets left="230.0" />
       </GridPane.margin></Button>

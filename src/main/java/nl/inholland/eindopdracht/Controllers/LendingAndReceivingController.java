@@ -36,13 +36,11 @@ public class LendingAndReceivingController extends MouseEvent {
         this.USER = user;
     }
 
-    // Word gebruikt door FXML file!
     @FXML
     public void initialize() {
         welcomeText.setText("Welcome " + USER.fullName());
     }
 
-    // Word gebruikt door FXML file!
     public void lendItemButtonClick() {
         // check if the fields are empty
         if (itemCodeLendField.getText().isEmpty() || memberIdLendField.getText().isEmpty()) {
@@ -82,7 +80,6 @@ public class LendingAndReceivingController extends MouseEvent {
         }
     }
 
-    // Word gebruikt door FXML file!
     public void receiveItemButtonClick() {
         // check if the field is empty
         if (itemCodeReceiveField.getText().isEmpty()) {
@@ -124,7 +121,6 @@ public class LendingAndReceivingController extends MouseEvent {
         }
     }
 
-    // Word gebruikt door FXML file!
     public void newTextIsEntered() {
         this.feedbackText.setText("");
         this.feedbackText.setVisible(false);

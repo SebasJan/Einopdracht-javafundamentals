@@ -22,13 +22,12 @@ public class LoginController extends MouseEvent {
     @FXML
     public Label errorLabel;
 
-    private Database database;
+    private final Database DATABASE;
 
     public LoginController(Database database) {
-        this.database = database;
+        this.DATABASE = database;
     }
 
-    // Word gebruikt door FXML file!
     @FXML
     public void initialize() {
         // set event listeners for when passcode field changes
@@ -37,7 +36,7 @@ public class LoginController extends MouseEvent {
 
     private void passCodeTextFieldChanges (String newValue) {
         if (newValue.length() == 4) {
-            for (User user : database.USERS) {
+            for (User user : DATABASE.USERS) {
                 if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
                     try {
                         openMainWindow(user);
@@ -50,7 +49,6 @@ public class LoginController extends MouseEvent {
         }
     }
 
-    // Word gebruikt door FXML file!
     @FXML
     private void loginButtonClick() throws IOException {
         // check if the text fields are empty
@@ -61,7 +59,7 @@ public class LoginController extends MouseEvent {
         }
 
         // check the username and password
-        for (User user : database.USERS) {
+        for (User user : DATABASE.USERS) {
             if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
                 openMainWindow(user);
                 return;
@@ -76,7 +74,7 @@ public class LoginController extends MouseEvent {
         // create main screen
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MainView.fxml"));
-        fxmlLoader.setController(new MainController(database, user));
+        fxmlLoader.setController(new MainController(DATABASE, user));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add("file:src/main/resources/nl/inholland/eindopdracht/Style/style.css");
         stage.setTitle("Fabula Library");
@@ -86,7 +84,7 @@ public class LoginController extends MouseEvent {
         stage.show();
 
         // save database when the stage is closed
-        stage.setOnCloseRequest(event -> database.saveDateBase());
+        stage.setOnCloseRequest(event -> DATABASE.saveDateBase());
 
         // close login window
         Stage loginStage = (Stage) this.usernameTextField.getScene().getWindow();

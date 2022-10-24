@@ -40,7 +40,6 @@ public class MembersController extends MouseEvent {
         this.DATABASE = database;
     }
 
-    // Word gebruikt door FXML file!
     @FXML
     public void initialize() {
         setTableItems(this.DATABASE.MEMBERS);
@@ -110,7 +109,6 @@ public class MembersController extends MouseEvent {
         memberTable.setItems((ObservableList<Member>) members);
     }
 
-    // Word gebruikt door FXML file!
     public void addMemberButton() {
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || birthDatePicker.getValue() == null) {
             errorLabel.setText("Please fill in all fields");
