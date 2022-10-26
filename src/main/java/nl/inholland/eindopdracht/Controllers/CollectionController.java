@@ -15,25 +15,25 @@ import java.util.List;
 
 public class CollectionController extends MouseEvent {
     @FXML
-    public TableView<Item> itemTable;
+    private TableView<Item> itemTable;
     @FXML
-    public TableColumn<Item, Integer> itemCodeColumn;
+    private TableColumn<Item, Integer> itemCodeColumn;
     @FXML
-    public TableColumn<Item, String> availableColumn;
+    private TableColumn<Item, String> availableColumn;
     @FXML
-    public TableColumn<Item, String> titleColumn;
+    private TableColumn<Item, String> titleColumn;
     @FXML
-    public TableColumn<Item, String> authorColumn;
+    private TableColumn<Item, String> authorColumn;
     @FXML
-    public Label errorLabel;
+    private Label errorLabel;
     @FXML
-    public TextField itemCodeDeleteField;
+    private TextField itemCodeDeleteField;
     @FXML
-    public TextField newAuthorField;
+    private TextField newAuthorField;
     @FXML
-    public TextField newTitleField;
+    private TextField newTitleField;
     @FXML
-    public TextField searchField;
+    private TextField searchField;
     private Database database;
 
     public CollectionController(Database database) {
@@ -41,7 +41,7 @@ public class CollectionController extends MouseEvent {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         setTableItems(this.database.ITEMS);
         availableColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getAvailable() ? "Yes" : "No"));
 
@@ -116,7 +116,7 @@ public class CollectionController extends MouseEvent {
     }
 
     @FXML
-    public void deleteItemButtonClick() {
+    private void deleteItemButtonClick() {
         // check if the item code field is empty
         if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("[0-9]+") && database.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
             // get the item code from the text field
@@ -143,7 +143,7 @@ public class CollectionController extends MouseEvent {
     }
 
     @FXML
-    public void addItemButton() {
+    private void addItemButton() {
         // check if the title and author fields are not empty
         if (!newTitleField.getText().isEmpty() && !newAuthorField.getText().isEmpty()) {
             String title = newTitleField.getText();

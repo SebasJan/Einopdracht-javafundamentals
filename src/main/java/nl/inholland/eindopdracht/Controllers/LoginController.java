@@ -16,11 +16,11 @@ import java.io.IOException;
 
 public class LoginController extends MouseEvent {
     @FXML
-    public TextField usernameTextField;
+    private TextField usernameTextField;
     @FXML
-    public TextField passCodeTextField;
+    private TextField passCodeTextField;
     @FXML
-    public Label errorLabel;
+    private Label errorLabel;
 
     private final Database DATABASE;
 
@@ -29,7 +29,7 @@ public class LoginController extends MouseEvent {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         // set event listeners for when passcode field changes
         passCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> passCodeTextFieldChanges(newValue));
     }
