@@ -109,6 +109,7 @@ public class MembersController extends MouseEvent {
         memberTable.setItems((ObservableList<Member>) members);
     }
 
+    @FXML
     public void addMemberButton() {
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || birthDatePicker.getValue() == null) {
             errorLabel.setText("Please fill in all fields");
@@ -132,6 +133,7 @@ public class MembersController extends MouseEvent {
     }
 
     // Word gebruikt door FXML file!
+    @FXML
     public void deleteMemberButton() {
         if (memberIDDeleteField.getText().isEmpty()) {
             errorLabel.setText("Please fill in the member ID");

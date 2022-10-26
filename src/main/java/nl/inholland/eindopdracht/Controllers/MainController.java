@@ -34,10 +34,13 @@ public class MainController extends MouseEvent {
         dockPane.getChildren().setAll(pane);
     }
 
+
+    @FXML
     public void buttonLndRcvClick() throws IOException {
         loadLndRcvScreen();
     }
 
+    @FXML
     public void buttonCollectionClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("CollectionView.fxml"));
         fxmlLoader.setController(new CollectionController(DATABASE));
@@ -45,6 +48,7 @@ public class MainController extends MouseEvent {
         dockPane.getChildren().setAll(pane);
     }
 
+    @FXML
     public void buttonMembersClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MembersView.fxml"));
         fxmlLoader.setController(new MembersController(DATABASE));

@@ -115,6 +115,7 @@ public class CollectionController extends MouseEvent {
         itemTable.setItems((ObservableList<Item>) items);
     }
 
+    @FXML
     public void deleteItemButtonClick() {
         // check if the item code field is empty
         if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("[0-9]+") && database.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
@@ -141,6 +142,7 @@ public class CollectionController extends MouseEvent {
         }
     }
 
+    @FXML
     public void addItemButton() {
         // check if the title and author fields are not empty
         if (!newTitleField.getText().isEmpty() && !newAuthorField.getText().isEmpty()) {

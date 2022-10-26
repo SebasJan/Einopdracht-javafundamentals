@@ -80,6 +80,7 @@ public class LendingAndReceivingController extends MouseEvent {
         }
     }
 
+    @FXML
     public void receiveItemButtonClick() {
         // check if the field is empty
         if (itemCodeReceiveField.getText().isEmpty()) {
@@ -120,7 +121,7 @@ public class LendingAndReceivingController extends MouseEvent {
             this.errorItemCodeReceive.setVisible(true);
         }
     }
-
+    @FXML
     public void newTextIsEntered() {
         this.feedbackText.setText("");
         this.feedbackText.setVisible(false);
