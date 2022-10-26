@@ -6,8 +6,8 @@ aan de fxml file. Dit gebeurt dus tijdens runtime en word niet herkend door de I
 
 ## Inlog gegevens:
 
-Gebruikersnaam: eros
-Pincode: 0512
+- Gebruikersnaam: eros
+- Pincode: 0512
 
-Gebruikersnaam: hestia
-Pincode: 0609
+- Gebruikersnaam: hestia
+- Pincode: 0609
