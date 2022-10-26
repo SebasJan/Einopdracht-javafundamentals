@@ -115,10 +115,11 @@ public class CollectionController extends MouseEvent {
         itemTable.setItems((ObservableList<Item>) items);
     }
 
+    // TODO: error lables not showing!
     @FXML
     private void deleteItemButtonClick() {
         // check if the item code field is empty
-        if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("[0-9]+") && database.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
+        if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("\\d") && database.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
             // get the item code from the text field
             int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
 

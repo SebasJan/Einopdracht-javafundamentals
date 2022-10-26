@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+// TODO: Sonar lint shit fixen
 public class Database {
     public final List<User> USERS;
     public final List<Item> ITEMS;
