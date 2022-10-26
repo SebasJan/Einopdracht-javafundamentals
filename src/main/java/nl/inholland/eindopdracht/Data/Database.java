@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-// TODO: Sonar lint shit fixen
 public class Database {
+    private static final String ITEMS_FILE = "items.dat";
+    private static final String MEMBERS_FILE = "members.dat";
     private final List<User> USERS;
     private final List<Item> ITEMS;
     private final List<Member> MEMBERS;
@@ -26,10 +27,10 @@ public class Database {
     }
 
     private void loadMembers() {
-        try (FileInputStream fis = new FileInputStream("members.dat");) {
+        try (FileInputStream fis = new FileInputStream(MEMBERS_FILE);) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
-            readMembers(ois);
+            readMembers(ois ,fis);
             ois.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default members
@@ -45,13 +46,16 @@ public class Database {
         }
     }
 
-    private void readMembers(ObjectInputStream ois) throws IOException {
+    private void readMembers(ObjectInputStream ois, FileInputStream fis) throws IOException {
         while (true) {
             try {
+                // check if the ois can read an object
+                if (fis.available() == 0)
+                    break;
                 Member member = (Member) ois.readObject();
                 getMEMBERS().add(member);
             } catch (EOFException | ClassNotFoundException e) {
-                break;
+                throw new IOException(e);
             }
         }
     }
@@ -63,10 +67,10 @@ public class Database {
     }
 
     private void loadItems() {
-        try (FileInputStream fis = new FileInputStream("items.dat");) {
+        try (FileInputStream fis = new FileInputStream(ITEMS_FILE);) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
-            readItems(ois);
+            readItems(ois, fis);
             ois.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default items
@@ -76,13 +80,16 @@ public class Database {
         }
     }
 
-    private void readItems(ObjectInputStream ois) throws IOException {
+    private void readItems(ObjectInputStream ois, FileInputStream fis) throws IOException {
         while (true) {
             try {
+                // check if the ois can read an object
+                if (fis.available() == 0)
+                    break;
                 Item item = (Item) ois.readObject();
                 getITEMS().add(item);
             } catch (EOFException | ClassNotFoundException e) {
-                break;
+                throw new IOException(e);
             }
         }
     }
@@ -177,7 +184,7 @@ public class Database {
     }
 
     private void saveMembers() {
-        try (FileOutputStream outputStream = new FileOutputStream("members.dat", false);) {
+        try (FileOutputStream outputStream = new FileOutputStream(MEMBERS_FILE, false);) {
 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (Member member : getMEMBERS()) {
@@ -190,7 +197,7 @@ public class Database {
     }
 
     private void saveItems() {
-        try (FileOutputStream outputStream = new FileOutputStream("items.dat", false);) {
+        try (FileOutputStream outputStream = new FileOutputStream(ITEMS_FILE, false);) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (Item item : getITEMS()) {
                 objectOutputStream.writeObject(item);

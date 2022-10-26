@@ -15,6 +15,9 @@ import nl.inholland.eindopdracht.Models.User;
 import java.io.IOException;
 
 public class LoginController extends MouseEvent {
+    public static final String MAIN_VIEW_FXML = "MainView.fxml";
+    public static final String STYLE_CSS = "file:src/main/resources/nl/inholland/eindopdracht/Style/style.css";
+    public static final String FAVICON_IMAGE = "file:src/main/resources/nl/inholland/eindopdracht/Images/book.png";
     @FXML
     public TextField usernameTextField;
     @FXML
@@ -73,13 +76,13 @@ public class LoginController extends MouseEvent {
     private void openMainWindow(User user) throws IOException {
         // create main screen
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MainView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource(MAIN_VIEW_FXML));
         fxmlLoader.setController(new MainController(DATABASE, user));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        scene.getStylesheets().add("file:src/main/resources/nl/inholland/eindopdracht/Style/style.css");
+        scene.getStylesheets().add(STYLE_CSS);
         stage.setTitle("Fabula Library");
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:src/main/resources/nl/inholland/eindopdracht/Images/book.png"));
+        stage.getIcons().add(new Image(FAVICON_IMAGE));
         stage.setResizable(false);
         stage.show();
 

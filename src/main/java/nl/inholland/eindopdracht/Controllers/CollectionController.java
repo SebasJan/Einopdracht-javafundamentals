@@ -91,7 +91,7 @@ public class CollectionController extends MouseEvent {
                 // update the item in the database
                 this.DATABASE.editItem(item);
             } else {
-                // show error message
+                errorLabel.setVisible(true);
                 errorLabel.setText("Available can only be Yes or No");
             }
         });
@@ -115,10 +115,10 @@ public class CollectionController extends MouseEvent {
         itemTable.setItems((ObservableList<Item>) items);
     }
 
-    // TODO: error lables not showing!
     @FXML
     public void deleteItemButtonClick() {
-        // check if the item code field is empty
+        errorLabel.setVisible(false);
+        // check if the item code field is empty and exist in the database
         if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("\\d") && DATABASE.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
             // get the item code from the text field
             int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
@@ -139,12 +139,14 @@ public class CollectionController extends MouseEvent {
 
             itemCodeDeleteField.clear();
         } else {
+            errorLabel.setVisible(true);
             errorLabel.setText("Please enter an (valid) item code");
         }
     }
 
     @FXML
     public void addItemButton() {
+        errorLabel.setVisible(false);
         // check if the title and author fields are not empty
         if (!newTitleField.getText().isEmpty() && !newAuthorField.getText().isEmpty()) {
             String title = newTitleField.getText();
@@ -157,6 +159,7 @@ public class CollectionController extends MouseEvent {
 
             setTableItems(this.DATABASE.getITEMS());
         } else {
+            errorLabel.setVisible(true);
             errorLabel.setText("Title and author cannot be empty");
         }
     }

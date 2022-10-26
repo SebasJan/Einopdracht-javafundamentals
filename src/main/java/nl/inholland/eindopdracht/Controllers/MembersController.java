@@ -87,6 +87,7 @@ public class MembersController extends MouseEvent {
                 member.setDateOfBirth(dateOfBirth);
                 DATABASE.editMember(member);
             } else {
+                errorLabel.setVisible(true);
                 errorLabel.setText("Birthdate must be in the format dd-MM-yyyy");
             }
         });
@@ -111,7 +112,11 @@ public class MembersController extends MouseEvent {
 
     @FXML
     public void addMemberButton() {
+        errorLabel.setVisible(false);
+
+        // check if all fields are filled in
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || birthDatePicker.getValue() == null) {
+            errorLabel.setVisible(true);
             errorLabel.setText("Please fill in all fields");
             return;
         }
@@ -120,6 +125,7 @@ public class MembersController extends MouseEvent {
     }
 
     private void createAndSaveNewMember() {
+        // get all the information from the textFields and create the new member
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         Calendar birthDate = Calendar.getInstance();
@@ -135,7 +141,11 @@ public class MembersController extends MouseEvent {
     // Word gebruikt door FXML file!
     @FXML
     public void deleteMemberButton() {
+        errorLabel.setVisible(false);
+
+        // check if the memberID is filled in
         if (memberIDDeleteField.getText().isEmpty()) {
+            errorLabel.setVisible(true);
             errorLabel.setText("Please fill in the member ID");
             return;
         }
