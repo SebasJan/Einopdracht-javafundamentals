@@ -11,7 +11,5 @@ x
 Hsrc/main/java/nl/inholland/eindopdracht/Controllers/LoginController.java,9\c\9c1c84e07100bfb5267bf7d06bacc8e62d2c1094
 w
 Gsrc/main/java/nl/inholland/eindopdracht/Controllers/MainController.java,e\1\e19078f4672397d7c88ad8cd1a40148bc0e3532b
-}
-Msrc/main/java/nl/inholland/eindopdracht/Controllers/CollectionController.java,5\1\5144f36b13cea0c4d05aeefec8775c9ac18f5bac
 †
 Vsrc/main/java/nl/inholland/eindopdracht/Controllers/LendingAndReceivingController.java,0\9\09e4f30c356189118f13ea74cd3911a328834553

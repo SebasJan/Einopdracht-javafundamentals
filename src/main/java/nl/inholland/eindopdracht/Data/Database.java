@@ -26,20 +26,11 @@ public class Database {
     }
 
     private void loadMembers() {
-        try {
-            FileInputStream fis = new FileInputStream("members.dat");
+        try (FileInputStream fis = new FileInputStream("members.dat");) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
-            while (true) {
-                try {
-                    Member member = (Member) ois.readObject();
-                    getMEMBERS().add(member);
-                } catch (EOFException | ClassNotFoundException e) {
-                    break;
-                }
-            }
+            readMembers(ois);
             ois.close();
-            fis.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default members
             Calendar calendar = Calendar.getInstance();
@@ -54,6 +45,17 @@ public class Database {
         }
     }
 
+    private void readMembers(ObjectInputStream ois) throws IOException {
+        while (true) {
+            try {
+                Member member = (Member) ois.readObject();
+                getMEMBERS().add(member);
+            } catch (EOFException | ClassNotFoundException e) {
+                break;
+            }
+        }
+    }
+
     private void loadUsers() {
         // add 2 users
         this.getUSERS().add(new User("eros", "0512", "Eros Adamos"));
@@ -61,25 +63,27 @@ public class Database {
     }
 
     private void loadItems() {
-        try {
-            FileInputStream fis = new FileInputStream("items.dat");
+        try (FileInputStream fis = new FileInputStream("items.dat");) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
-            while (true) {
-                try {
-                    Item item = (Item) ois.readObject();
-                    getITEMS().add(item);
-                } catch (EOFException | ClassNotFoundException e) {
-                    break;
-                }
-            }
-            fis.close();
+            readItems(ois);
             ois.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default items
             this.getITEMS().add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
             this.getITEMS().add(new Item(2, true, "Godendrank", "Ilja Gort"));
             this.getITEMS().add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
+        }
+    }
+
+    private void readItems(ObjectInputStream ois) throws IOException {
+        while (true) {
+            try {
+                Item item = (Item) ois.readObject();
+                getITEMS().add(item);
+            } catch (EOFException | ClassNotFoundException e) {
+                break;
+            }
         }
     }
 
@@ -168,26 +172,36 @@ public class Database {
     }
 
     public void saveDateBase() {
-        try {
-            FileOutputStream outputStream = new FileOutputStream("items.dat", false);
+        saveItems();
+        saveMembers();
+    }
+
+    private void saveMembers() {
+        try (FileOutputStream outputStream = new FileOutputStream("members.dat", false);) {
+
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            for (Member member : getMEMBERS()) {
+                objectOutputStream.writeObject(member);
+            }
+            objectOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void saveItems() {
+        try (FileOutputStream outputStream = new FileOutputStream("items.dat", false);) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (Item item : getITEMS()) {
                 objectOutputStream.writeObject(item);
             }
             objectOutputStream.close();
-            outputStream.close();
-
-            outputStream = new FileOutputStream("members.dat", false);
-            objectOutputStream = new ObjectOutputStream(outputStream);
-            for (Member member : getMEMBERS()) {
-                objectOutputStream.writeObject(member);
-            }
-            objectOutputStream.close();
-            outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 
     public boolean itemExists(int itemCode) {
         for (Item item : getITEMS()) {
