@@ -10,9 +10,9 @@ import java.util.List;
 
 // TODO: Sonar lint shit fixen
 public class Database {
-    public final List<User> USERS;
-    public final List<Item> ITEMS;
-    public final List<Member> MEMBERS;
+    private final List<User> USERS;
+    private final List<Item> ITEMS;
+    private final List<Member> MEMBERS;
 
     public Database() {
         this.USERS = new ArrayList<>();
@@ -33,7 +33,7 @@ public class Database {
             while (true) {
                 try {
                     Member member = (Member) ois.readObject();
-                    MEMBERS.add(member);
+                    getMEMBERS().add(member);
                 } catch (EOFException | ClassNotFoundException e) {
                     break;
                 }
@@ -44,20 +44,20 @@ public class Database {
             // if the file doesn't exist load the default members
             Calendar calendar = Calendar.getInstance();
             calendar.set(2002, Calendar.SEPTEMBER, 6);
-            MEMBERS.add(new Member(1, "Sebastiaan", "van Vliet", calendar));
+            getMEMBERS().add(new Member(1, "Sebastiaan", "van Vliet", calendar));
 
             calendar.set(2002, Calendar.JUNE, 2);
-            MEMBERS.add(new Member(2, "Luc", "Moetwil", calendar));
+            getMEMBERS().add(new Member(2, "Luc", "Moetwil", calendar));
 
             calendar.set(2002, Calendar.AUGUST, 15);
-            MEMBERS.add(new Member(3, "Lars", "Hartendorp", calendar));
+            getMEMBERS().add(new Member(3, "Lars", "Hartendorp", calendar));
         }
     }
 
     private void loadUsers() {
         // add 2 users
-        this.USERS.add(new User("eros", "0512", "Eros Adamos"));
-        this.USERS.add(new User("hestia", "0609", "Hestia Argyros"));
+        this.getUSERS().add(new User("eros", "0512", "Eros Adamos"));
+        this.getUSERS().add(new User("hestia", "0609", "Hestia Argyros"));
     }
 
     private void loadItems() {
@@ -68,7 +68,7 @@ public class Database {
             while (true) {
                 try {
                     Item item = (Item) ois.readObject();
-                    ITEMS.add(item);
+                    getITEMS().add(item);
                 } catch (EOFException | ClassNotFoundException e) {
                     break;
                 }
@@ -77,16 +77,16 @@ public class Database {
             ois.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default items
-            this.ITEMS.add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
-            this.ITEMS.add(new Item(2, true, "Godendrank", "Ilja Gort"));
-            this.ITEMS.add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
+            this.getITEMS().add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
+            this.getITEMS().add(new Item(2, true, "Godendrank", "Ilja Gort"));
+            this.getITEMS().add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
         }
     }
 
     // this method return a string so the controller can see what went wrong if something went wrong
     public String lendItem(int itemCode, int memberId) {
         // check if the item exists
-        for (Item item : ITEMS) {
+        for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode && item.getAvailable()) {
                 // check if the member exists, only then lend the item
                 Member member = getMemberById(memberId);
@@ -102,7 +102,7 @@ public class Database {
     }
 
     public Item receiveItem(int itemCode) {
-        for (Item item : ITEMS) {
+        for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode && !item.getAvailable()) {
                 item.setAvailable(true);
                 return item;
@@ -112,7 +112,7 @@ public class Database {
     }
 
     public void editItem(Item item) {
-        for (Item i : ITEMS) {
+        for (Item i : getITEMS()) {
             if (i.getItemCode() == item.getItemCode()) {
                 i.setTitle(item.getTitle());
                 i.setAuthor(item.getAuthor());
@@ -121,35 +121,35 @@ public class Database {
     }
 
     public void deleteItem(int itemCode) {
-        for (Item item : ITEMS) {
+        for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode) {
-                ITEMS.remove(item);
+                getITEMS().remove(item);
                 break;
             }
         }
     }
 
     public void addItem(String title, String author) {
-        int itemCode = ITEMS.size() + 1;
-        ITEMS.add(new Item(itemCode, true, title, author));
+        int itemCode = getITEMS().size() + 1;
+        getITEMS().add(new Item(itemCode, true, title, author));
     }
 
     public void addMember(String firstName, String lastName, Calendar dateOfBirth) {
-        int memberId = MEMBERS.size() + 1;
-        MEMBERS.add(new Member(memberId, firstName, lastName, dateOfBirth));
+        int memberId = getMEMBERS().size() + 1;
+        getMEMBERS().add(new Member(memberId, firstName, lastName, dateOfBirth));
     }
 
     public void deleteMember(int memberId) {
-        for (Member member : MEMBERS) {
+        for (Member member : getMEMBERS()) {
             if (member.getId() == memberId) {
-                MEMBERS.remove(member);
+                getMEMBERS().remove(member);
                 break;
             }
         }
     }
 
     public void editMember(Member member) {
-        for (Member m : MEMBERS) {
+        for (Member m : getMEMBERS()) {
             if (m.getId() == member.getId()) {
                 m.setFirstName(member.getFirstName());
                 m.setLastName(member.getLastName());
@@ -159,7 +159,7 @@ public class Database {
     }
 
     private Member getMemberById(int memberId) {
-        for (Member member : MEMBERS) {
+        for (Member member : getMEMBERS()) {
             if (member.getId() == memberId) {
                 return member;
             }
@@ -171,7 +171,7 @@ public class Database {
         try {
             FileOutputStream outputStream = new FileOutputStream("items.dat", false);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            for (Item item : ITEMS) {
+            for (Item item : getITEMS()) {
                 objectOutputStream.writeObject(item);
             }
             objectOutputStream.close();
@@ -179,7 +179,7 @@ public class Database {
 
             outputStream = new FileOutputStream("members.dat", false);
             objectOutputStream = new ObjectOutputStream(outputStream);
-            for (Member member : MEMBERS) {
+            for (Member member : getMEMBERS()) {
                 objectOutputStream.writeObject(member);
             }
             objectOutputStream.close();
@@ -190,11 +190,23 @@ public class Database {
     }
 
     public boolean itemExists(int itemCode) {
-        for (Item item : ITEMS) {
+        for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode) {
                 return true;
             }
         }
         return false;
+    }
+
+    public List<User> getUSERS() {
+        return USERS;
+    }
+
+    public List<Item> getITEMS() {
+        return ITEMS;
+    }
+
+    public List<Member> getMEMBERS() {
+        return MEMBERS;
     }
 }

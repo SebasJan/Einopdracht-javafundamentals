@@ -42,7 +42,7 @@ public class MembersController extends MouseEvent {
 
     @FXML
     public void initialize() {
-        setTableItems(this.DATABASE.MEMBERS);
+        setTableItems(this.DATABASE.getMEMBERS());
         // add event listener for search function
         searchField.textProperty().addListener((observable, oldValue, newValue) -> searchTextFieldChanges(newValue));
 
@@ -59,7 +59,7 @@ public class MembersController extends MouseEvent {
     }
 
     private void searchTextFieldChanges(String newValue) {
-        ArrayList<Member> allMembers = (ArrayList<Member>) this.DATABASE.MEMBERS;
+        ArrayList<Member> allMembers = (ArrayList<Member>) this.DATABASE.getMEMBERS();
         ArrayList<Member> matchingMembers = new ArrayList<>();
 
         // find the items that start with the search query
@@ -116,7 +116,7 @@ public class MembersController extends MouseEvent {
             return;
         }
         createAndSaveNewMember();
-        setTableItems(this.DATABASE.MEMBERS);
+        setTableItems(this.DATABASE.getMEMBERS());
     }
 
     private void createAndSaveNewMember() {
@@ -149,7 +149,7 @@ public class MembersController extends MouseEvent {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 this.DATABASE.deleteMember(memberID);
-                setTableItems(this.DATABASE.MEMBERS);
+                setTableItems(this.DATABASE.getMEMBERS());
             }
         });
         memberIDDeleteField.clear();
