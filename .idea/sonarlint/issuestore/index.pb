@@ -13,3 +13,9 @@ w
 Gsrc/main/java/nl/inholland/eindopdracht/Controllers/MainController.java,e\1\e19078f4672397d7c88ad8cd1a40148bc0e3532b
 †
 Vsrc/main/java/nl/inholland/eindopdracht/Controllers/LendingAndReceivingController.java,0\9\09e4f30c356189118f13ea74cd3911a328834553
+j
+:src/main/java/nl/inholland/eindopdracht/Models/Member.java,c\3\c33285055cb2ccba33ccb2ab4a9cf7d562d64a9f
+z
+Jsrc/main/java/nl/inholland/eindopdracht/Controllers/MembersController.java,2\1\21ac4eefaa14099b79df6edb05a61d43d5f9c30f
+}
+Msrc/main/java/nl/inholland/eindopdracht/Controllers/CollectionController.java,5\1\5144f36b13cea0c4d05aeefec8775c9ac18f5bac
