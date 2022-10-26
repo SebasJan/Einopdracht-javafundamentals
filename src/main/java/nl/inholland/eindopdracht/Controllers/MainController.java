@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class MainController extends MouseEvent {
     @FXML
-    private AnchorPane dockPane;
+    public AnchorPane dockPane;
 
     private final Database DATABASE;
     private final User USER;
@@ -23,7 +23,7 @@ public class MainController extends MouseEvent {
     }
 
     @FXML
-    private void initialize() throws IOException {
+    public void initialize() throws IOException {
         loadLndRcvScreen();
     }
 
@@ -36,12 +36,12 @@ public class MainController extends MouseEvent {
 
 
     @FXML
-    private void buttonLndRcvClick() throws IOException {
+    public void buttonLndRcvClick() throws IOException {
         loadLndRcvScreen();
     }
 
     @FXML
-    private void buttonCollectionClick() throws IOException {
+    public void buttonCollectionClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("CollectionView.fxml"));
         fxmlLoader.setController(new CollectionController(DATABASE));
         AnchorPane pane = fxmlLoader.load();
@@ -49,7 +49,7 @@ public class MainController extends MouseEvent {
     }
 
     @FXML
-    private void buttonMembersClick() throws IOException {
+    public void buttonMembersClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Index.class.getResource("MembersView.fxml"));
         fxmlLoader.setController(new MembersController(DATABASE));
         AnchorPane pane = fxmlLoader.load();

@@ -1,0 +1,29 @@
+
+P
+java:S1141""5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+P
+java:S1141E"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼£ªŠ
+c
+java:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(‚àê±
+l
+java:S2095­"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(ĞÆÈ¦şÿÿÿÿ
+h
+java:S2095A"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(Ê™ºÿÿÿÿÿ
+g
+java:S2095µ"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(æ’ãŞ
+j
+java:S2095B"OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(ÑÒ»¥øÿÿÿÿ
+e
+java:S2095´"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(Æ€“Ì
+j
+java:S2095¬"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(à‚ë‹øÿÿÿÿ
+=
+java:S2189!""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ
+=
+java:S2189D""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ
+e	java:S116"PRename this field "USERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÑËÈ
+j	java:S116"PRename this field "ITEMS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÂ¹³ıÿÿÿÿ
+l	java:S116"RRename this field "MEMBERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¿›ïÿÿÿÿÿ
+O
+java:S1135"2Complete the task associated to this TODO comment.(³°‘©8ëä¨›Á0

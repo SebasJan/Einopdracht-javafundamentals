@@ -10,23 +10,23 @@ import nl.inholland.eindopdracht.Models.User;
 
 public class LendingAndReceivingController extends MouseEvent {
     @FXML
-    private Label welcomeText;
+    public Label welcomeText;
     @FXML
-    private TextField itemCodeLendField;
+    public TextField itemCodeLendField;
     @FXML
-    private TextField memberIdLendField;
+    public TextField memberIdLendField;
     @FXML
-    private TextField itemCodeReceiveField;
+    public TextField itemCodeReceiveField;
     @FXML
-    private Label feedbackText;
+    public Label feedbackText;
     @FXML
-    private Label errorItemCodeLendLabel;
+    public Label errorItemCodeLendLabel;
     @FXML
-    private Label errorMemberIDLabel;
+    public Label errorMemberIDLabel;
     @FXML
-    private Label errorItemCodeReceive;
+    public Label errorItemCodeReceive;
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
 
     private final Database DATABASE;
     private final User USER;
@@ -37,12 +37,12 @@ public class LendingAndReceivingController extends MouseEvent {
     }
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         welcomeText.setText("Welcome " + USER.fullName());
     }
 
     @FXML
-    private void lendItemButtonClick() {
+    public void lendItemButtonClick() {
         // check if the fields are empty
         if (itemCodeLendField.getText().isEmpty() || memberIdLendField.getText().isEmpty()) {
             this.errorLabel.setText("Please fill in all fields");
@@ -82,7 +82,7 @@ public class LendingAndReceivingController extends MouseEvent {
     }
 
     @FXML
-    private void receiveItemButtonClick() {
+    public void receiveItemButtonClick() {
         // check if the field is empty
         if (itemCodeReceiveField.getText().isEmpty()) {
             this.errorLabel.setText("Please fill in all fields");
@@ -123,7 +123,7 @@ public class LendingAndReceivingController extends MouseEvent {
         }
     }
     @FXML
-    private void newTextIsEntered() {
+    public void newTextIsEntered() {
         this.feedbackText.setText("");
         this.feedbackText.setVisible(false);
 

@@ -14,25 +14,25 @@ import java.util.List;
 
 public class MembersController extends MouseEvent {
     @FXML
-    private TableView<Member> memberTable;
+    public TableView<Member> memberTable;
     @FXML
-    private TableColumn<Member, String>  firstNameColumn;
+    public TableColumn<Member, String>  firstNameColumn;
     @FXML
-    private TableColumn<Member, String>  lastNameColumn;
+    public TableColumn<Member, String>  lastNameColumn;
     @FXML
-    private TableColumn<Member, String>  birthDateColumn;
+    public TableColumn<Member, String>  birthDateColumn;
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
     @FXML
-    private TextField memberIDDeleteField;
+    public TextField memberIDDeleteField;
     @FXML
-    private TextField firstNameField;
+    public TextField firstNameField;
     @FXML
-    private TextField searchField;
+    public TextField searchField;
     @FXML
-    private TextField lastNameField;
+    public TextField lastNameField;
     @FXML
-    private DatePicker birthDatePicker;
+    public DatePicker birthDatePicker;
 
     private final Database DATABASE;
 
@@ -41,7 +41,7 @@ public class MembersController extends MouseEvent {
     }
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         setTableItems(this.DATABASE.MEMBERS);
         // add event listener for search function
         searchField.textProperty().addListener((observable, oldValue, newValue) -> searchTextFieldChanges(newValue));
@@ -110,7 +110,7 @@ public class MembersController extends MouseEvent {
     }
 
     @FXML
-    private void addMemberButton() {
+    public void addMemberButton() {
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || birthDatePicker.getValue() == null) {
             errorLabel.setText("Please fill in all fields");
             return;
@@ -134,7 +134,7 @@ public class MembersController extends MouseEvent {
 
     // Word gebruikt door FXML file!
     @FXML
-    private void deleteMemberButton() {
+    public void deleteMemberButton() {
         if (memberIDDeleteField.getText().isEmpty()) {
             errorLabel.setText("Please fill in the member ID");
             return;

@@ -16,11 +16,11 @@ import java.io.IOException;
 
 public class LoginController extends MouseEvent {
     @FXML
-    private TextField usernameTextField;
+    public TextField usernameTextField;
     @FXML
-    private TextField passCodeTextField;
+    public TextField passCodeTextField;
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
 
     private final Database DATABASE;
 
@@ -29,7 +29,7 @@ public class LoginController extends MouseEvent {
     }
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         // set event listeners for when passcode field changes
         passCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> passCodeTextFieldChanges(newValue));
     }
@@ -50,7 +50,7 @@ public class LoginController extends MouseEvent {
     }
 
     @FXML
-    private void loginButtonClick() throws IOException {
+    public void loginButtonClick() throws IOException {
         // check if the text fields are empty
         if (this.usernameTextField.getText().isEmpty() || this.passCodeTextField.getText().isEmpty()) {
             this.errorLabel.setText("Please fill in all the fields..");

@@ -15,34 +15,34 @@ import java.util.List;
 
 public class CollectionController extends MouseEvent {
     @FXML
-    private TableView<Item> itemTable;
+    public TableView<Item> itemTable;
     @FXML
-    private TableColumn<Item, Integer> itemCodeColumn;
+    public TableColumn<Item, Integer> itemCodeColumn;
     @FXML
-    private TableColumn<Item, String> availableColumn;
+    public TableColumn<Item, String> availableColumn;
     @FXML
-    private TableColumn<Item, String> titleColumn;
+    public TableColumn<Item, String> titleColumn;
     @FXML
-    private TableColumn<Item, String> authorColumn;
+    public TableColumn<Item, String> authorColumn;
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
     @FXML
-    private TextField itemCodeDeleteField;
+    public TextField itemCodeDeleteField;
     @FXML
-    private TextField newAuthorField;
+    public TextField newAuthorField;
     @FXML
-    private TextField newTitleField;
+    public TextField newTitleField;
     @FXML
-    private TextField searchField;
-    private Database database;
+    public TextField searchField;
+    private final Database DATABASE;
 
     public CollectionController(Database database) {
-        this.database = database;
+        this.DATABASE = database;
     }
 
     @FXML
-    private void initialize() {
-        setTableItems(this.database.ITEMS);
+    public void initialize() {
+        setTableItems(this.DATABASE.ITEMS);
         availableColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getAvailable() ? "Yes" : "No"));
 
         // add event listener for search function
@@ -63,7 +63,7 @@ public class CollectionController extends MouseEvent {
 
     // Search in items list when the search field changes
     private void searchTextFieldChanges(Observable ignoredObservable, String ignoredOldValue, String newValue) {
-        ArrayList<Item> allItems = (ArrayList<Item>) this.database.ITEMS;
+        ArrayList<Item> allItems = (ArrayList<Item>) this.DATABASE.ITEMS;
         ArrayList<Item> matchingItems = new ArrayList<>();
 
         // find the items that start with the search query
@@ -89,7 +89,7 @@ public class CollectionController extends MouseEvent {
                 item.setAvailable(event.getNewValue().equalsIgnoreCase("yes"));
 
                 // update the item in the database
-                this.database.editItem(item);
+                this.DATABASE.editItem(item);
             } else {
                 // show error message
                 errorLabel.setText("Available can only be Yes or No");
@@ -99,13 +99,13 @@ public class CollectionController extends MouseEvent {
         titleColumn.setOnEditCommit(event -> {
             Item item = event.getRowValue();
             item.setTitle(event.getNewValue());
-            this.database.editItem(item);
+            this.DATABASE.editItem(item);
         });
 
         authorColumn.setOnEditCommit(event -> {
             Item item = event.getRowValue();
             item.setAuthor(event.getNewValue());
-            this.database.editItem(item);
+            this.DATABASE.editItem(item);
         });
     }
 
@@ -117,9 +117,9 @@ public class CollectionController extends MouseEvent {
 
     // TODO: error lables not showing!
     @FXML
-    private void deleteItemButtonClick() {
+    public void deleteItemButtonClick() {
         // check if the item code field is empty
-        if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("\\d") && database.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
+        if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("\\d") && DATABASE.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
             // get the item code from the text field
             int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
 
@@ -132,8 +132,8 @@ public class CollectionController extends MouseEvent {
             // if the user confirms, delete the item
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    this.database.deleteItem(itemCode);
-                    setTableItems(this.database.ITEMS);
+                    this.DATABASE.deleteItem(itemCode);
+                    setTableItems(this.DATABASE.ITEMS);
                 }
             });
 
@@ -144,18 +144,18 @@ public class CollectionController extends MouseEvent {
     }
 
     @FXML
-    private void addItemButton() {
+    public void addItemButton() {
         // check if the title and author fields are not empty
         if (!newTitleField.getText().isEmpty() && !newAuthorField.getText().isEmpty()) {
             String title = newTitleField.getText();
             String author = newAuthorField.getText();
-            this.database.addItem(title, author);
+            this.DATABASE.addItem(title, author);
 
             // clear the text fields
             newTitleField.clear();
             newAuthorField.clear();
 
-            setTableItems(this.database.ITEMS);
+            setTableItems(this.DATABASE.ITEMS);
         } else {
             errorLabel.setText("Title and author cannot be empty");
         }
