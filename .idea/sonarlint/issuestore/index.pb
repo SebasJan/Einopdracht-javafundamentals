@@ -7,8 +7,6 @@ h
 8src/main/java/nl/inholland/eindopdracht/Models/User.java,4\d\4d41d7402b1b24e33fcee8454ec97b84533997bc
 j
 :src/main/java/nl/inholland/eindopdracht/Data/Database.java,d\2\d2c29977a2dafd03657b0a934534f1475e13a89f
-z
-Jsrc/main/java/nl/inholland/eindopdracht/Controllers/MembersController.java,2\1\21ac4eefaa14099b79df6edb05a61d43d5f9c30f
 b
 2src/main/java/nl/inholland/eindopdracht/Index.java,4\e\4ee8f87db48d3e7ce150e3113b63bb2a748e418c
 z
