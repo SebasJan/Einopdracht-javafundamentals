@@ -26,7 +26,7 @@
             <HBox.margin>
                 <Insets/>
             </HBox.margin>
-            <Button styleClass="customButton" mnemonicParsing="false" onAction="#buttonMembersClick"
+            <Button styleClass="customButton" onAction="#buttonMembersClick"
                     onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="40.0"
                     prefWidth="150.0" text="Members" textFill="WHITE"/>
             <Button styleClass="customButton" mnemonicParsing="false" onAction="#buttonCollectionClick"
