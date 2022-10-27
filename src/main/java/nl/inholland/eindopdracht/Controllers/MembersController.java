@@ -8,21 +8,32 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Member;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class MembersController extends MouseHoverEvent {
-    @FXML public TableView<Member> memberTable;
-    @FXML public TableColumn<Member, String>  firstNameColumn;
-    @FXML public TableColumn<Member, String>  lastNameColumn;
-    @FXML public TableColumn<Member, String>  birthDateColumn;
-    @FXML public Label errorLabel;
-    @FXML public TextField memberIDDeleteField;
-    @FXML public TextField firstNameField;
-    @FXML public TextField searchField;
-    @FXML public TextField lastNameField;
-    @FXML public DatePicker birthDatePicker;
+    @FXML
+    public TableView<Member> memberTable;
+    @FXML
+    public TableColumn<Member, String> firstNameColumn;
+    @FXML
+    public TableColumn<Member, String> lastNameColumn;
+    @FXML
+    public TableColumn<Member, String> birthDateColumn;
+    @FXML
+    public Label errorLabel;
+    @FXML
+    public TextField memberIDDeleteField;
+    @FXML
+    public TextField firstNameField;
+    @FXML
+    public TextField searchField;
+    @FXML
+    public TextField lastNameField;
+    @FXML
+    public DatePicker birthDatePicker;
 
     private final Database DATABASE;
 

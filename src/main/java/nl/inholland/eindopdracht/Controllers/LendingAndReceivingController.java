@@ -9,15 +9,24 @@ import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.User;
 
 public class LendingAndReceivingController extends MouseHoverEvent {
-    @FXML public Label welcomeText;
-    @FXML public TextField itemCodeLendField;
-    @FXML public TextField memberIdLendField;
-    @FXML public TextField itemCodeReceiveField;
-    @FXML public Label feedbackText;
-    @FXML public Label errorItemCodeLendLabel;
-    @FXML public Label errorMemberIDLabel;
-    @FXML public Label errorItemCodeReceive;
-    @FXML public Label errorLabel;
+    @FXML
+    public Label welcomeText;
+    @FXML
+    public TextField itemCodeLendField;
+    @FXML
+    public TextField memberIdLendField;
+    @FXML
+    public TextField itemCodeReceiveField;
+    @FXML
+    public Label feedbackText;
+    @FXML
+    public Label errorItemCodeLendLabel;
+    @FXML
+    public Label errorMemberIDLabel;
+    @FXML
+    public Label errorItemCodeReceive;
+    @FXML
+    public Label errorLabel;
 
     private final Database DATABASE;
     private final User USER;
@@ -62,7 +71,7 @@ public class LendingAndReceivingController extends MouseHoverEvent {
             this.feedbackText.setText("Item successfully lent!");
             this.feedbackText.setVisible(true);
 
-        // if the item/member doesn't exist, show the error
+            // if the item/member doesn't exist, show the error
         } else if (this.DATABASE.lendItem(itemCode, memberId).equals("noItem")) {
             this.errorItemCodeLendLabel.setText("Item not found or already lent");
             this.errorItemCodeLendLabel.setVisible(true);
@@ -113,6 +122,7 @@ public class LendingAndReceivingController extends MouseHoverEvent {
             this.errorItemCodeReceive.setVisible(true);
         }
     }
+
     @FXML
     public void newTextIsEntered() {
         this.feedbackText.setText("");

@@ -3,6 +3,7 @@ package nl.inholland.eindopdracht.Data;
 import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.Member;
 import nl.inholland.eindopdracht.Models.User;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,7 +31,7 @@ public class Database {
         try (FileInputStream fis = new FileInputStream(MEMBERS_FILE)) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
-            readMembers(ois ,fis);
+            readMembers(ois, fis);
             ois.close();
         } catch (IOException e) {
             // if the file doesn't exist load the default members

@@ -18,9 +18,12 @@ public class LoginController extends MouseHoverEvent {
     public static final String MAIN_VIEW_FXML = "MainView.fxml";
     public static final String STYLE_CSS = "file:src/main/resources/nl/inholland/eindopdracht/Style/style.css";
     public static final String FAVICON_IMAGE = "file:src/main/resources/nl/inholland/eindopdracht/Images/book.png";
-    @FXML public TextField usernameTextField;
-    @FXML public TextField passCodeTextField;
-    @FXML public Label errorLabel;
+    @FXML
+    public TextField usernameTextField;
+    @FXML
+    public TextField passCodeTextField;
+    @FXML
+    public Label errorLabel;
 
     private final Database DATABASE;
 
@@ -34,7 +37,7 @@ public class LoginController extends MouseHoverEvent {
         passCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> passCodeTextFieldChanges(newValue));
     }
 
-    private void passCodeTextFieldChanges (String newValue) {
+    private void passCodeTextFieldChanges(String newValue) {
         if (newValue.length() == 4) {
             for (User user : DATABASE.getUSERS()) {
                 if (user.username().equals(this.usernameTextField.getText()) && user.passcode().equals(this.passCodeTextField.getText())) {
