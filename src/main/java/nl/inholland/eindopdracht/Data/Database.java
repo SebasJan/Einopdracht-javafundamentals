@@ -184,7 +184,7 @@ public class Database {
     }
 
     private void saveMembers() {
-        try (FileOutputStream outputStream = new FileOutputStream(MEMBERS_FILE, false);) {
+        try (FileOutputStream outputStream = new FileOutputStream(MEMBERS_FILE, false)) {
 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (Member member : getMEMBERS()) {
@@ -197,7 +197,7 @@ public class Database {
     }
 
     private void saveItems() {
-        try (FileOutputStream outputStream = new FileOutputStream(ITEMS_FILE, false);) {
+        try (FileOutputStream outputStream = new FileOutputStream(ITEMS_FILE, false)) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (Item item : getITEMS()) {
                 objectOutputStream.writeObject(item);
@@ -207,9 +207,7 @@ public class Database {
             e.printStackTrace();
         }
     }
-
-
-
+    
     public boolean itemExists(int itemCode) {
         for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode) {
