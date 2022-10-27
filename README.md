@@ -1,6 +1,6 @@
 # Eindopdracht Java Fundamentals
 
-Dit is de eindopdracht van Sebastiaan van Vliet, 690592. Klas: HAINF2A.
+Dit is de eindopdracht van Sebastiaan van Vliet, `690592`. Klas: HAINF2A.
 
 ## Inlog gegevens:
 

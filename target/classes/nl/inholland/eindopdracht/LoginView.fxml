@@ -12,27 +12,37 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <ImageView fitHeight="366.0" fitWidth="439.0" layoutX="31.0" layoutY="109.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
-        <Image url="@Images/book.png" />
+    <ImageView fitHeight="366.0" fitWidth="439.0" layoutX="31.0" layoutY="109.0" opacity="0.05" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@Images/book.png"/>
     </ImageView>
     <Label layoutX="23.0" layoutY="117.0" text="Welcome to Fabula library!">
-      <font>
-         <Font name="Verdana Bold" size="30.0" />
-      </font>
-      <GridPane.margin>
-         <Insets left="250.0" right="250.0" />
-      </GridPane.margin></Label>
-    <TextField styleClass="textField" fx:id="usernameTextField" layoutX="142.0" layoutY="198.0" prefHeight="25.0" prefWidth="216.0" promptText="Username">
-      <GridPane.margin>
-         <Insets left="100.0" right="100.0" />
-      </GridPane.margin></TextField>
-    <PasswordField styleClass="textField" fx:id="passCodeTextField" layoutX="142.0" layoutY="236.0" prefHeight="25.0" prefWidth="216.0" promptText="Passcode" >
-      <GridPane.margin>
-         <Insets left="100.0" right="100.0" />
-      </GridPane.margin></PasswordField>
-    <Button onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" styleClass="customButton" layoutX="176.0" layoutY="282.0" onAction="#loginButtonClick" prefHeight="25.0" prefWidth="179.0" text="Login" textFill="WHITE" translateX="-15.0">
-      <GridPane.margin>
-         <Insets left="230.0" />
-      </GridPane.margin></Button>
-   <Label fx:id="errorLabel" layoutX="142.0" layoutY="265.0" prefHeight="17.0" prefWidth="216.0" text="Oops" textFill="RED" visible="false" />
+        <font>
+            <Font name="Verdana Bold" size="30.0"/>
+        </font>
+        <GridPane.margin>
+            <Insets left="250.0" right="250.0"/>
+        </GridPane.margin>
+    </Label>
+    <TextField styleClass="textField" fx:id="usernameTextField" layoutX="142.0" layoutY="198.0" prefHeight="25.0"
+               prefWidth="216.0" promptText="Username">
+        <GridPane.margin>
+            <Insets left="100.0" right="100.0"/>
+        </GridPane.margin>
+    </TextField>
+    <PasswordField styleClass="textField" fx:id="passCodeTextField" layoutX="142.0" layoutY="236.0" prefHeight="25.0"
+                   prefWidth="216.0" promptText="Passcode">
+        <GridPane.margin>
+            <Insets left="100.0" right="100.0"/>
+        </GridPane.margin>
+    </PasswordField>
+    <Button onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" styleClass="customButton"
+            layoutX="176.0" layoutY="282.0" onAction="#loginButtonClick" prefHeight="25.0" prefWidth="179.0"
+            text="Login" textFill="WHITE" translateX="-15.0">
+        <GridPane.margin>
+            <Insets left="230.0"/>
+        </GridPane.margin>
+    </Button>
+    <Label fx:id="errorLabel" layoutX="142.0" layoutY="265.0" prefHeight="17.0" prefWidth="216.0" text="Oops"
+           textFill="RED" visible="false"/>
 </AnchorPane>
