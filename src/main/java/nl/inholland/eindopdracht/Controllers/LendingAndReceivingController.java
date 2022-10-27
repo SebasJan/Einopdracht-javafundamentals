@@ -9,24 +9,15 @@ import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.User;
 
 public class LendingAndReceivingController extends MouseEvent {
-    @FXML
-    public Label welcomeText;
-    @FXML
-    public TextField itemCodeLendField;
-    @FXML
-    public TextField memberIdLendField;
-    @FXML
-    public TextField itemCodeReceiveField;
-    @FXML
-    public Label feedbackText;
-    @FXML
-    public Label errorItemCodeLendLabel;
-    @FXML
-    public Label errorMemberIDLabel;
-    @FXML
-    public Label errorItemCodeReceive;
-    @FXML
-    public Label errorLabel;
+    @FXML public Label welcomeText;
+    @FXML public TextField itemCodeLendField;
+    @FXML public TextField memberIdLendField;
+    @FXML public TextField itemCodeReceiveField;
+    @FXML public Label feedbackText;
+    @FXML public Label errorItemCodeLendLabel;
+    @FXML public Label errorMemberIDLabel;
+    @FXML public Label errorItemCodeReceive;
+    @FXML public Label errorLabel;
 
     private final Database DATABASE;
     private final User USER;

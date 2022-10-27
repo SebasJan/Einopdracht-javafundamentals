@@ -18,12 +18,9 @@ public class LoginController extends MouseEvent {
     public static final String MAIN_VIEW_FXML = "MainView.fxml";
     public static final String STYLE_CSS = "file:src/main/resources/nl/inholland/eindopdracht/Style/style.css";
     public static final String FAVICON_IMAGE = "file:src/main/resources/nl/inholland/eindopdracht/Images/book.png";
-    @FXML
-    public TextField usernameTextField;
-    @FXML
-    public TextField passCodeTextField;
-    @FXML
-    public Label errorLabel;
+    @FXML public TextField usernameTextField;
+    @FXML public TextField passCodeTextField;
+    @FXML public Label errorLabel;
 
     private final Database DATABASE;
 

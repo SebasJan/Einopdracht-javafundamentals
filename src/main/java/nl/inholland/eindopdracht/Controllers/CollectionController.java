@@ -14,26 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionController extends MouseEvent {
-    @FXML
-    public TableView<Item> itemTable;
-    @FXML
-    public TableColumn<Item, Integer> itemCodeColumn;
-    @FXML
-    public TableColumn<Item, String> availableColumn;
-    @FXML
-    public TableColumn<Item, String> titleColumn;
-    @FXML
-    public TableColumn<Item, String> authorColumn;
-    @FXML
-    public Label errorLabel;
-    @FXML
-    public TextField itemCodeDeleteField;
-    @FXML
-    public TextField newAuthorField;
-    @FXML
-    public TextField newTitleField;
-    @FXML
-    public TextField searchField;
+    @FXML public TableView<Item> itemTable;
+    @FXML public TableColumn<Item, Integer> itemCodeColumn;
+    @FXML public TableColumn<Item, String> availableColumn;
+    @FXML public TableColumn<Item, String> titleColumn;
+    @FXML public TableColumn<Item, String> authorColumn;
+    @FXML public Label errorLabel;
+    @FXML public TextField itemCodeDeleteField;
+    @FXML public TextField newAuthorField;
+    @FXML public TextField newTitleField;
+    @FXML public TextField searchField;
     private final Database DATABASE;
 
     public CollectionController(Database database) {

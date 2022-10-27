@@ -7,15 +7,13 @@ import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Index;
 import nl.inholland.eindopdracht.Models.User;
-
 import java.io.IOException;
 
 public class MainController extends MouseEvent {
     public static final String LENDING_RECEIVING_VIEW_FXML = "LendingReceivingView.fxml";
     public static final String COLLECTION_VIEW_FXML = "CollectionView.fxml";
     public static final String MEMBERS_VIEW_FXML = "MembersView.fxml";
-    @FXML
-    public AnchorPane dockPane;
+    @FXML public AnchorPane dockPane;
 
     private final Database DATABASE;
     private final User USER;
