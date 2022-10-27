@@ -12,7 +12,6 @@ import javafx.stage.FileChooser;
 import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
