@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class Item implements Serializable {
+    public static final int HOURS_PER_DAY = 24;
+    public static final int MINUTES_PER_HOUR = 60;
+    public static final int SECONDS_PER_MINUTE = 60;
+    public static final int MILLISECONDS_PER_SECOND = 1000;
     private final int itemCode;
     private boolean available;
     private String title;
@@ -27,7 +31,7 @@ public class Item implements Serializable {
         if (isOverdue) {
             // get the difference between day of lending and the three-week point
             long difference = dateOfLending.getTimeInMillis() - threeWeeksAgo.getTimeInMillis();
-            daysOverdue = difference / (24 * 60 * 60 * 1000);
+            daysOverdue = difference / (HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE * MILLISECONDS_PER_SECOND);
             // invert - because the difference is negative
             daysOverdue = -daysOverdue;
         }

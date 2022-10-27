@@ -207,7 +207,7 @@ public class Database {
             e.printStackTrace();
         }
     }
-    
+
     public boolean itemExists(int itemCode) {
         for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode) {
