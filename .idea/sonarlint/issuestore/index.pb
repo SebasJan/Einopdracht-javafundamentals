@@ -15,8 +15,6 @@ j
 :src/main/java/nl/inholland/eindopdracht/Data/Database.java,d\2\d2c29977a2dafd03657b0a934534f1475e13a89f
 z
 Jsrc/main/java/nl/inholland/eindopdracht/Controllers/MembersController.java,2\1\21ac4eefaa14099b79df6edb05a61d43d5f9c30f
-}
-Msrc/main/java/nl/inholland/eindopdracht/Controllers/CollectionController.java,5\1\5144f36b13cea0c4d05aeefec8775c9ac18f5bac
 
 Osrc/main/java/nl/inholland/eindopdracht/Controllers/Events/MouseHoverEvent.java,8\d\8d5ffd3f056ad66513517f99f188e3ba471d1599
 9

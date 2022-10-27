@@ -5,11 +5,16 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
 import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
+
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +29,7 @@ public class CollectionController extends MouseHoverEvent {
     @FXML public TextField newAuthorField;
     @FXML public TextField newTitleField;
     @FXML public TextField searchField;
+    @FXML public Node root;
     private final Database DATABASE;
 
     public CollectionController(Database database) {
@@ -159,6 +165,26 @@ public class CollectionController extends MouseHoverEvent {
         } else {
             errorLabel.setVisible(true);
             errorLabel.setText("Title and author cannot be empty");
+        }
+    }
+
+    @FXML
+    public void loadItemsButtonClick() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open CSV file");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV file", "*.csv"));
+
+            File chosenFile = fileChooser.showOpenDialog(root.getScene().getWindow());
+            if (chosenFile != null) {
+                Files.readAllLines(chosenFile.toPath()).stream().skip(1).forEach(line -> {
+                    String[] splitLine = line.split(";");
+                    DATABASE.addItem(splitLine[0], splitLine[1]);
+                    setTableItems(this.DATABASE.getITEMS());
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
