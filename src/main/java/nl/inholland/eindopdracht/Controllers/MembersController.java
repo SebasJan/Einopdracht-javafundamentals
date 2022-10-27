@@ -133,10 +133,18 @@ public class MembersController extends MouseEvent {
     public void deleteMemberButton() {
         errorLabel.setVisible(false);
 
-        // check if the memberID is filled in
+        // check if the memberID is filled in / is a number / exists in the database
         if (memberIDDeleteField.getText().isEmpty()) {
             errorLabel.setVisible(true);
             errorLabel.setText("Please fill in the member ID");
+            return;
+        } else if (!memberIDDeleteField.getText().matches("\\d")) {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Member ID must be a number");
+            return;
+        } else if (!DATABASE.memberExists(Integer.parseInt(memberIDDeleteField.getText()))) {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Member does not exist");
             return;
         }
         int memberID = Integer.parseInt(memberIDDeleteField.getText());

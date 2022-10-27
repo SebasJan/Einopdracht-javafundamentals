@@ -27,7 +27,7 @@ public class Database {
     }
 
     private void loadMembers() {
-        try (FileInputStream fis = new FileInputStream(MEMBERS_FILE);) {
+        try (FileInputStream fis = new FileInputStream(MEMBERS_FILE)) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
             readMembers(ois ,fis);
@@ -67,7 +67,7 @@ public class Database {
     }
 
     private void loadItems() {
-        try (FileInputStream fis = new FileInputStream(ITEMS_FILE);) {
+        try (FileInputStream fis = new FileInputStream(ITEMS_FILE)) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             // read items
             readItems(ois, fis);
@@ -211,6 +211,15 @@ public class Database {
     public boolean itemExists(int itemCode) {
         for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean memberExists(int memberId) {
+        for (Member member : getMEMBERS()) {
+            if (member.getId() == memberId) {
                 return true;
             }
         }

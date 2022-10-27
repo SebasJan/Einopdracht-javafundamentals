@@ -109,29 +109,38 @@ public class CollectionController extends MouseEvent {
     public void deleteItemButtonClick() {
         errorLabel.setVisible(false);
         // check if the item code field is empty and exist in the database
-        if (!itemCodeDeleteField.getText().isEmpty() && itemCodeDeleteField.getText().matches("\\d") && DATABASE.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
-            // get the item code from the text field
-            int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
-
-            // show prompt to confirm deletion
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete item");
-            alert.setHeaderText("Are you sure you want to delete item " + itemCode + " ?");
-            alert.setContentText("This action cannot be undone");
-
-            // if the user confirms, delete the item
-            alert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    this.DATABASE.deleteItem(itemCode);
-                    setTableItems(this.DATABASE.getITEMS());
-                }
-            });
-
-            itemCodeDeleteField.clear();
-        } else {
+        if (itemCodeDeleteField.getText().isEmpty()) {
             errorLabel.setVisible(true);
-            errorLabel.setText("Please enter an (valid) item code");
+            errorLabel.setText("Please enter an item code");
+            return;
+        } else if (!itemCodeDeleteField.getText().matches("\\d")) {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Item code can only be a number");
+            return;
+        } else if (!DATABASE.itemExists(Integer.parseInt(itemCodeDeleteField.getText()))) {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Item does not exist");
+            return;
         }
+        // get the item code from the text field
+        int itemCode = Integer.parseInt(itemCodeDeleteField.getText());
+
+        // show prompt to confirm deletion
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete item");
+        alert.setHeaderText("Are you sure you want to delete item " + itemCode + " ?");
+        alert.setContentText("This action cannot be undone");
+
+        // if the user confirms, delete the item
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                this.DATABASE.deleteItem(itemCode);
+                setTableItems(this.DATABASE.getITEMS());
+            }
+        });
+
+        itemCodeDeleteField.clear();
+
     }
 
     @FXML
