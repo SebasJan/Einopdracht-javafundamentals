@@ -7,14 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Index;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.User;
 
 import java.io.IOException;
 
-public class LoginController extends MouseEvent {
+public class LoginController extends MouseHoverEvent {
     public static final String MAIN_VIEW_FXML = "MainView.fxml";
     public static final String STYLE_CSS = "file:src/main/resources/nl/inholland/eindopdracht/Style/style.css";
     public static final String FAVICON_IMAGE = "file:src/main/resources/nl/inholland/eindopdracht/Images/book.png";

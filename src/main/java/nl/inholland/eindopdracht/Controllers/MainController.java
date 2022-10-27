@@ -3,13 +3,13 @@ package nl.inholland.eindopdracht.Controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Index;
 import nl.inholland.eindopdracht.Models.User;
 import java.io.IOException;
 
-public class MainController extends MouseEvent {
+public class MainController extends MouseHoverEvent {
     public static final String LENDING_RECEIVING_VIEW_FXML = "LendingReceivingView.fxml";
     public static final String COLLECTION_VIEW_FXML = "CollectionView.fxml";
     public static final String MEMBERS_VIEW_FXML = "MembersView.fxml";

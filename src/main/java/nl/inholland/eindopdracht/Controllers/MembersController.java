@@ -5,14 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Member;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class MembersController extends MouseEvent {
+public class MembersController extends MouseHoverEvent {
     @FXML public TableView<Member> memberTable;
     @FXML public TableColumn<Member, String>  firstNameColumn;
     @FXML public TableColumn<Member, String>  lastNameColumn;

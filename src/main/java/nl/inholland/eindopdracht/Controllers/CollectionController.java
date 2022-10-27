@@ -7,13 +7,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollectionController extends MouseEvent {
+public class CollectionController extends MouseHoverEvent {
     @FXML public TableView<Item> itemTable;
     @FXML public TableColumn<Item, Integer> itemCodeColumn;
     @FXML public TableColumn<Item, String> availableColumn;
@@ -140,7 +140,6 @@ public class CollectionController extends MouseEvent {
         });
 
         itemCodeDeleteField.clear();
-
     }
 
     @FXML

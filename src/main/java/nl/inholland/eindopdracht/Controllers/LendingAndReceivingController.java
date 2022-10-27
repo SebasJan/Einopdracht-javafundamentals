@@ -3,12 +3,12 @@ package nl.inholland.eindopdracht.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import nl.inholland.eindopdracht.Controllers.Events.MouseEvent;
+import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
 import nl.inholland.eindopdracht.Models.User;
 
-public class LendingAndReceivingController extends MouseEvent {
+public class LendingAndReceivingController extends MouseHoverEvent {
     @FXML public Label welcomeText;
     @FXML public TextField itemCodeLendField;
     @FXML public TextField memberIdLendField;
