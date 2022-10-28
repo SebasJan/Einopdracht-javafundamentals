@@ -11,51 +11,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="598.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
-    <ImageView fitHeight="538.0" fitWidth="813.0" layoutX="19.0" layoutY="156.0" opacity="0.1" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@Images/bookshelf.jpg"/>
+<AnchorPane prefHeight="598.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fitHeight="538.0" fitWidth="813.0" layoutX="19.0" layoutY="156.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+        <Image url="@Images/bookshelf.jpg" />
     </ImageView>
-    <TextField fx:id="searchField" layoutX="560.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0"
-               promptText="Search" styleClass="textField"/>
-    <TextField fx:id="newTitleField" layoutX="197.0" layoutY="370.0" promptText="Title" styleClass="textField"/>
-    <TextField fx:id="newAuthorField" layoutX="197.0" layoutY="408.0" promptText="Author" styleClass="textField"/>
-    <Button layoutX="197.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton"
-            onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0"
-            styleClass="customButton" text="Add item" textFill="WHITE"/>
-    <TextField fx:id="itemCodeDeleteField" layoutX="392.0" layoutY="408.0" prefHeight="25.0" prefWidth="130.0"
-               promptText="Item code" styleClass="textField"/>
+    <TextField fx:id="searchField" layoutX="560.0" layoutY="74.0" prefHeight="25.0" prefWidth="186.0" promptText="Search" styleClass="textField" />
+    <TextField fx:id="newTitleField" layoutX="197.0" layoutY="370.0" promptText="Title" styleClass="textField" />
+    <TextField fx:id="newAuthorField" layoutX="197.0" layoutY="408.0" promptText="Author" styleClass="textField" />
+    <Button layoutX="197.0" layoutY="447.0" mnemonicParsing="false" onAction="#addItemButton" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" styleClass="customButton" text="Add item" textFill="WHITE" />
+    <TextField fx:id="itemCodeDeleteField" layoutX="392.0" layoutY="408.0" prefHeight="25.0" prefWidth="130.0" promptText="Item code" styleClass="textField" />
     <Label layoutX="34.0" layoutY="40.0" prefHeight="34.0" prefWidth="76.0" text="Items">
         <font>
-            <Font name="Verdana Bold" size="20.0"/>
+            <Font name="Verdana Bold" size="20.0" />
         </font>
     </Label>
-    <Button layoutX="392.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteItemButtonClick"
-            onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0"
-            styleClass="customButton" text="Delete item" textFill="WHITE"/>
+    <Button layoutX="392.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteItemButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="96.0" styleClass="customButton" text="Delete item" textFill="WHITE" />
     <TableView fx:id="itemTable" layoutX="560.0" layoutY="112.0" prefHeight="360.0" prefWidth="681.0">
         <columns>
             <TableColumn fx:id="itemCodeColumn" prefWidth="93.0" text="Item code">
                 <cellValueFactory>
-                    <PropertyValueFactory property="itemCode"/>
+                    <PropertyValueFactory property="itemCode" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="availableColumn" prefWidth="92.0" text="Available">
             </TableColumn>
             <TableColumn fx:id="titleColumn" prefWidth="361.0" text="Title">
                 <cellValueFactory>
-                    <PropertyValueFactory property="title"/>
+                    <PropertyValueFactory property="title" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="authorColumn" prefWidth="131.0" text="Author">
                 <cellValueFactory>
-                    <PropertyValueFactory property="author"/>
+                    <PropertyValueFactory property="author" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
-    <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="436.0"
-           text="To edit the data, double click on a cell to edit the information.  Hit enter to save. "/>
-    <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="323.0" text="error...."
-           textFill="RED" visible="false"/>
+    <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="436.0" text="To edit the data, double click on a cell to edit the information.  Hit enter to save. " />
+    <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="323.0" text="error...." textFill="RED" visible="false" />
+   <Button layoutX="46.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#loadCSVFile" prefHeight="25.0" prefWidth="76.0" text="Button" />
 </AnchorPane>

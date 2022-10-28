@@ -7,10 +7,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
 import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
 import nl.inholland.eindopdracht.Data.Database;
 import nl.inholland.eindopdracht.Models.Item;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -170,6 +173,26 @@ public class CollectionController extends MouseHoverEvent {
         } else {
             errorLabel.setVisible(true);
             errorLabel.setText("Title and author cannot be empty");
+        }
+    }
+
+    @FXML
+    public void loadCSVFile() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open CSV file");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Select an CSV file to load.", "*.csv"));
+
+            File chosenFile = fileChooser.showOpenDialog(itemTable.getScene().getWindow());
+            if (chosenFile != null) {
+                Files.readAllLines(chosenFile.toPath()).stream().skip(1).forEach(line -> {
+                    String[] split = line.split(";");
+                    this.DATABASE.addItem(split[0], split[1]);
+                    setTableItems(this.DATABASE.getITEMS());
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
