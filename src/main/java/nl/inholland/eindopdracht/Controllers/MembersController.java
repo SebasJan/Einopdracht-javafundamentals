@@ -73,25 +73,7 @@ public class MembersController extends MouseHoverEvent {
     }
 
     private void setOnEditEventHandlers() {
-        birthDateColumn.setOnEditCommit(event -> {
-            // check if the birthdate is in the correct format (dd-MM-yyyy)
-            if (event.getNewValue().matches("\\d{2}-\\d{2}-\\d{4}")) {
-                Member member = event.getRowValue();
-
-                // parse the string to a date
-                String[] dateParts = event.getNewValue().split("-");
-                Calendar dateOfBirth = Calendar.getInstance();
-                dateOfBirth.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[0]));
-                dateOfBirth.set(Calendar.MONTH, Integer.parseInt(dateParts[1]) - 1);
-                dateOfBirth.set(Calendar.YEAR, Integer.parseInt(dateParts[2]));
-
-                member.setDateOfBirth(dateOfBirth);
-                DATABASE.editMember(member);
-            } else {
-                errorLabel.setVisible(true);
-                errorLabel.setText("Birthdate must be in the format dd-MM-yyyy");
-            }
-        });
+        birthDateColumn.setOnEditCommit(this::editBirthDate);
 
         firstNameColumn.setOnEditCommit(event -> {
             Member member = event.getRowValue();
@@ -104,6 +86,38 @@ public class MembersController extends MouseHoverEvent {
             member.setLastName(event.getNewValue());
             this.DATABASE.editMember(member);
         });
+    }
+
+    private void editBirthDate(TableColumn.CellEditEvent<Member, String> event) {
+        // check if the birthdate is in the correct format (dd-MM-yyyy)
+        if (event.getNewValue().matches("\\d{2}-\\d{2}-\\d{4}")) {
+            Member member = event.getRowValue();
+
+            // parse the string to a date
+            String[] dateParts = event.getNewValue().split("-");
+            Calendar dateOfBirth = Calendar.getInstance();
+            dateOfBirth.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[0]));
+            dateOfBirth.set(Calendar.MONTH, Integer.parseInt(dateParts[1]) - 1);
+            dateOfBirth.set(Calendar.YEAR, Integer.parseInt(dateParts[2]));
+
+            // check if the date is in the past
+            if (dateOfBirth.before(Calendar.getInstance())) {
+                member.setDateOfBirth(dateOfBirth);
+                DATABASE.editMember(member);
+            } else {
+                errorLabel.setVisible(true);
+                errorLabel.setText("Birthdate can't be in the future");
+
+                // reset the birthdate to the old value
+                resetBirthDateColum();
+            }
+        } else {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Birthdate must be in the format dd-MM-yyyy");
+
+            // reset the birthdate to the old value
+            resetBirthDateColum();
+        }
     }
 
     private void setTableItems(List<Member> members) {
@@ -121,8 +135,24 @@ public class MembersController extends MouseHoverEvent {
             errorLabel.setText("Please fill in all fields");
             return;
         }
+
+        // check if the birthdate is in the past
+        if (birthDatePicker.getValue().isAfter(Calendar.getInstance().getTime().toInstant().atZone(Calendar.getInstance().getTimeZone().toZoneId()).toLocalDate())) {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Birthdate can't be in the future");
+            resetBirthDateColum();
+            birthDatePicker.setValue(null);
+            return;
+        }
+
         createAndSaveNewMember();
         setTableItems(this.DATABASE.getMEMBERS());
+    }
+
+    private void resetBirthDateColum() {
+        // reset the birthdate to the old value
+        birthDateColumn.setVisible(false);
+        birthDateColumn.setVisible(true);
     }
 
     private void createAndSaveNewMember() {
