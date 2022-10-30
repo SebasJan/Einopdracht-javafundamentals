@@ -7,8 +7,6 @@ Osrc/main/java/nl/inholland/eindopdracht/Controllers/Events/MouseHoverEvent.java
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 †
 Vsrc/main/java/nl/inholland/eindopdracht/Controllers/LendingAndReceivingController.java,0\9\09e4f30c356189118f13ea74cd3911a328834553
-z
-Jsrc/main/java/nl/inholland/eindopdracht/Controllers/MembersController.java,2\1\21ac4eefaa14099b79df6edb05a61d43d5f9c30f
 w
 Gsrc/main/java/nl/inholland/eindopdracht/Controllers/MainController.java,e\1\e19078f4672397d7c88ad8cd1a40148bc0e3532b
 j
