@@ -114,7 +114,7 @@ public class LendingAndReceivingController extends MouseHoverEvent {
 
             if (receivedItem.itemIsOverdue()) {
                 this.receiveButton.setDisable(true);
-                this.feedbackText.setText("Item is overdue by " + receivedItem.getDaysOverdue() + " days, item is received \n," +
+                this.feedbackText.setText("Item is overdue by " + receivedItem.getDaysOverdue() + " days \n," +
                         "but the user has to pay a fine of €" + calculateFine(receivedItem.getDaysOverdue()));
                 this.feedbackText.setVisible(true);
                 this.payFineButton.setVisible(true);
@@ -158,5 +158,11 @@ public class LendingAndReceivingController extends MouseHoverEvent {
         this.errorMemberIDLabel.setVisible(false);
         this.errorItemCodeReceive.setVisible(false);
         this.errorLabel.setVisible(false);
+
+        // make all the information about the fine invisible
+        this.payFineButton.setVisible(false);
+        this.receiveButton.setDisable(false);
+        this.feedbackText.setText("");
+        this.feedbackText.setVisible(false);
     }
 }

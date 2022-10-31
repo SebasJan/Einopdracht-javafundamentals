@@ -127,6 +127,7 @@ public class Database {
         for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode && !item.getAvailable()) {
                 item.setAvailable(true);
+                item.setDateOfLending(null);
                 return;
             }
         }
