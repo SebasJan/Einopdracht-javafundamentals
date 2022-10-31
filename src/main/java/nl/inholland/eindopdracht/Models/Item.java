@@ -14,7 +14,6 @@ public class Item implements Serializable {
     private String author;
     private Calendar dateOfLending;
     private long daysOverdue;
-    //private Calendar expectedReturnDate;
 
     public Item(int itemCode, boolean available, String title, String author) {
         this.itemCode = itemCode;
@@ -24,6 +23,8 @@ public class Item implements Serializable {
     }
 
     public boolean itemIsOverdue() {
+        if (dateOfLending == null)
+            return false;
         // if the date of lending is more than 3 weeks ago, the method will return true
         Calendar threeWeeksAgo = Calendar.getInstance();
         threeWeeksAgo.add(Calendar.WEEK_OF_YEAR, -3);
@@ -43,7 +44,8 @@ public class Item implements Serializable {
     // word gebruikt door FXML!
     public String getExpectedReturnDate() {
         // check if the item is available, if that is the case return nothing
-        if (available) {
+        // also check if the date of lending is null, if that is the case return nothing. This is so no errors will occur when a user tries to return an item that is not lent
+        if (available || dateOfLending == null) {
             return "";
         }
         // set the expected return date the date of lending + 3 weeks

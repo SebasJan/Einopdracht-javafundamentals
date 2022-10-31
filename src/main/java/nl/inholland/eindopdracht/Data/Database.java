@@ -78,9 +78,16 @@ public class Database {
             this.getITEMS().add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
             this.getITEMS().add(new Item(2, true, "Godendrank", "Ilja Gort"));
             this.getITEMS().add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
-//            // get the first item and set the date of lending to 4 weeks ago
-//            this.getITEMS().get(0).setDateOfLending(Calendar.getInstance());
-//            this.getITEMS().get(0).getDateOfLending().add(Calendar.WEEK_OF_YEAR, -4);
+
+            // this is used for assignment 1 of the exam!
+            // get the first item and set the date of lending to 4 weeks ago
+            this.getITEMS().get(0).setDateOfLending(Calendar.getInstance());
+            this.getITEMS().get(0).getDateOfLending().add(Calendar.WEEK_OF_YEAR, -4);
+            this.getITEMS().get(0).setAvailable(false);
+
+            this.getITEMS().get(1).setDateOfLending(Calendar.getInstance());
+            this.getITEMS().get(1).getDateOfLending().add(Calendar.WEEK_OF_YEAR, -7);
+            this.getITEMS().get(1).setAvailable(false);
         }
     }
 
@@ -116,10 +123,18 @@ public class Database {
         return "noItem";
     }
 
-    public Item receiveItem(int itemCode) {
+    public void receiveItem(int itemCode) {
         for (Item item : getITEMS()) {
             if (item.getItemCode() == itemCode && !item.getAvailable()) {
                 item.setAvailable(true);
+                return;
+            }
+        }
+    }
+
+    public Item getItemById(int itemCode) {
+        for (Item item : getITEMS()) {
+            if (item.getItemCode() == itemCode) {
                 return item;
             }
         }

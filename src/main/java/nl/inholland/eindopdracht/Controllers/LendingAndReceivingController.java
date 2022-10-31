@@ -1,6 +1,7 @@
 package nl.inholland.eindopdracht.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import nl.inholland.eindopdracht.Controllers.Events.MouseHoverEvent;
@@ -27,6 +28,10 @@ public class LendingAndReceivingController extends MouseHoverEvent {
     public Label errorItemCodeReceive;
     @FXML
     public Label errorLabel;
+    @FXML
+    public Button payFineButton;
+    @FXML
+    public Button receiveButton;
 
     private final Database DATABASE;
     private final User USER;
@@ -97,9 +102,9 @@ public class LendingAndReceivingController extends MouseHoverEvent {
         // try to parse the item code
         try {
             int itemCode = Integer.parseInt(itemCodeReceiveField.getText());
+            Item receivedItem = this.DATABASE.getItemById(itemCode);
 
             // receive item and check if the item exists
-            Item receivedItem = this.DATABASE.receiveItem(itemCode);
             if (receivedItem == null) {
                 this.errorItemCodeReceive.setText("Item not found or not lent");
                 this.errorItemCodeReceive.setVisible(true);
@@ -107,14 +112,19 @@ public class LendingAndReceivingController extends MouseHoverEvent {
                 return;
             }
 
-            // check if the item is overdue
             if (receivedItem.itemIsOverdue()) {
-                this.feedbackText.setText("Item is overdue by " + receivedItem.getDaysOverdue() + " days, item is received");
-            } else {
-                this.feedbackText.setText("Item successfully received!");
+                this.receiveButton.setDisable(true);
+                this.feedbackText.setText("Item is overdue by " + receivedItem.getDaysOverdue() + " days, item is received \n," +
+                        "but the user has to pay a fine of €" + calculateFine(receivedItem.getDaysOverdue()));
+                this.feedbackText.setVisible(true);
+                this.payFineButton.setVisible(true);
+                // stop running the method until the user has paid the fine, and can click the receive item button again
+                return;
             }
-            receivedItem.setDateOfLending(null);
 
+            this.DATABASE.receiveItem(itemCode);
+            this.feedbackText.setText("Item successfully received!");
+            receivedItem.setDateOfLending(null);
             this.feedbackText.setVisible(true);
             this.itemCodeReceiveField.setText("");
         } catch (NumberFormatException e) {
@@ -122,6 +132,21 @@ public class LendingAndReceivingController extends MouseHoverEvent {
             this.errorItemCodeReceive.setVisible(true);
         }
     }
+
+    @FXML
+    public void payFineButtonClick() {
+        this.feedbackText.setText("Fine successfully paid!");
+        this.payFineButton.setVisible(false);
+        this.receiveButton.setDisable(false);
+    }
+
+    private String calculateFine(long daysOverdue) {
+        // fine is 10 cent per day overdue
+        double fine = daysOverdue * 0.10;
+        // set as string with 2 decimals and euro sign
+        return String.format("%.2f", fine);
+    }
+
 
     @FXML
     public void newTextIsEntered() {

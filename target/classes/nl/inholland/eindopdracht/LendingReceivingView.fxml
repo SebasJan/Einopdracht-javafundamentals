@@ -21,7 +21,7 @@
             <Font name="Verdana Bold" size="25.0" />
         </font>
     </Label>
-    <GridPane layoutX="16.0" layoutY="105.0" prefHeight="164.0" prefWidth="555.0">
+    <GridPane layoutX="16.0" layoutY="202.0" prefHeight="164.0" prefWidth="555.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -56,7 +56,7 @@
         <Label fx:id="errorItemCodeLendLabel" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" GridPane.rowIndex="1" />
         <Label fx:id="errorMemberIDLabel" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" GridPane.rowIndex="3" />
     </GridPane>
-    <GridPane layoutX="687.0" layoutY="105.0" prefHeight="118.0" prefWidth="555.0">
+    <GridPane layoutX="682.0" layoutY="202.0" prefHeight="118.0" prefWidth="555.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -74,14 +74,19 @@
                 <Insets left="30.0" right="100.0" />
             </GridPane.margin>
         </TextField>
-        <Button mnemonicParsing="false" onAction="#receiveItemButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" styleClass="customButton" text="Receive item" textFill="WHITE" GridPane.rowIndex="3">
+        <Button fx:id="receiveButton" mnemonicParsing="false" onAction="#receiveItemButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" styleClass="customButton" text="Receive item" textFill="WHITE" GridPane.rowIndex="3">
             <GridPane.margin>
                 <Insets left="30.0" />
             </GridPane.margin>
         </Button>
         <Label fx:id="errorItemCodeReceive" prefHeight="30.0" prefWidth="555.0" text="error.." textFill="RED" visible="false" GridPane.rowIndex="1" />
+      <Button fx:id="payFineButton" mnemonicParsing="false" onAction="#payFineButtonClick" onMouseEntered="#mouseEnteredButton" onMouseExited="#mouseExitedButton" prefHeight="25.0" prefWidth="73.0" styleClass="customButton" text="Pay Fine" textFill="WHITE" visible="false" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="150.0" />
+         </GridPane.margin>
+      </Button>
     </GridPane>
-    <Label fx:id="feedbackText" layoutX="369.0" layoutY="55.0" prefHeight="34.0" prefWidth="608.0" text="Suc6" visible="false">
+    <Label fx:id="feedbackText" layoutX="369.0" layoutY="70.0" prefHeight="91.0" prefWidth="608.0" text="Suc6" visible="false">
         <font>
             <Font name="Verdana" size="23.0" />
         </font>
