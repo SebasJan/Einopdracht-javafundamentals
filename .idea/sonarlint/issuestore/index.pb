@@ -1,18 +1,8 @@
 
-h
-8src/main/java/nl/inholland/eindopdracht/Models/User.java,4\d\4d41d7402b1b24e33fcee8454ec97b84533997bc
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-†
-Vsrc/main/java/nl/inholland/eindopdracht/Controllers/LendingAndReceivingController.java,0\9\09e4f30c356189118f13ea74cd3911a328834553
 w
 Gsrc/main/java/nl/inholland/eindopdracht/Controllers/MainController.java,e\1\e19078f4672397d7c88ad8cd1a40148bc0e3532b
-j
-:src/main/java/nl/inholland/eindopdracht/Data/Database.java,d\2\d2c29977a2dafd03657b0a934534f1475e13a89f
-h
-8src/main/java/nl/inholland/eindopdracht/Models/Item.java,c\9\c986ea13894fa3edadfd3970c82cf9dfc62709bf
-j
-:src/main/java/nl/inholland/eindopdracht/Models/Member.java,c\3\c33285055cb2ccba33ccb2ab4a9cf7d562d64a9f
 b
 2src/main/java/nl/inholland/eindopdracht/Index.java,4\e\4ee8f87db48d3e7ce150e3113b63bb2a748e418c
 x

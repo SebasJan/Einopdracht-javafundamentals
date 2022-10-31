@@ -49,5 +49,5 @@
     </TableView>
     <Label layoutX="34.0" layoutY="74.0" prefHeight="25.0" prefWidth="436.0" text="To edit the data, double click on a cell to edit the information.  Hit enter to save. " />
     <Label fx:id="errorLabel" layoutX="560.0" layoutY="470.0" prefHeight="17.0" prefWidth="323.0" text="error...." textFill="RED" visible="false" />
-   <Button layoutX="46.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#loadCSVFile" prefHeight="25.0" prefWidth="76.0" text="Button" />
+    <Button layoutX="46.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#loadCSVFile" prefHeight="25.0" prefWidth="96.0" styleClass="customButton" text="Import items" textFill="WHITE" />
 </AnchorPane>

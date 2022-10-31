@@ -78,6 +78,9 @@ public class Database {
             this.getITEMS().add(new Item(1, true, "De vrouwenslagerij", "Ilja Gort"));
             this.getITEMS().add(new Item(2, true, "Godendrank", "Ilja Gort"));
             this.getITEMS().add(new Item(3, true, "Een tweede leven met Formule 1", "Olav Mol"));
+//            // get the first item and set the date of lending to 4 weeks ago
+//            this.getITEMS().get(0).setDateOfLending(Calendar.getInstance());
+//            this.getITEMS().get(0).getDateOfLending().add(Calendar.WEEK_OF_YEAR, -4);
         }
     }
 

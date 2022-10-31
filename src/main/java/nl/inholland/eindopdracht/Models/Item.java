@@ -74,4 +74,8 @@ public class Item implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public Calendar getDateOfLending() {
+        return dateOfLending;
+    }
 }
