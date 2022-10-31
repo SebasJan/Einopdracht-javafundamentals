@@ -14,6 +14,7 @@ public class Item implements Serializable {
     private String author;
     private Calendar dateOfLending;
     private long daysOverdue;
+    //private Calendar expectedReturnDate;
 
     public Item(int itemCode, boolean available, String title, String author) {
         this.itemCode = itemCode;
@@ -37,6 +38,21 @@ public class Item implements Serializable {
         }
         this.dateOfLending = null;
         return isOverdue;
+    }
+
+    // word gebruikt door FXML!
+    public String getExpectedReturnDate() {
+        // check if the item is available, if that is the case return nothing
+        if (available) {
+            return "";
+        }
+        // set the expected return date the date of lending + 3 weeks
+        Calendar expectedReturnDate = Calendar.getInstance();
+        expectedReturnDate.setTime(dateOfLending.getTime());
+        expectedReturnDate.add(Calendar.WEEK_OF_YEAR, 3);
+
+        // return the expected return date as string
+        return expectedReturnDate.get(Calendar.DAY_OF_MONTH) + "-" + (expectedReturnDate.get(Calendar.MONTH) + 1) + "-" + expectedReturnDate.get(Calendar.YEAR);
     }
 
     public long getDaysOverdue() {

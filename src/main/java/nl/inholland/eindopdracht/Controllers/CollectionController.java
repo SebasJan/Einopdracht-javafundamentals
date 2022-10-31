@@ -25,6 +25,8 @@ public class CollectionController extends MouseHoverEvent {
     @FXML
     public TableColumn<Item, String> availableColumn;
     @FXML
+    public TableColumn<Item, String> expectedReturnColum;
+    @FXML
     public TableColumn<Item, String> titleColumn;
     @FXML
     public TableColumn<Item, String> authorColumn;
