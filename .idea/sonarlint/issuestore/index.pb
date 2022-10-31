@@ -15,11 +15,11 @@ j
 :src/main/java/nl/inholland/eindopdracht/Models/Member.java,c\3\c33285055cb2ccba33ccb2ab4a9cf7d562d64a9f
 h
 8src/main/java/nl/inholland/eindopdracht/Models/User.java,4\d\4d41d7402b1b24e33fcee8454ec97b84533997bc
-}
-Msrc/main/java/nl/inholland/eindopdracht/Controllers/CollectionController.java,5\1\5144f36b13cea0c4d05aeefec8775c9ac18f5bac
-†
-Vsrc/main/java/nl/inholland/eindopdracht/Controllers/LendingAndReceivingController.java,0\9\09e4f30c356189118f13ea74cd3911a328834553
 j
 :src/main/java/nl/inholland/eindopdracht/Data/Database.java,d\2\d2c29977a2dafd03657b0a934534f1475e13a89f
+†
+Vsrc/main/java/nl/inholland/eindopdracht/Controllers/LendingAndReceivingController.java,0\9\09e4f30c356189118f13ea74cd3911a328834553
 h
 8src/main/java/nl/inholland/eindopdracht/Models/Item.java,c\9\c986ea13894fa3edadfd3970c82cf9dfc62709bf
+}
+Msrc/main/java/nl/inholland/eindopdracht/Controllers/CollectionController.java,5\1\5144f36b13cea0c4d05aeefec8775c9ac18f5bac
